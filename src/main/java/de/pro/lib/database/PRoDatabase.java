@@ -66,6 +66,7 @@ public final class PRoDatabase implements IDatabase {
         TODO
          - for every database will an entitymanager(factory) created.
          - getCrudService(String database)
+         - add info.txt for license objectdb one db=10entity with 1.000.000 objects.
         */
         if (entityManagerFactory == null) {
             entityManagerFactory = Persistence.createEntityManagerFactory(
