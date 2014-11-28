@@ -34,18 +34,18 @@ import javax.persistence.TypedQuery;
  * @see de.pro.lib.database.api.ICrudService
  * @see de.pro.lib.database.api.DatabaseFacade
  */
-final class CrudService implements ICrudService {
+public final class CrudService implements ICrudService {
     
     private EntityManager entityManager = null;
     
-//    /** XXX Test if needed JavaDoc, normaly only public stuff
-//     * Constructor for the class <code>CrudService</code>.
-//     * 
-//     * @param entityManager The {@link javax.persistence.EntityManager}.
-//     * @see de.pro.lib.database.api.IDatabase
-//     * @see de.pro.lib.database.api.DatabaseFacade
-//     */
-    CrudService(EntityManager entityManager) {
+    /**
+     * Constructor for the class <code>CrudService</code>.
+     * 
+     * @param entityManager The {@link javax.persistence.EntityManager}.
+     * @see de.pro.lib.database.api.IDatabase
+     * @see de.pro.lib.database.api.DatabaseFacade
+     */
+    public CrudService(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
     

@@ -4,9 +4,9 @@
     
     <groupId>de.pro</groupId>
     <artifactId>Lib-Database-ObjectDB</artifactId>
-    <version>0.0.1-SNAPSHOT</version> <!-- -SNAPSHOT -->
+    <version>0.0.1</version> <!-- -SNAPSHOT -->
     <packaging>jar</packaging>
-    <description>A library for easy accessing a ObjectDB database in a JavaFX &amp; Maven application. See https://github.com/Naoghuman/lib-database-objectdb for more details.</description>
+    <description>A library for easy accessing an ObjectDB database in a JavaFX &amp; Maven application. See https://github.com/Naoghuman/lib-database-objectdb for more details.</description>
     <name>Lib-Database-ObjectDB</name>
     <inceptionYear>2014</inceptionYear>
     <url>https://github.com/Naoghuman/lib-database-objectdb.git</url>
@@ -44,7 +44,7 @@
     
     <build>
         <plugins>
-            <!-- for RELEASE 
+            <!-- for RELEASE -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -58,7 +58,7 @@
                     </execution>
                 </executions>
             </plugin>
-            -->
+            <!-- -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -67,7 +67,7 @@
                     <additionalparam>-Xdoclint:none</additionalparam>
                 </configuration>
                 
-                <!-- for RELEASE
+                <!-- for RELEASE -->
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
@@ -76,7 +76,7 @@
                         </goals>
                     </execution>
                 </executions>
-                -->
+                <!-- -->
             </plugin>
         </plugins>
     </build>

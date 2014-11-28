@@ -3,7 +3,7 @@ Lib-Database-Objectdb
 
 A library for easy accessing an [ObjectDB] database in a [JavaFX] &amp; [Maven] application.
 
-Current `version` is `0.0.1-SNAPSHOT` (11.2014).
+Current `version` is `0.0.1` (11.2014).
 
 
 
@@ -72,7 +72,7 @@ Requirements<a name="Requirements" />
 ------------
 
 * On your system you need [JRE 8] or [JDK 8] installed.
-* The library [Lib-Database-ObjectDb-0.0.1-SNAPSHOT.jar](#Installation).
+* The library [Lib-Database-ObjectDb-0.0.1.jar](#Installation).
   * Included is the [objectdb-2.5.7_06.jar].
 * The library [Lib-Logger-0.0.3.jar](#Installation).
   * Included is the [log4j-api-2.0.2.jar].

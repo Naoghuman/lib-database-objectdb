@@ -32,13 +32,18 @@ import javax.persistence.Persistence;
  * @see de.pro.lib.database.api.IDatabase
  * @see de.pro.lib.database.api.DatabaseFacade
  */
-public class PRoDatabase implements IDatabase {
+public final class PRoDatabase implements IDatabase {
     
     private final static String SUFFIX_ODB = ".odb"; // NOI18N
     
     private ICrudService crudService = null;
     private EntityManager entityManager = null;
     private EntityManagerFactory entityManagerFactory = null;
+
+    /**
+     * Default contructor from the class {@link de.pro.lib.database.PRoDatabase}.
+     */
+    public PRoDatabase() { }
 
     @Override
     public ICrudService getCrudService() {
