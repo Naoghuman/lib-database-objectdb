@@ -72,7 +72,7 @@ Requirements<a name="Requirements" />
 ------------
 
 * On your system you need [JRE 8] or [JDK 8] installed.
-* The library [Lib-Database-ObjectDb-0.0.1-SNAHPSHOT.jar](#Installation).
+* The library [Lib-Database-ObjectDb-0.0.1-SNAPSHOT.jar](#Installation).
   * Included is the [objectdb-2.5.7_06.jar].
 * The library [Lib-Logger-0.0.3.jar](#Installation).
   * Included is the [log4j-api-2.0.2.jar].
