@@ -17,6 +17,7 @@
 package de.pro.lib.database;
 
 import de.pro.lib.database.api.DatabaseFacade;
+import de.pro.lib.logger.api.LoggerFacade;
 import java.io.File;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -44,6 +45,7 @@ public class PRoDatabaseTest {
 
     @BeforeClass
     public static void setUpClass() {
+        LoggerFacade.getDefault().deactivate(Boolean.TRUE);
     }
 
     @AfterClass
