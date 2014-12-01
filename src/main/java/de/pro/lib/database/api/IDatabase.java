@@ -28,6 +28,14 @@ package de.pro.lib.database.api;
 public interface IDatabase {
     
     /**
+     * Allowed the developer to drop the defined database.<br />
+     * This method can be used for testing purpose.
+     * 
+     * @param database The database which should be dropped.
+     */
+    public void drop(String database);
+    
+    /**
      * Returns the crud service which allowed all sql operations.
      * 
      * @return The crud service.

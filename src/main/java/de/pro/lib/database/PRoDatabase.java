@@ -34,6 +34,10 @@ import javax.persistence.Persistence;
  */
 public final class PRoDatabase implements IDatabase {
     
+    private static final String DATABASE_PATH =
+            System.getProperty("user.dir") + File.separator // NOI18N
+            + "database" + File.separator; // NOI18N
+    
     private final static String SUFFIX_ODB = ".odb"; // NOI18N
     
     private ICrudService crudService = null;
@@ -44,6 +48,21 @@ public final class PRoDatabase implements IDatabase {
      * Default contructor from the class {@link de.pro.lib.database.PRoDatabase}.
      */
     public PRoDatabase() { }
+    
+    @Override
+    public void drop(String database) {
+        if (!database.endsWith(SUFFIX_ODB)) {
+            database = database + SUFFIX_ODB;
+        }
+        
+        final File db = new File(DATABASE_PATH + database);
+        if (db.exists()) {
+            LoggerFacade.getDefault().info(this.getClass(),
+                "Delete database: " + DATABASE_PATH + database); // NOI18N
+            
+            db.delete();
+        }
+    }
 
     @Override
     public ICrudService getCrudService() {
