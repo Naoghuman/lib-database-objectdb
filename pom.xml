@@ -101,5 +101,12 @@
             <artifactId>objectdb</artifactId>
             <version>2.5.7_06</version>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+            <scope>test</scope>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 </project>
