@@ -33,7 +33,7 @@
     <scm>
         <connection>scm:git:ssh://github.com:Naoghuman/lib-database-objectdb.git</connection>
         <developerConnection>scm:git:ssh://git@github.com:Naoghuman/lib-database-objectdb.git</developerConnection>
-        <url>https://github.com/Naoghuman/lib-database.git</url>
+        <url>https://github.com/Naoghuman/lib-database-objectdb.git</url>
     </scm>
     
     <properties>
@@ -48,7 +48,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>2.3</version>
+                <version>2.4</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -62,7 +62,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.9.1</version>
+                <version>2.10.1</version>
                 <configuration>
                     <additionalparam>-Xdoclint:none</additionalparam>
                 </configuration>
@@ -104,7 +104,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.10</version>
+            <version>4.11</version>
             <scope>test</scope>
             <type>jar</type>
         </dependency>
