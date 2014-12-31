@@ -31,9 +31,6 @@ import static org.junit.Assert.*;
  * @author PRo
  */
 public class PRoDatabaseTest {
-    private static final String LOG
-            = System.getProperty("user.dir") + File.separator // NOI18N
-            + "log" + File.separator; // NOI18N
     private static final String DATABASE_PATH
             = System.getProperty("user.dir") + File.separator // NOI18N
             + "database" + File.separator; // NOI18N
