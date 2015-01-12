@@ -38,7 +38,7 @@ public final class PRoDatabase implements IDatabase {
             System.getProperty("user.dir") + File.separator // NOI18N
             + "database" + File.separator; // NOI18N
     
-    private final static String SUFFIX_ODB = ".odb"; // NOI18N
+    private static final String SUFFIX_ODB = ".odb"; // NOI18N
     
     private ICrudService crudService = null;
     private EntityManager entityManager = null;
