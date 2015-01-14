@@ -46,6 +46,7 @@ public interface ICrudService {
      * @param <T>
      * @param entity
      * @return 
+     * @see ICrudService#create(java.lang.Object, java.lang.Boolean)
      */
     public <T> T create(T entity);
     
@@ -56,6 +57,7 @@ public interface ICrudService {
      * @param entity
      * @param isSingleTransaction
      * @return 
+     * @see ICrudService#create(java.lang.Object) 
      */
     public <T> T create(T entity, Boolean isSingleTransaction);
     
@@ -65,6 +67,7 @@ public interface ICrudService {
      * @param <T>
      * @param type
      * @param id 
+     * @see ICrudService#delete(java.lang.Class, java.lang.Object, java.lang.Boolean) 
      */
     public <T> void delete(Class<T> type, Object id);
     
@@ -75,6 +78,7 @@ public interface ICrudService {
      * @param type
      * @param id
      * @param isSingleTransaction 
+     * @see ICrudService#delete(java.lang.Class, java.lang.Object) 
      */
     public <T> void delete(Class<T> type, Object id, Boolean isSingleTransaction);
     
@@ -84,6 +88,7 @@ public interface ICrudService {
      * @param <T>
      * @param entity
      * @return 
+     * @see ICrudService#update(java.lang.Object, java.lang.Boolean) 
      */
     public <T> T update(T entity);
     
@@ -94,6 +99,7 @@ public interface ICrudService {
      * @param entity
      * @param isSingleTransaction
      * @return 
+     * @see ICrudService#update(java.lang.Object) 
      */
     public <T> T update(T entity, Boolean isSingleTransaction);
     
