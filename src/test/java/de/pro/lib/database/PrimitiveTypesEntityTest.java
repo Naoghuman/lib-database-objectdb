@@ -18,7 +18,7 @@ package de.pro.lib.database;
 
 import de.pro.lib.database.api.DatabaseFacade;
 import de.pro.lib.logger.api.LoggerFacade;
-import java.io.File;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertTrue;
@@ -71,6 +71,29 @@ public class PrimitiveTypesEntityTest {
         assertTrue("boolean must true", entity2.getBooleanValue()==true);
         assertTrue("double must 321.123d", entity2.getDoubleValue()==321.123d);
         assertTrue("long must 123L", entity2.getLongValue()==123L);
+    }
+    
+    @Test
+    public void createWithManuellBeginAndCommitTransaction() {
+        DatabaseFacade.getDefault().getCrudService().beginTransaction();
+        
+        final PrimitiveTypesEntity entity1 = new PrimitiveTypesEntity();
+        entity1.setId(32);
+        entity1.setBooleanValue(true);
+        entity1.setDoubleValue(321.123d);
+        entity1.setLongValue(123L);
+        
+        final PrimitiveTypesEntity entity2 = new PrimitiveTypesEntity();
+        entity2.setId(33);
+        entity2.setBooleanValue(true);
+        entity2.setDoubleValue(32.23d);
+        entity2.setLongValue(23L);
+        
+        DatabaseFacade.getDefault().getCrudService().commitTransaction();
+        
+        List<PrimitiveTypesEntity> entities = DatabaseFacade.getDefault().getCrudService()
+                .findByNamedQuery(PrimitiveTypesEntity.class, "PrimitiveTypesEntity.findAll");
+        assertTrue("entities.size() == 2", entities.size() == 2);
     }
     
     @Test
