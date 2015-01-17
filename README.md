@@ -132,7 +132,7 @@ You can reach me under <peter.rogge@yahoo.de>.
 [FXML]:http://docs.oracle.com/javafx/2/fxml_get_started/jfxpub-fxml_get_started.htm
 [General Public License 3.0]:http://www.gnu.org/licenses/gpl-3.0.en.html
 [IntelliJ IDEA]:http://www.jetbrains.com/idea/
-[Issue]:https://github.com/Naoghuman/lib-database/issues
+[Issue]:https://github.com/Naoghuman/lib-database-objectdb/issues
 [JavaDoc]:http://www.oracle.com/technetwork/java/javase/documentation/index-jsp-135444.html
 [JavaFX]:http://docs.oracle.com/javase/8/javase-clienttechnologies.htm
 [JavaFX Scene Builder]:http://www.oracle.com/technetwork/java/javase/downloads/index.html
@@ -144,8 +144,8 @@ You can reach me under <peter.rogge@yahoo.de>.
 [log4j-core-2.1.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
 [Maven]:http://maven.apache.org/
 [NetBeans]:https://netbeans.org/
-[ObjectDB]:http://www.objectdb-com/
-[objectdb-2.6.0_01.jar]:http://www.objectdb-com/object/db/database/download
+[ObjectDB]:http://www.objectdb.com/
+[objectdb-2.6.0_01.jar]:http://www.objectdb.com/object/db/database/download
 [Pull Request]:https://help.github.com/articles/using-pull-requests
 
 
