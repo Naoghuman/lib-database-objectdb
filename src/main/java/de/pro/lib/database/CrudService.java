@@ -60,6 +60,25 @@ public final class CrudService implements ICrudService {
     }
 
     @Override
+    public Long count(String table) {
+        LoggerFacade.getDefault().info(this.getClass(), "Count all entitys from table: " + table); // NOI18N
+        
+        final StringBuilder sql = new StringBuilder();
+        sql.append("SELECT COUNT(c) FROM "); // NOI18N
+        sql.append(table);
+        sql.append(" c"); // NOI18N
+        
+        TypedQuery<Long> query;
+        try {
+           query = entityManager.createQuery(sql.toString(), Long.class);
+           return query.getSingleResult();
+        } catch (Exception e) {
+        }
+        
+        return -1L;
+    }
+
+    @Override
     public <T> T create(T entity) {
         return this.create(entity, Boolean.TRUE);
     }
@@ -233,4 +252,5 @@ public final class CrudService implements ICrudService {
         
         return query.getResultList();
     }
+    
 }

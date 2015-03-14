@@ -41,6 +41,14 @@ public interface ICrudService {
     public void commitTransaction();
     
     /**
+     * Count all entitys in the given table.
+     * 
+     * @param table The table which entitys should be counted.
+     * @return The number of entitys in the table or -1 if the table doesn't exists.
+     */
+    public Long count(String table);
+    
+    /**
      * TODO Add JavaDoc
      * 
      * @param <T>
