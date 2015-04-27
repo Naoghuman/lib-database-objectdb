@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <File name="Lib-Database-ObjectDB" fileName="log/Lib-Database-ObjectDB.log" append="false">
+            <PatternLayout pattern="%d  %-5p %m     [%c{1}]%n" />
+        </File>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d  %-5p %m     [%c{1}]%n" />
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="STDOUT" />
+            <AppenderRef ref="Lib-Database-ObjectDB" />
+        </Root>
+    </Loggers>
+</Configuration>
