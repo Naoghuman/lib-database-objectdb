@@ -39,26 +39,22 @@ public class PrimitiveTypesEntityTest {
 
     @BeforeClass
     public static void setUpClass() {
-        LoggerFacade.getDefault().deactivate(Boolean.TRUE);
-        DatabaseFacade.getDefault().register(TEST_DB_WITH_SUFFIX);
+//        LoggerFacade.getDefault().info(PrimitiveTypesEntityTest.class, " #setUpClass()");
+////        LoggerFacade.getDefault().deactivate(Boolean.TRUE);
+//        DatabaseFacade.getDefault().register(TEST_DB_WITH_SUFFIX);
     }
 
     @AfterClass
     public static void tearDownClass() {
+        LoggerFacade.getDefault().info(PrimitiveTypesEntityTest.class, " #tearDownClass()");
         DatabaseFacade.getDefault().shutdown();
         DatabaseFacade.getDefault().drop(TEST_DB_WITH_SUFFIX);
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
     }
     
     @Test
     public void create() {
+//        LoggerFacade.getDefault().info(this.getClass(), " #create()");
+//        
 //        final PrimitiveTypesEntity entity1 = new PrimitiveTypesEntity();
 //        entity1.setId(2);
 //        entity1.setBooleanValue(true);
@@ -71,10 +67,13 @@ public class PrimitiveTypesEntityTest {
 //        assertTrue("boolean must true", entity2.getBooleanValue()==true);
 //        assertTrue("double must 321.123d", entity2.getDoubleValue()==321.123d);
 //        assertTrue("long must 123L", entity2.getLongValue()==123L);
+//        
+//        DatabaseFacade.getDefault().getCrudService().delete(PrimitiveTypesEntity.class, 2L);
     }
     
     @Test
     public void createWithManuellBeginAndCommitTransaction() {
+//        LoggerFacade.getDefault().info(this.getClass(), " #createWithManuellBeginAndCommitTransaction()");
 //        DatabaseFacade.getDefault().getCrudService().beginTransaction();
 //        
 //        final PrimitiveTypesEntity entity1 = new PrimitiveTypesEntity();
@@ -82,22 +81,26 @@ public class PrimitiveTypesEntityTest {
 //        entity1.setBooleanValue(true);
 //        entity1.setDoubleValue(321.123d);
 //        entity1.setLongValue(123L);
+//        DatabaseFacade.getDefault().getCrudService().create(entity1, false);
 //        
 //        final PrimitiveTypesEntity entity2 = new PrimitiveTypesEntity();
 //        entity2.setId(33);
 //        entity2.setBooleanValue(true);
 //        entity2.setDoubleValue(32.23d);
 //        entity2.setLongValue(23L);
+//        DatabaseFacade.getDefault().getCrudService().create(entity2, false);
 //        
 //        DatabaseFacade.getDefault().getCrudService().commitTransaction();
 //        
 //        List<PrimitiveTypesEntity> entities = DatabaseFacade.getDefault().getCrudService()
 //                .findByNamedQuery(PrimitiveTypesEntity.class, "PrimitiveTypesEntity.findAll");
+//        System.out.println("size: " + entities.size());
 //        assertTrue("entities.size() == 2", entities.size() == 2);
     }
     
     @Test
     public void delete() {
+        LoggerFacade.getDefault().info(this.getClass(), " #getDefault()");
 //        final PrimitiveTypesEntity entity1 = new PrimitiveTypesEntity();
 //        entity1.setId(10);
 //        entity1.setBooleanValue(true);
@@ -115,6 +118,7 @@ public class PrimitiveTypesEntityTest {
     
     @Test
     public void update() {
+        LoggerFacade.getDefault().info(this.getClass(), " #update()");
 //        final PrimitiveTypesEntity entity1 = new PrimitiveTypesEntity();
 //        entity1.setId(20);
 //        entity1.setBooleanValue(true);

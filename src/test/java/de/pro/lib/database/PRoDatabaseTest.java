@@ -34,7 +34,7 @@ public class PRoDatabaseTest {
     private static final String DATABASE_PATH
             = System.getProperty("user.dir") + File.separator // NOI18N
             + "database" + File.separator; // NOI18N
-    private final static String TEST_DB_WITH_SUFFIX = "test.odb"; // NOI18N
+    private final static String TEST_DB_WITH_SUFFIX = "test4.odb"; // NOI18N
     private final static String TEST_DB_WITHOUT_SUFFIX = "bla"; // NOI18N
 
     public PRoDatabaseTest() {
@@ -55,7 +55,17 @@ public class PRoDatabaseTest {
 
     @After
     public void tearDown() {
-        final File file = new File(DATABASE_PATH);
+        File file = new File(DATABASE_PATH + TEST_DB_WITH_SUFFIX);
+        if (file.exists()) {
+            file.delete();
+        }
+        
+        file = new File(DATABASE_PATH + TEST_DB_WITHOUT_SUFFIX);
+        if (file.exists()) {
+            file.delete();
+        }
+        
+        file = new File(DATABASE_PATH);
         if (file.exists()) {
             file.delete();
         }
