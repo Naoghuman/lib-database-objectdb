@@ -57,6 +57,7 @@ public final class CrudService implements ICrudService {
     @Override
     public void commitTransaction() {
         entityManager.getTransaction().commit();
+        entityManager.clear();
     }
 
     @Override
