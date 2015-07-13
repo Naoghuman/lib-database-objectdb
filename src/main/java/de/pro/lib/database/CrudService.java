@@ -61,7 +61,7 @@ public final class CrudService implements ICrudService {
 
     @Override
     public Long count(String table) {
-        LoggerFacade.getDefault().info(this.getClass(), "Count all entitys from table: " + table); // NOI18N
+        LoggerFacade.getDefault().own(this.getClass(), "Count all entitys from table: " + table); // NOI18N
         
         final StringBuilder sql = new StringBuilder();
         sql.append("SELECT COUNT(c) FROM "); // NOI18N
@@ -85,7 +85,7 @@ public final class CrudService implements ICrudService {
 
     @Override
     public <T> T create(T entity, Boolean isSingleTransaction) {
-        LoggerFacade.getDefault().info(this.getClass(), "Create entity from type: " // NOI18N
+        LoggerFacade.getDefault().own(this.getClass(), "Create entity from type: " // NOI18N
                 + entity.getClass().getSimpleName()
                 + " with single transaction: " + isSingleTransaction); // NOI18N
         
@@ -111,7 +111,7 @@ public final class CrudService implements ICrudService {
 
     @Override
     public <T> void delete(Class<T> type, Object id, Boolean isSingleTransaction) {
-        LoggerFacade.getDefault().info(this.getClass(), "Delete entity(" // NOI18N
+        LoggerFacade.getDefault().own(this.getClass(), "Delete entity(id=" // NOI18N
                 + (Long) id + ") from type: " // NOI18N
                 + type.getClass().getSimpleName()
                 + " with single transaction: " + isSingleTransaction); // NOI18N
@@ -135,7 +135,7 @@ public final class CrudService implements ICrudService {
 
     @Override
     public <T> T update(T entity, Boolean isSingleTransaction) {
-        LoggerFacade.getDefault().info(this.getClass(), "Update entity from type: " // NOI18N
+        LoggerFacade.getDefault().own(this.getClass(), "Update entity from type: " // NOI18N
                 + entity.getClass().getSimpleName()
                 + " with single transaction: " + isSingleTransaction); // NOI18N);
         
@@ -154,7 +154,7 @@ public final class CrudService implements ICrudService {
 
     @Override
     public <T> T findById(Class<T> type, Object id) {
-        LoggerFacade.getDefault().info(this.getClass(), "Find entity(" // NOI18N
+        LoggerFacade.getDefault().own(this.getClass(), "Find entity(" // NOI18N
                 + (Long) id + ") from type: " // NOI18N
                 + type.getClass().getSimpleName());
         
@@ -163,7 +163,7 @@ public final class CrudService implements ICrudService {
 
     @Override
     public <T> List<T> findByNamedQuery(Class<T> type, String queryName) {
-        LoggerFacade.getDefault().info(this.getClass(), "Find by named query: " // NOI18N
+        LoggerFacade.getDefault().own(this.getClass(), "Find by named query: " // NOI18N
                 + queryName);
         
         return entityManager
@@ -173,7 +173,7 @@ public final class CrudService implements ICrudService {
 
     @Override
     public <T> List<T> findByNamedQuery(Class<T> type, String queryName, int resultLimit) {
-        LoggerFacade.getDefault().info(this.getClass(), "Find by named query: " // NOI18N
+        LoggerFacade.getDefault().own(this.getClass(), "Find by named query: " // NOI18N
                 + queryName + " with result limit: " + resultLimit); // NOI18N
         
         return entityManager
@@ -189,7 +189,7 @@ public final class CrudService implements ICrudService {
 
     @Override
     public <T> List<T> findByNamedQuery(Class<T> type, String queryName, Map<String, Object> parameters, int resultLimit) {
-        LoggerFacade.getDefault().info(this.getClass(), "Find by named query: " // NOI18N
+        LoggerFacade.getDefault().own(this.getClass(), "Find by named query: " // NOI18N
                 + queryName + " with result limit: " + resultLimit // NOI18N
                 + " and with additional parameter."); // NOI18N
         
@@ -208,7 +208,7 @@ public final class CrudService implements ICrudService {
 
     @Override
     public <T> List<T> findByNativeQuery(Class<T> type, String sql) {
-        LoggerFacade.getDefault().info(this.getClass(), "Find by native query: " // NOI18N
+        LoggerFacade.getDefault().own(this.getClass(), "Find by native query: " // NOI18N
                 + sql + " with type: " + type.getClass().getSimpleName()); // NOI18N
         
         return entityManager
@@ -218,7 +218,7 @@ public final class CrudService implements ICrudService {
 
     @Override
     public <T> List<T> findByNativeQuery(Class<T> type, String sql, int resultLimit) {
-        LoggerFacade.getDefault().info(this.getClass(), "Find by native query: " // NOI18N
+        LoggerFacade.getDefault().own(this.getClass(), "Find by native query: " // NOI18N
                 + sql + " with type: " + type.getClass().getSimpleName() // NOI18N
                 + " and with result limit: " + resultLimit); // NOI18N
         
@@ -235,7 +235,7 @@ public final class CrudService implements ICrudService {
 
     @Override
     public <T> List<T> findByNativeQuery(Class<T> type, String sql, Map<String, Object> parameters, int resultLimit) {
-        LoggerFacade.getDefault().info(this.getClass(), "Find by native query: " // NOI18N
+        LoggerFacade.getDefault().own(this.getClass(), "Find by native query: " // NOI18N
                 + sql + " with type: " + type.getClass().getSimpleName() // NOI18N
                 + " and with result limit: " + resultLimit // NOI18N
                 + " and with additional parameter."); // NOI18N

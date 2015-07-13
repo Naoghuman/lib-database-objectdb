@@ -57,7 +57,7 @@ public final class PRoDatabase implements IDatabase {
         
         final File db = new File(DATABASE_PATH + database);
         if (db.exists()) {
-            LoggerFacade.getDefault().info(this.getClass(),
+            LoggerFacade.getDefault().warn(this.getClass(),
                 "Delete database: " + DATABASE_PATH + database); // NOI18N
             
             db.delete();
@@ -75,7 +75,7 @@ public final class PRoDatabase implements IDatabase {
     
     @Override
     public void register(String database) {
-        LoggerFacade.getDefault().info(this.getClass(),
+        LoggerFacade.getDefault().own(this.getClass(),
                 "Initialize ObjectDB with database: " + database); // NOI18N
         
         if (!database.endsWith(SUFFIX_ODB)) {
@@ -99,7 +99,7 @@ public final class PRoDatabase implements IDatabase {
 
     @Override
     public void shutdown() {
-        LoggerFacade.getDefault().info(this.getClass(), "Shutdown ObjectDB"); // NOI18N
+        LoggerFacade.getDefault().own(this.getClass(), "Shutdown ObjectDB"); // NOI18N
         
         if (entityManager != null && entityManager.isOpen()) {
             entityManager.close();
