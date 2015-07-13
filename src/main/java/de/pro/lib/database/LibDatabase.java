@@ -17,7 +17,7 @@
 package de.pro.lib.database;
 
 import de.pro.lib.database.api.ICrudService;
-import de.pro.lib.database.api.IDatabase;
+import de.pro.lib.database.api.ILibDatabase;
 import de.pro.lib.logger.api.LoggerFacade;
 import java.io.File;
 import javax.persistence.EntityManager;
@@ -25,14 +25,14 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 /**
- * The implementation from the Interface {@link de.pro.lib.database.api.IDatabase}.<br />
+ * The implementation from the Interface {@link de.pro.lib.database.api.ILibDatabase}.<br />
  * Access to this class is over the facade {@link de.pro.lib.database.api.DatabaseFacade}.
  * 
  * @author PRo
- * @see de.pro.lib.database.api.IDatabase
+ * @see de.pro.lib.database.api.ILibDatabase
  * @see de.pro.lib.database.api.DatabaseFacade
  */
-public final class PRoDatabase implements IDatabase {
+public final class LibDatabase implements ILibDatabase {
     
     private static final String DATABASE_PATH =
             System.getProperty("user.dir") + File.separator // NOI18N
@@ -45,9 +45,9 @@ public final class PRoDatabase implements IDatabase {
     private EntityManagerFactory entityManagerFactory = null;
 
     /**
-     * Default contructor from the class {@link de.pro.lib.database.PRoDatabase}.
+     * Default contructor from the class {@link de.pro.lib.database.LibDatabase}.
      */
-    public PRoDatabase() { }
+    public LibDatabase() { }
     
     @Override
     public void drop(String database) {

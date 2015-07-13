@@ -17,15 +17,15 @@
 package de.pro.lib.database.api;
 
 /**
- * The <code>Interface</code> for the class {@link de.pro.lib.database.PRoDatabase}.<br />
+ * The <code>Interface</code> for the class {@link de.pro.lib.database.LibDatabase}.<br />
  * Over the facade {@link de.pro.lib.database.api.DatabaseFacade} you can access
  * the methods in this <code>Interface</code>.
  *
  * @author PRo
- * @see de.pro.lib.database.PRoDatabase
+ * @see de.pro.lib.database.LibDatabase
  * @see de.pro.lib.database.api.DatabaseFacade
  */
-public interface IDatabase {
+public interface ILibDatabase {
     
     /**
      * Allowed the developer to drop the defined database.<br />
@@ -56,7 +56,7 @@ public interface IDatabase {
     /**
      * Close the previous registered database.
      * 
-     * @see de.pro.lib.database.api.IDatabase#register(java.lang.String)
+     * @see de.pro.lib.database.api.ILibDatabase#register(java.lang.String)
      */
     public void shutdown();
 }

@@ -27,10 +27,10 @@ Examples<a name="Examples" />
 ```java
 /**
  * The facade {@link de.pro.lib.database.api.DatabaseFacade} provides a singleton
- * instance of the Interface {@link de.pro.lib.database.api.IDatabase}.
+ * instance of the Interface {@link de.pro.lib.database.api.ILibDatabase}.
  *
  * @author PRo
- * @see de.pro.lib.database.api.IDatabase
+ * @see de.pro.lib.database.api.ILibDatabase
  */
 public final class DatabaseFacade
 ```
@@ -61,7 +61,7 @@ DatabaseFacade.getDefault().getCrudService();
 /**
  * Close the previous registered database.
  * 
- * @see de.pro.lib.database.api.IDatabase#register(java.lang.String)
+ * @see de.pro.lib.database.api.ILibDatabase#register(java.lang.String)
  */
 DatabaseFacade.getDefault().shutdown();
 ```
