@@ -73,7 +73,8 @@ Requirements<a name="Requirements" />
 
 * On your system you need [JRE 8] or [JDK 8] installed.
 * The library [Lib-Database-ObjectDB-0.0.4.jar](#Installation).
-  * Included is the [objectdb-2.6.0_02.jar].
+  * Included is the [objectdb-2.6.3_01.jar].
+  * Included is the [javax.persistence-2.1.0.jar].
 * The library [Lib-Logger-0.1.1.jar](#Installation).
   * Included is the [log4j-api-2.3.jar].
   * Included is the [log4j-core-2.3.jar].
@@ -136,6 +137,7 @@ You can reach me under <peter.rogge@yahoo.de>.
 [JavaDoc]:http://www.oracle.com/technetwork/java/javase/documentation/index-jsp-135444.html
 [JavaFX]:http://docs.oracle.com/javase/8/javase-clienttechnologies.htm
 [JavaFX Scene Builder]:http://www.oracle.com/technetwork/java/javase/downloads/index.html
+[javax.persistence-2.1.0.jar]:http://search.maven.org/#search|gav|1|g%3A%22org.datanucleus%22%20AND%20a%3A%22javax.persistence%22
 [JDK 8]:http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 [JRE 8]:http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html
 [Lib-Database-ObjectDB]:https://github.com/Naoghuman/lib-database-objectdb
@@ -145,7 +147,7 @@ You can reach me under <peter.rogge@yahoo.de>.
 [Maven]:http://maven.apache.org/
 [NetBeans]:https://netbeans.org/
 [ObjectDB]:http://www.objectdb.com/
-[objectdb-2.6.0_02.jar]:http://www.objectdb.com/object/db/database/download
+[objectdb-2.6.3_01.jar]:http://www.objectdb.com/object/db/database/download
 [Pull Request]:https://help.github.com/articles/using-pull-requests
 
 

@@ -59,4 +59,5 @@ public interface ILibDatabase {
      * @see de.pro.lib.database.api.ILibDatabase#register(java.lang.String)
      */
     public void shutdown();
+    
 }
