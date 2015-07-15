@@ -20,6 +20,8 @@ import de.pro.lib.database.api.ICrudService;
 import de.pro.lib.database.api.ILibDatabase;
 import de.pro.lib.logger.api.LoggerFacade;
 import java.io.File;
+import java.util.Map;
+import javafx.collections.FXCollections;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -38,10 +40,11 @@ public final class LibDatabase implements ILibDatabase {
             System.getProperty("user.dir") + File.separator // NOI18N
             + "database" + File.separator; // NOI18N
     
+    private static final String DEFAULT = "DEFAULT"; // NOI18N
     private static final String SUFFIX_ODB = ".odb"; // NOI18N
     
-    private ICrudService crudService = null;
-    private EntityManager entityManager = null;
+    private static final Map<String, ICrudService> CRUDSERVICES = FXCollections.observableHashMap();
+    
     private EntityManagerFactory entityManagerFactory = null;
 
     /**
@@ -66,11 +69,23 @@ public final class LibDatabase implements ILibDatabase {
 
     @Override
     public ICrudService getCrudService() {
-        if (crudService == null) {
-            crudService = new CrudService(entityManager);
+        return this.getCrudService(DEFAULT);
+    }
+
+    @Override
+    public ICrudService getCrudService(String name) {
+        if (!CRUDSERVICES.containsKey(name)) {
+            LoggerFacade.getDefault().own(this.getClass(), "Add CrudService: " + name); // NOI18N
+
+            CRUDSERVICES.put(name, new CrudService(entityManagerFactory.createEntityManager()));
         }
         
-        return crudService;
+        return CRUDSERVICES.get(name);
+    }
+
+    @Override
+    public EntityManager getEntityManager(String name) {
+        return this.getCrudService(name).getEntityManager();
     }
     
     @Override
@@ -81,30 +96,44 @@ public final class LibDatabase implements ILibDatabase {
         if (!database.endsWith(SUFFIX_ODB)) {
             database = database + SUFFIX_ODB;
         }
-        /*
-        TODO
-         - for every database will an entitymanager(factory) created.
-         - getCrudService(String database)
-         - add info.txt for license objectdb one db=10entity with 1.000.000 objects.
-        */
+        
         if (entityManagerFactory == null) {
             entityManagerFactory = Persistence.createEntityManagerFactory(
                     "database" + File.separator + database);
         }
-        
-        if (entityManager == null) {
-            entityManager = entityManagerFactory.createEntityManager();
+    }
+    
+    @Override
+    public void removeCrudService(String name) {
+        if (!CRUDSERVICES.containsKey(name)) {
+            LoggerFacade.getDefault().own(this.getClass(), 
+                    "Can't remove not existing CrudService: " + name
+                    + " with associated EntityManager..."); // NOI18N
+
+            return;
         }
+        
+        LoggerFacade.getDefault().own(this.getClass(), "Remove CrudService: " + name); // NOI18N
+
+        CRUDSERVICES.get(name).shutdown(name);
+        CRUDSERVICES.remove(name);
+    }
+
+    @Override
+    public void removeEntityManager(String name) {
+        this.removeCrudService(name);
     }
 
     @Override
     public void shutdown() {
         LoggerFacade.getDefault().own(this.getClass(), "Shutdown ObjectDB"); // NOI18N
+
+        CRUDSERVICES.keySet().stream().forEach((key) -> {
+            CRUDSERVICES.get(key).shutdown(key);
+        });
+        CRUDSERVICES.clear();
         
-        if (entityManager != null && entityManager.isOpen()) {
-            entityManager.close();
-            entityManager = null;
-        }
+        LoggerFacade.getDefault().own(this.getClass(), "Shutdown EntityManagerFactory"); // NOI18N
         
         if (entityManagerFactory != null && entityManagerFactory.isOpen()) {
             entityManagerFactory.close();

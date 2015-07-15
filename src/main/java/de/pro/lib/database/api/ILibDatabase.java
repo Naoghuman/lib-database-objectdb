@@ -16,6 +16,8 @@
  */
 package de.pro.lib.database.api;
 
+import javax.persistence.EntityManager;
+
 /**
  * The <code>Interface</code> for the class {@link de.pro.lib.database.LibDatabase}.<br />
  * Over the facade {@link de.pro.lib.database.api.DatabaseFacade} you can access
@@ -36,11 +38,30 @@ public interface ILibDatabase {
     public void drop(String database);
     
     /**
-     * Returns the crud service which allowed all sql operations.
+     * Returns a {@link de.pro.lib.database.api.ICrudService} with the name 
+     * DEFAULT which allowed all sql operations.
      * 
      * @return The crud service.
      */
     public ICrudService getCrudService();
+    
+    /**
+     * Returns a named {@link de.pro.lib.database.api.ICrudService} which allowed 
+     * all sql operations.
+     * 
+     * @param name The name from the <code>ICrudService</code>.
+     * @return The <code>ICrudService</code>.
+     */
+    public ICrudService getCrudService(String name);
+    
+    /**
+     * Returns a named {@link javax.persistence.EntityManager} which allowed 
+     * all sql operations.
+     * 
+     * @param name The name from the EntityManager.
+     * @return The EntityManager.
+     */
+    public EntityManager getEntityManager(String name);
     
     /**
      * Create a database with the specific parameter in the folder
@@ -52,6 +73,24 @@ public interface ILibDatabase {
      * @param database The name for the database which should be created.
      */
     public void register(String database);
+    
+    /**
+     * Remove a {@link de.pro.lib.database.api.ICrudService} with the given name. Also
+     * the associated {@link javax.persistence.EntityManager} will be removed.
+     * 
+     * @param name The name for the <code>ICrudService</code> which should be removed.
+     * @see de.pro.lib.database.api.ILibDatabase#removeEntityManager(java.lang.String)
+     */
+    public void removeCrudService(String name);
+    
+    /**
+     * Remove a {@link javax.persistence.EntityManager} with the given name. Also
+     * the associated {@link de.pro.lib.database.api.ICrudService} will be removed.
+     * 
+     * @param name The name for the <code>EntityManager</code> which should be removed.
+     * @see de.pro.lib.database.api.ILibDatabase#removeCrudService(java.lang.String)
+     */
+    public void removeEntityManager(String name);
     
     /**
      * Close the previous registered database.

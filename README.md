@@ -50,11 +50,23 @@ DatabaseFacade.getDefault().register(String database);
 
 ```java
 /**
- * Returns the crud service which allowed all sql operations.
+ * Returns a {@link de.pro.lib.database.api.ICrudService} with the name 
+ * DEFAULT which allowed all sql operations.
  * 
  * @return The crud service.
  */
 DatabaseFacade.getDefault().getCrudService();
+```
+
+```java
+/**
+ * Returns a named {@link de.pro.lib.database.api.ICrudService} which allowed 
+ * all sql operations.
+ * 
+ * @param name The name from the <code>ICrudService</code>.
+ * @return The <code>ICrudService</code>.
+ */
+DatabaseFacade.getDefault().getCrudService(String name);
 ```
 
 ```java

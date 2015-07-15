@@ -253,5 +253,20 @@ public final class CrudService implements ICrudService {
         
         return query.getResultList();
     }
+
+    @Override
+    public EntityManager getEntityManager() {
+        return entityManager;
+    }
+
+    @Override
+    public void shutdown(String name) {
+        LoggerFacade.getDefault().own(this.getClass(), "Shutdown EntityManager: " + name); // NOI18N
+        
+        if (entityManager != null && entityManager.isOpen()) {
+            entityManager.close();
+            entityManager = null;
+        }
+    }
     
 }

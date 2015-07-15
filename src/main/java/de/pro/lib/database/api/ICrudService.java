@@ -18,6 +18,7 @@ package de.pro.lib.database.api;
 
 import java.util.List;
 import java.util.Map;
+import javax.persistence.EntityManager;
 
 /**
  * The <code>Interface</code> for the class {@link de.pro.lib.database.CrudService}.<br />
@@ -31,12 +32,24 @@ import java.util.Map;
 public interface ICrudService {
     
     /**
-     * TODO Add JavaDoc
+     * Start a resource transaction.
+     * <p>
+     * Internal following methods will be executed in following order:<br>
+     * <ul>
+     * <li>{@link javax.persistence.EntityTransaction#begin()}</li>
+     * </ul>
      */
     public void beginTransaction();
     
     /**
-     * TODO Add JavaDoc
+     * Commit the current resource transaction, writing any unflushed changes 
+     * to the database.
+     * <p>
+     * Internal following methods will be executed in following order:<br>
+     * <ul>
+     * <li>{@link javax.persistence.EntityTransaction#commit()}</li>
+     * <li>{@link javax.persistence.EntityManager#clear()}</li>
+     * </ul>
      */
     public void commitTransaction();
     
@@ -49,7 +62,9 @@ public interface ICrudService {
     public Long count(String table);
     
     /**
-     * TODO Add JavaDoc
+     * Make an entity managed and persistent.<br>
+     * Deletes to {@link ICrudService#create(java.lang.Object, java.lang.Boolean)}
+     * with the parameter <code>isSingleTransaction = true</code>.
      * 
      * @param <T>
      * @param entity
@@ -59,7 +74,16 @@ public interface ICrudService {
     public <T> T create(T entity);
     
     /**
-     * TODO Add JavaDoc
+     * Make an entity managed and persistent.
+     * <p>
+     * Internal following methods will be executed in following order:<br>
+     * <ul>
+     * <li>if <code>isSingleTransaction == true</code> then {@link de.pro.lib.database.CrudService#beginTransaction()}</li>
+     * <li>{@link javax.persistence.EntityManager#persist(java.lang.Object)}</li>
+     * <li>{@link javax.persistence.EntityManager#flush() }</li>
+     * <li>{@link javax.persistence.EntityManager#refresh(java.lang.Object) }</li>
+     * <li>if <code>isSingleTransaction == true</code> then {@link de.pro.lib.database.CrudService#commitTransaction()}</li>
+     * </ul>
      * 
      * @param <T>
      * @param entity
@@ -70,7 +94,9 @@ public interface ICrudService {
     public <T> T create(T entity, Boolean isSingleTransaction);
     
     /**
-     * TODO Add JavaDoc
+     * TODO Add JavaDoc<br>
+     * Deletes to {@link ICrudService#delete(java.lang.Class, java.lang.Object, java.lang.Boolean)}
+     * with the parameter <code>isSingleTransaction = true</code>.
      * 
      * @param <T>
      * @param type
@@ -91,7 +117,16 @@ public interface ICrudService {
     public <T> void delete(Class<T> type, Object id, Boolean isSingleTransaction);
     
     /**
-     * TODO Add JavaDoc
+     * Returns the associated {@link javax.persistence.EntityManager}.
+     * 
+     * @return The EntityManager.
+     */
+    public EntityManager getEntityManager();
+    
+    /**
+     * TODO Add JavaDoc<br>
+     * Deletes to {@link ICrudService#update(java.lang.Object, java.lang.Boolean) }
+     * with the parameter <code>isSingleTransaction = true</code>.
      * 
      * @param <T>
      * @param entity
@@ -101,7 +136,7 @@ public interface ICrudService {
     public <T> T update(T entity);
     
     /**
-     * TODO Add JavaDoc
+     * Merge the state of the given entity into the current persistence context.
      * 
      * @param <T>
      * @param entity
@@ -112,7 +147,9 @@ public interface ICrudService {
     public <T> T update(T entity, Boolean isSingleTransaction);
     
     /**
-     * TODO Add JavaDoc
+     * Find by primary key. Search for an entity of the specified class and 
+     * primary key. If the entity instance is contained in the persistence 
+     * context, it is returned from there.
      * 
      * @param <T>
      * @param type
@@ -208,5 +245,7 @@ public interface ICrudService {
      * @return 
      */
     public <T> List<T> findByNativeQuery(Class<T> type, String sql, Map<String, Object> parameters, int resultLimit);
+    
+    public void shutdown(String name);
     
 }
