@@ -21,10 +21,7 @@ import static org.junit.Assert.assertNull;
 
 import de.pro.lib.database.api.DatabaseFacade;
 import de.pro.lib.logger.api.LoggerFacade;
-import java.io.File;
-import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -34,60 +31,52 @@ import org.junit.Test;
  */
 public class LightModelTest {
     
-    private static final String DATABASE_PATH
-            = System.getProperty("user.dir") + File.separator // NOI18N
-            + "database" + File.separator; // NOI18N
     private final static String TEST_DB_WITH_SUFFIX = "Database.odb"; // NOI18N
 
     @BeforeClass
     public static void setUpClass() {
-//        LoggerFacade.getDefault().info(LightModelTest.class, " #setUpClass()");
-//        LoggerFacade.getDefault().deactivate(Boolean.TRUE);
-//        DatabaseFacade.getDefault().register(TEST_DB_WITH_SUFFIX);
+        LoggerFacade.getDefault().own(LightModelTest.class, " LightModelTest#setUpClass()");
+        LoggerFacade.getDefault().deactivate(Boolean.TRUE);
+        
+        DatabaseFacade.getDefault().register(TEST_DB_WITH_SUFFIX);
     }
 
     @AfterClass
     public static void tearDownClass() {
-//        LoggerFacade.getDefault().info(LightModelTest.class, " #tearDownClass()");
-//        DatabaseFacade.getDefault().shutdown();
-//        DatabaseFacade.getDefault().drop(TEST_DB_WITH_SUFFIX);
+        LoggerFacade.getDefault().deactivate(Boolean.FALSE);
+        LoggerFacade.getDefault().own(LightModelTest.class, " LightModelTest#tearDownClass()");
+        
+        DatabaseFacade.getDefault().shutdown();
+        DatabaseFacade.getDefault().drop(TEST_DB_WITH_SUFFIX);
     }
     
     @Test
     public void testFullModel() {
-//        DatabaseFacade.getDefault().register(TEST_DB_WITH_SUFFIX);
-//        
-//        LoggerFacade.getDefault().info(this.getClass(), " #testFullModel()");
-//        LightModel lm1 = new LightModel();
-//        lm1.setId(1);
-//        lm1.setDoubleValue(2.0);
-//        lm1.setLongValue(3L);
-//        
-//        final LightModel lm2 = DatabaseFacade.getDefault()
-//                .getCrudService().create(lm1);
-//        assertTrue("id must 1", lm2.getId()==1);
-//        assertTrue("double must 2.0", lm2.getDoubleValue()==2.0);
-//        assertTrue("long must 3L", lm2.getLongValue()==3L);
-//        
-//        DatabaseFacade.getDefault().shutdown();
+        LoggerFacade.getDefault().own(this.getClass(), " #testFullModel()");
+        
+        LightModel lm1 = new LightModel();
+        lm1.setId(1);
+        lm1.setDoubleValue(2.0);
+        lm1.setLongValue(3L);
+        
+        final LightModel lm2 = DatabaseFacade.getDefault().getCrudService("testFullModel").create(lm1);
+        assertTrue("id must 1", lm2.getId()==1);
+        assertTrue("double must 2.0", lm2.getDoubleValue()==2.0);
+        assertTrue("long must 3L", lm2.getLongValue()==3L);
     }
     
     @Test
     public void testLightModel() {
-//        DatabaseFacade.getDefault().register(TEST_DB_WITH_SUFFIX);
-//        
-//        LoggerFacade.getDefault().info(this.getClass(), " #testLightModel()");
-//        
-//        LightModel lm1 = new LightModel();
-//        lm1.setId(2);
-//        lm1.setDoubleValue(3.0);
-//        
-//        final LightModel lm2 = DatabaseFacade.getDefault()
-//                .getCrudService().create(lm1);
-//        assertTrue("id must 2", lm2.getId()==2);
-//        assertTrue("double must 3.0", lm2.getDoubleValue()==3.0);
-//        assertNull("long must null", lm2.getLongValue());
-//        
-//        DatabaseFacade.getDefault().shutdown();
+        LoggerFacade.getDefault().own(this.getClass(), " #testLightModel()");
+        
+        LightModel lm1 = new LightModel();
+        lm1.setId(2);
+        lm1.setDoubleValue(3.0);
+        
+        final LightModel lm2 = DatabaseFacade.getDefault().getCrudService("testLightModel").create(lm1);
+        assertTrue("id must 2", lm2.getId()==2);
+        assertTrue("double must 3.0", lm2.getDoubleValue()==3.0);
+        assertNull("long must null", lm2.getLongValue());
     }
+    
 }

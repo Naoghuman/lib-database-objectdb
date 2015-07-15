@@ -42,38 +42,35 @@ public class PRoDatabaseTest {
 
     @BeforeClass
     public static void setUpClass() {
+        LoggerFacade.getDefault().own(PRoDatabaseTest.class, " PRoDatabaseTest#setUpClass()");
         LoggerFacade.getDefault().deactivate(Boolean.TRUE);
+        
     }
 
     @AfterClass
     public static void tearDownClass() {
+        LoggerFacade.getDefault().deactivate(Boolean.FALSE);
+        LoggerFacade.getDefault().own(PRoDatabaseTest.class, " PRoDatabaseTest#tearDownClass()");
+        
     }
 
     @Before
     public void setUp() {
+        
     }
 
     @After
     public void tearDown() {
-        File file = new File(DATABASE_PATH + TEST_DB_WITH_SUFFIX);
-        if (file.exists()) {
-            file.delete();
-        }
         
-        file = new File(DATABASE_PATH + TEST_DB_WITHOUT_SUFFIX);
-        if (file.exists()) {
-            file.delete();
-        }
-        
-        file = new File(DATABASE_PATH);
-        if (file.exists()) {
-            file.delete();
-        }
     }
 
     @Test
     public void registerWithSuffix() {
         DatabaseFacade.getDefault().register(TEST_DB_WITH_SUFFIX);
+        
+        // The database will only created if an transaction is done
+        DatabaseFacade.getDefault().getCrudService("registerWithSuffix").create(new CountEntity());
+        
         DatabaseFacade.getDefault().shutdown();
         
         File file = new File(DATABASE_PATH + TEST_DB_WITH_SUFFIX);
@@ -86,6 +83,10 @@ public class PRoDatabaseTest {
     @Test
     public void registerWithoutSuffix() {
         DatabaseFacade.getDefault().register(TEST_DB_WITHOUT_SUFFIX);
+        
+        // The database will only created if an transaction is done
+        DatabaseFacade.getDefault().getCrudService("registerWithoutSuffix").create(new CountEntity());
+        
         DatabaseFacade.getDefault().shutdown();
         
         File file = new File(DATABASE_PATH + TEST_DB_WITHOUT_SUFFIX + ".odb");
@@ -94,4 +95,5 @@ public class PRoDatabaseTest {
         DatabaseFacade.getDefault().drop(TEST_DB_WITHOUT_SUFFIX);
         assertFalse("The database bla.odb must deleted...", file.exists());
     }
+    
 }

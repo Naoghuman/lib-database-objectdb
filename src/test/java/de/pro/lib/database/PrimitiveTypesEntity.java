@@ -53,10 +53,7 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(// need crud
             name = "PrimitiveTypesEntity.findAll", 
-            query = "SELECT p from PrimitiveTypesEntity p")//,
-//    @NamedQuery(
-//            name = "Project.byInvestigator", 
-//            query = "SELECT p FROM Project p WHERE p.investigator=:investigator")
+            query = "SELECT p from PrimitiveTypesEntity p")
 })
 public class PrimitiveTypesEntity implements Externalizable {
     
