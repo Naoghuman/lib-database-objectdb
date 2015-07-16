@@ -42,7 +42,7 @@ public final class CrudService implements ICrudService {
      * Constructor for the class <code>CrudService</code>.
      * 
      * @param entityManager The {@link javax.persistence.EntityManager}.
-     * @see de.pro.lib.database.api.IDatabase
+     * @see de.pro.lib.database.api.ICrudService
      * @see de.pro.lib.database.api.DatabaseFacade
      */
     public CrudService(EntityManager entityManager) {
