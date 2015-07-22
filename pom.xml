@@ -6,7 +6,7 @@
     <artifactId>Lib-Database-ObjectDB</artifactId>
     <version>0.0.6-SNAPSHOT</version> <!-- -SNAPSHOT -->
     <packaging>jar</packaging>
-    <description>A library for easy accessing an ObjectDB database in a JavaFX &amp; Maven application. See https://github.com/Naoghuman/lib-database-objectdb for more details.</description>
+    <description>A library for easy accessing an ObjectDB database in a JavaFX &amp; Maven desktop application. See https://github.com/Naoghuman/lib-database-objectdb for more details.</description>
     <name>Lib-Database-ObjectDB</name>
     <inceptionYear>2014</inceptionYear>
     <url>https://github.com/Naoghuman/lib-database-objectdb.git</url>
