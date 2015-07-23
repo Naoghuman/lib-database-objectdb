@@ -26,13 +26,13 @@ Examples<a name="Examples" />
 
 ```java
 /**
- * The facade {@link de.pro.lib.database.api.DatabaseFacade} provides a singleton
- * instance of the Interface {@link de.pro.lib.database.api.ILibDatabase}.
+ * The facade {@link de.pro.lib.database.api.DatabaseFacade} provides access to
+ * the action methods during the Interface {@link de.pro.lib.database.api.ILibDatabase}.
  *
  * @author PRo
  * @see de.pro.lib.database.api.ILibDatabase
  */
-public final class DatabaseFacade
+public enum DatabaseFacade
 ```
 
 ```java
@@ -45,7 +45,7 @@ public final class DatabaseFacade
  * 
  * @param database The name for the database which should be created.
  */
-DatabaseFacade.getDefault().register(String database);
+DatabaseFacade.INSTANCE.getDatabase().register(String database);
 ```
 
 ```java
@@ -55,7 +55,7 @@ DatabaseFacade.getDefault().register(String database);
  * 
  * @return The crud service.
  */
-DatabaseFacade.getDefault().getCrudService();
+DatabaseFacade.INSTANCE.getDatabase().getCrudService();
 ```
 
 ```java
@@ -66,7 +66,7 @@ DatabaseFacade.getDefault().getCrudService();
  * @param name The name from the <code>ICrudService</code>.
  * @return The <code>ICrudService</code>.
  */
-DatabaseFacade.getDefault().getCrudService(String name);
+DatabaseFacade.INSTANCE.getDatabase().getCrudService(String name);
 ```
 
 ```java
@@ -75,7 +75,7 @@ DatabaseFacade.getDefault().getCrudService(String name);
  * 
  * @see de.pro.lib.database.api.ILibDatabase#register(java.lang.String)
  */
-DatabaseFacade.getDefault().shutdown();
+DatabaseFacade.INSTANCE.getDatabase().shutdown();
 ```
 
 
