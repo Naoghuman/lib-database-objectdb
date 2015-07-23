@@ -3,7 +3,7 @@ Lib-Database-ObjectDB
 
 A library for easy accessing an [ObjectDB] database in a [JavaFX] &amp; [Maven] desktop application.
 
-Current `version` is `0.0.5` (07.2015).
+Current `version` is `0.0.6` (07.2015).
 
 
 
@@ -84,7 +84,7 @@ Requirements<a name="Requirements" />
 ------------
 
 * On your system you need [JRE 8] or [JDK 8] installed.
-* The library [Lib-Database-ObjectDB-0.0.5.jar](#Installation).
+* The library [Lib-Database-ObjectDB-0.0.6.jar](#Installation).
   * Included is the [objectdb-2.6.3_01.jar].
   * Included is the [javax.persistence-2.1.0.jar].
   * Included is the [javax.transaction-1.1.jar].

@@ -44,10 +44,10 @@ public enum DatabaseFacade {
     }
     
     /**
-     * Over the Interface {@link @link de.pro.lib.database.api.ILibDatabase} 
+     * Over the Interface {@link de.pro.lib.database.api.ILibDatabase} 
      * the developer have access to the database methods.
      * 
-     * @return a singleton instance from ILibAction.
+     * @return a singleton instance from ILibDatabase.
      */
     public ILibDatabase getDatabase() {
         return instance;
