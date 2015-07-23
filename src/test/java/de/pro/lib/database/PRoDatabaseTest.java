@@ -66,33 +66,33 @@ public class PRoDatabaseTest {
 
     @Test
     public void registerWithSuffix() {
-        DatabaseFacade.getDefault().register(TEST_DB_WITH_SUFFIX);
+        DatabaseFacade.INSTANCE.getDatabase().register(TEST_DB_WITH_SUFFIX);
         
         // The database will only created if an transaction is done
-        DatabaseFacade.getDefault().getCrudService("registerWithSuffix").create(new CountEntity());
+        DatabaseFacade.INSTANCE.getDatabase().getCrudService("registerWithSuffix").create(new CountEntity());
         
-        DatabaseFacade.getDefault().shutdown();
+        DatabaseFacade.INSTANCE.getDatabase().shutdown();
         
         File file = new File(DATABASE_PATH + TEST_DB_WITH_SUFFIX);
         assertTrue("The database test.odb must exists...", file.exists());
         
-        DatabaseFacade.getDefault().drop(TEST_DB_WITH_SUFFIX);
+        DatabaseFacade.INSTANCE.getDatabase().drop(TEST_DB_WITH_SUFFIX);
         assertFalse("The database test.odb must deleted...", file.exists());
     }
 
     @Test
     public void registerWithoutSuffix() {
-        DatabaseFacade.getDefault().register(TEST_DB_WITHOUT_SUFFIX);
+        DatabaseFacade.INSTANCE.getDatabase().register(TEST_DB_WITHOUT_SUFFIX);
         
         // The database will only created if an transaction is done
-        DatabaseFacade.getDefault().getCrudService("registerWithoutSuffix").create(new CountEntity());
+        DatabaseFacade.INSTANCE.getDatabase().getCrudService("registerWithoutSuffix").create(new CountEntity());
         
-        DatabaseFacade.getDefault().shutdown();
+        DatabaseFacade.INSTANCE.getDatabase().shutdown();
         
         File file = new File(DATABASE_PATH + TEST_DB_WITHOUT_SUFFIX + ".odb");
         assertTrue("The database bla.odb must exists...", file.exists());
         
-        DatabaseFacade.getDefault().drop(TEST_DB_WITHOUT_SUFFIX);
+        DatabaseFacade.INSTANCE.getDatabase().drop(TEST_DB_WITHOUT_SUFFIX);
         assertFalse("The database bla.odb must deleted...", file.exists());
     }
     

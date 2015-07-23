@@ -19,28 +19,38 @@ package de.pro.lib.database.api;
 import de.pro.lib.database.LibDatabase;
 
 /**
- * The facade {@link de.pro.lib.database.api.DatabaseFacade} provides a 
- * singleton instance of the Interface {@link de.pro.lib.database.api.ILibDatabase}.
+ * The facade {@link de.pro.lib.database.api.DatabaseFacade} provides access to
+ * the action methods during the Interface {@link de.pro.lib.database.api.ILibDatabase}.
  *
  * @author PRo
  * @see de.pro.lib.database.api.ILibDatabase
  */
-public class DatabaseFacade {
-    private static ILibDatabase instance = null;
+public enum DatabaseFacade {
     
     /**
-     * Provides a singleton instance from the Interface {@link de.pro.lib.database.api.ILibDatabase}.
-     * 
-     * @return A singleton instance of {@link de.pro.lib.database.api.ILibDatabase}.
-     * @see de.pro.lib.database.api.ILibDatabase
+     * Over the value <code>INSTANCE</code> the developer have access to the
+     * functionality in <code>DatabaseFacade</code>.
      */
-    public static ILibDatabase getDefault() {
-        if (instance == null) {
-            instance = new LibDatabase();
-        }
-        
+    INSTANCE;
+    
+    private ILibDatabase instance = null;
+
+    private DatabaseFacade() {
+        this.initialize();
+    }
+    
+    private void initialize() {
+        instance = new LibDatabase();
+    }
+    
+    /**
+     * Over the Interface {@link @link de.pro.lib.database.api.ILibDatabase} 
+     * the developer have access to the database methods.
+     * 
+     * @return a singleton instance from ILibAction.
+     */
+    public ILibDatabase getDatabase() {
         return instance;
     }
     
-    private DatabaseFacade() { }
 }

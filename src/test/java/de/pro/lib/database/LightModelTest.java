@@ -38,7 +38,7 @@ public class LightModelTest {
         LoggerFacade.INSTANCE.getLogger().own(LightModelTest.class, " LightModelTest#setUpClass()");
         LoggerFacade.INSTANCE.getLogger().deactivate(Boolean.TRUE);
         
-        DatabaseFacade.getDefault().register(TEST_DB_WITH_SUFFIX);
+        DatabaseFacade.INSTANCE.getDatabase().register(TEST_DB_WITH_SUFFIX);
     }
 
     @AfterClass
@@ -46,8 +46,8 @@ public class LightModelTest {
         LoggerFacade.INSTANCE.getLogger().deactivate(Boolean.FALSE);
         LoggerFacade.INSTANCE.getLogger().own(LightModelTest.class, " LightModelTest#tearDownClass()");
         
-        DatabaseFacade.getDefault().shutdown();
-        DatabaseFacade.getDefault().drop(TEST_DB_WITH_SUFFIX);
+        DatabaseFacade.INSTANCE.getDatabase().shutdown();
+        DatabaseFacade.INSTANCE.getDatabase().drop(TEST_DB_WITH_SUFFIX);
     }
     
     @Test
@@ -59,7 +59,7 @@ public class LightModelTest {
         lm1.setDoubleValue(2.0);
         lm1.setLongValue(3L);
         
-        final LightModel lm2 = DatabaseFacade.getDefault().getCrudService("testFullModel").create(lm1);
+        final LightModel lm2 = DatabaseFacade.INSTANCE.getDatabase().getCrudService("testFullModel").create(lm1);
         assertTrue("id must 1", lm2.getId()==1);
         assertTrue("double must 2.0", lm2.getDoubleValue()==2.0);
         assertTrue("long must 3L", lm2.getLongValue()==3L);
@@ -73,7 +73,7 @@ public class LightModelTest {
         lm1.setId(2);
         lm1.setDoubleValue(3.0);
         
-        final LightModel lm2 = DatabaseFacade.getDefault().getCrudService("testLightModel").create(lm1);
+        final LightModel lm2 = DatabaseFacade.INSTANCE.getDatabase().getCrudService("testLightModel").create(lm1);
         assertTrue("id must 2", lm2.getId()==2);
         assertTrue("double must 3.0", lm2.getDoubleValue()==3.0);
         assertNull("long must null", lm2.getLongValue());
