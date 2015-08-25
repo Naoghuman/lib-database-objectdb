@@ -20,6 +20,7 @@ Content
 * [Requirements](#Requirements)
 * [Installation](#Installation)
 * [Documentation](#Documentation)
+* [Documentation](#Documentation)
 * [Contribution](#Contribution)
 * [License](#License)
 * [Autor](#Autor)
@@ -116,7 +117,9 @@ Installation<a name="Installation" />
 Documentation<a name="Documentation" />
 -------------
 
-Momentary only the [JavaDoc] in the library itself is available.
+* In section [Api](#Api) you can see the main point to access the functionality 
+  in the library.
+* For additional information see the [JavaDoc] in the library itself.
 
 
 
