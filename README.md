@@ -17,6 +17,9 @@ Content
 -------
 
 * [Examples](#Examples)
+* [Api](#Api)
+    - [de.pro.lib.database.api.ICrudService](#ICrudService)
+    - [de.pro.lib.database.api.ILibDatabase](#ILibDatabase)
 * [Download](#Download)
 * [Requirements](#Requirements)
 * [Installation](#Installation)
@@ -83,6 +86,404 @@ DatabaseFacade.INSTANCE.getCrudService(String name);
  * @see de.pro.lib.database.api.ILibDatabase#register(java.lang.String)
  */
 DatabaseFacade.INSTANCE.shutdown();
+```
+
+
+
+Api<a name="Api" />
+-------
+
+### de.pro.lib.database.api.ICrudService<a name="ICrudService" />
+
+```java
+/**
+ * The <code>Interface</code> for the class {@link de.pro.lib.database.CrudService}.<br />
+ * A common <code>Interface</code> for all CRUD-Component implementations. The
+ * type of the entity is specified in the implementation.
+ *
+ * @author PRo
+ * @see de.pro.lib.database.CrudService
+ * @see de.pro.lib.database.api.DatabaseFacade
+ */
+public interface ICrudService
+```
+
+
+```java
+/**
+ * Start a resource transaction.
+ * <p>
+ * Internal following methods will be executed in following order:<br>
+ * <ul>
+ * <li>{@link javax.persistence.EntityTransaction#begin()}</li>
+ * </ul>
+ */
+public void beginTransaction();
+```
+
+
+```java
+/**
+ * Commit the current resource transaction, writing any unflushed changes 
+ * to the database.
+ * <p>
+ * Internal following methods will be executed in following order:<br>
+ * <ul>
+ * <li>{@link javax.persistence.EntityTransaction#commit()}</li>
+ * <li>{@link javax.persistence.EntityManager#clear()}</li>
+ * </ul>
+ */
+public void commitTransaction();
+```
+
+
+```java
+/**
+ * Count all entitys in the given table.
+ * 
+ * @param table The table which entitys should be counted.
+ * @return The number of entitys in the table or -1 if the table doesn't exists.
+ */
+public Long count(String table);
+```
+
+
+```java
+/**
+ * Make an entity managed and persistent.<br>
+ * Deletes to {@link ICrudService#create(java.lang.Object, java.lang.Boolean)}
+ * with the parameter <code>isSingleTransaction = true</code>.
+ * 
+ * @param <T>
+ * @param entity
+ * @return 
+ * @see ICrudService#create(java.lang.Object, java.lang.Boolean)
+ */
+public <T> T create(T entity);
+```
+
+
+```java
+/**
+ * Make an entity managed and persistent.
+ * <p>
+ * Internal following methods will be executed in following order:<br>
+ * <ul>
+ * <li>if <code>isSingleTransaction == true</code> then {@link de.pro.lib.database.CrudService#beginTransaction()}</li>
+ * <li>{@link javax.persistence.EntityManager#persist(java.lang.Object)}</li>
+ * <li>{@link javax.persistence.EntityManager#flush() }</li>
+ * <li>{@link javax.persistence.EntityManager#refresh(java.lang.Object) }</li>
+ * <li>if <code>isSingleTransaction == true</code> then {@link de.pro.lib.database.CrudService#commitTransaction()}</li>
+ * </ul>
+ * 
+ * @param <T>
+ * @param entity
+ * @param isSingleTransaction
+ * @return 
+ * @see ICrudService#create(java.lang.Object) 
+ */
+public <T> T create(T entity, Boolean isSingleTransaction);
+```
+
+
+```java
+/**
+ * TODO Add JavaDoc<br>
+ * Deletes to {@link ICrudService#delete(java.lang.Class, java.lang.Object, java.lang.Boolean)}
+ * with the parameter <code>isSingleTransaction = true</code>.
+ * 
+ * @param <T>
+ * @param type
+ * @param id 
+ * @see ICrudService#delete(java.lang.Class, java.lang.Object, java.lang.Boolean) 
+ */
+public <T> void delete(Class<T> type, Object id);
+```
+
+
+```java
+/**
+ * TODO Add JavaDoc
+ * 
+ * @param <T>
+ * @param type
+ * @param id
+ * @param isSingleTransaction 
+ * @see ICrudService#delete(java.lang.Class, java.lang.Object) 
+ */
+public <T> void delete(Class<T> type, Object id, Boolean isSingleTransaction);
+```
+
+
+```java
+/**
+ * Returns the associated {@link javax.persistence.EntityManager}.
+ * 
+ * @return The EntityManager.
+ */
+public EntityManager getEntityManager();
+```
+
+
+```java
+/**
+ * TODO Add JavaDoc<br>
+ * Delegates to {@link ICrudService#update(java.lang.Object, java.lang.Boolean) }
+ * with the parameter <code>isSingleTransaction = true</code>.
+ * 
+ * @param <T>
+ * @param entity
+ * @return 
+ * @see ICrudService#update(java.lang.Object, java.lang.Boolean) 
+ */
+public <T> T update(T entity);
+```
+
+
+```java
+/**
+ * Merge the state of the given entity into the current persistence context.
+ * 
+ * @param <T>
+ * @param entity
+ * @param isSingleTransaction
+ * @return 
+ * @see ICrudService#update(java.lang.Object) 
+ */
+public <T> T update(T entity, Boolean isSingleTransaction);
+```
+
+
+```java
+/**
+ * Find by primary key. Search for an entity of the specified class and 
+ * primary key. If the entity instance is contained in the persistence 
+ * context, it is returned from there.
+ * 
+ * @param <T>
+ * @param type
+ * @param id
+ * @return 
+ */
+public <T> T findById(Class<T> type, Object id);
+```
+
+
+```java
+/**
+ * TODO Add JavaDoc
+ * 
+ * @param <T>
+ * @param type
+ * @param queryName
+ * @return 
+ */
+public <T> List<T> findByNamedQuery(Class<T> type, String queryName);
+```
+
+
+```java
+/**
+ * TODO Add JavaDoc
+ * 
+ * @param <T>
+ * @param type
+ * @param queryName
+ * @param parameters
+ * @return 
+ */
+public <T> List<T> findByNamedQuery(Class<T> type, String queryName, Map<String, Object> parameters);
+```
+
+
+```java
+/**
+ * TODO Add JavaDoc
+ * 
+ * @param <T>
+ * @param type
+ * @param queryName
+ * @param parameters
+ * @param resultLimit
+ * @return 
+ */
+public <T> List<T> findByNamedQuery(Class<T> type, String queryName, Map<String, Object> parameters, int resultLimit);
+```
+
+
+```java
+/**
+ * TODO Add JavaDoc
+ * 
+ * @param <T>
+ * @param type
+ * @param sql
+ * @return 
+ */
+public <T> List<T> findByNativeQuery(Class<T> type, String sql);
+```
+
+
+```java
+/**
+ * TODO Add JavaDoc
+ * 
+ * @param <T>
+ * @param type
+ * @param sql
+ * @param resultLimit
+ * @return 
+ */
+public <T> List<T> findByNativeQuery(Class<T> type, String sql, int resultLimit);
+```
+
+
+```java
+/**
+ * TODO Add JavaDoc
+ * 
+ * @param <T>
+ * @param type
+ * @param sql
+ * @param parameters
+ * @return 
+ */
+public <T> List<T> findByNativeQuery(Class<T> type, String sql, Map<String, Object> parameters);
+```
+
+
+```java
+/**
+ * TODO Add JavaDoc
+ * 
+ * @param <T>
+ * @param type
+ * @param sql
+ * @param parameters
+ * @param resultLimit
+ * @return 
+ */
+public <T> List<T> findByNativeQuery(Class<T> type, String sql, Map<String, Object> parameters, int resultLimit);
+```
+
+
+```java
+/**
+ * TODO Add JavaDoc
+ * 
+ * @param name 
+ */
+public void shutdown(String name);
+```
+
+
+### de.pro.lib.database.api.ILibDatabase<a name="ILibDatabase" />
+
+```java
+/**
+ * The <code>Interface</code> for the class {@link de.pro.lib.database.LibDatabase}.<br />
+ * Over the facade {@link de.pro.lib.database.api.DatabaseFacade} you can access
+ * the methods in this <code>Interface</code>.
+ *
+ * @author PRo
+ * @see de.pro.lib.database.LibDatabase
+ * @see de.pro.lib.database.api.DatabaseFacade
+ */
+public interface ILibDatabase
+```
+
+
+```java
+/**
+ * Allowed the developer to drop the defined database.<br />
+ * This method can be used for testing purpose.
+ * 
+ * @param database The database which should be dropped.
+ */
+public void drop(String database);
+```
+
+
+```java
+/**
+ * Returns a {@link de.pro.lib.database.api.ICrudService} with the name 
+ * DEFAULT which allowed all sql operations.
+ * 
+ * @return The crud service.
+ */
+public ICrudService getCrudService();
+```
+
+
+```java
+/**
+ * Returns a named {@link de.pro.lib.database.api.ICrudService} which allowed 
+ * all sql operations.
+ * 
+ * @param name The name from the <code>ICrudService</code>.
+ * @return The <code>ICrudService</code>.
+ */
+public ICrudService getCrudService(String name);
+```
+
+
+```java
+/**
+ * Returns a named {@link javax.persistence.EntityManager} which allowed 
+ * all sql operations.
+ * 
+ * @param name The name from the EntityManager.
+ * @return The EntityManager.
+ */
+public EntityManager getEntityManager(String name);
+```
+
+
+```java
+/**
+ * Create a database with the specific parameter in the folder
+ * <code>System.getProperty("user.dir") + File.separator + 
+ * "database"</code> if it not exists.<br />
+ * If the parameter have no suffix <code>.odb</code> then it will be
+ * automaticaly added, otherwise not.
+ * 
+ * @param database The name for the database which should be created.
+ */
+public void register(String database);
+```
+
+
+```java
+/**
+ * Remove a {@link de.pro.lib.database.api.ICrudService} with the given name. Also
+ * the associated {@link javax.persistence.EntityManager} will be removed.
+ * 
+ * @param name The name for the <code>ICrudService</code> which should be removed.
+ * @see de.pro.lib.database.api.ILibDatabase#removeEntityManager(java.lang.String)
+ */
+public void removeCrudService(String name);
+```
+
+
+```java
+/**
+ * Remove a {@link javax.persistence.EntityManager} with the given name. Also
+ * the associated {@link de.pro.lib.database.api.ICrudService} will be removed.
+ * 
+ * @param name The name for the <code>EntityManager</code> which should be removed.
+ * @see de.pro.lib.database.api.ILibDatabase#removeCrudService(java.lang.String)
+ */
+public void removeEntityManager(String name);
+```
+
+
+```java
+/**
+ * Close the previous registered database.
+ * 
+ * @see de.pro.lib.database.api.ILibDatabase#register(java.lang.String)
+ */
+public void shutdown();
 ```
 
 

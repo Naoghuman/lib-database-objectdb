@@ -125,7 +125,7 @@ public interface ICrudService {
     
     /**
      * TODO Add JavaDoc<br>
-     * Deletes to {@link ICrudService#update(java.lang.Object, java.lang.Boolean) }
+     * Delegates to {@link ICrudService#update(java.lang.Object, java.lang.Boolean) }
      * with the parameter <code>isSingleTransaction = true</code>.
      * 
      * @param <T>
@@ -246,6 +246,11 @@ public interface ICrudService {
      */
     public <T> List<T> findByNativeQuery(Class<T> type, String sql, Map<String, Object> parameters, int resultLimit);
     
+    /**
+     * TODO Add JavaDoc
+     * 
+     * @param name 
+     */
     public void shutdown(String name);
     
 }
