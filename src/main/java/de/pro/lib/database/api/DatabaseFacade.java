@@ -17,6 +17,7 @@
 package de.pro.lib.database.api;
 
 import de.pro.lib.database.LibDatabase;
+import javax.persistence.EntityManager;
 
 /**
  * The facade {@link de.pro.lib.database.api.DatabaseFacade} provides access to
@@ -25,7 +26,7 @@ import de.pro.lib.database.LibDatabase;
  * @author PRo
  * @see de.pro.lib.database.api.ILibDatabase
  */
-public enum DatabaseFacade {
+public enum DatabaseFacade implements ILibDatabase {
     
     /**
      * Over the value <code>INSTANCE</code> the developer have access to the
@@ -33,24 +34,54 @@ public enum DatabaseFacade {
      */
     INSTANCE;
     
-    private ILibDatabase instance = null;
+    private ILibDatabase database = null;
 
     private DatabaseFacade() {
         this.initialize();
     }
     
     private void initialize() {
-        instance = new LibDatabase();
+        database = new LibDatabase();
     }
-    
-    /**
-     * Over the Interface {@link de.pro.lib.database.api.ILibDatabase} 
-     * the developer have access to the database methods.
-     * 
-     * @return a singleton instance from ILibDatabase.
-     */
-    public ILibDatabase getDatabase() {
-        return instance;
+
+    @Override
+    public void drop(String database) {
+        this.database.drop(database);
+    }
+
+    @Override
+    public ICrudService getCrudService() {
+        return database.getCrudService();
+    }
+
+    @Override
+    public ICrudService getCrudService(String name) {
+        return database.getCrudService(name);
+    }
+
+    @Override
+    public EntityManager getEntityManager(String name) {
+        return database.getEntityManager(name);
+    }
+
+    @Override
+    public void register(String database) {
+        this.database.register(database);
+    }
+
+    @Override
+    public void removeCrudService(String name) {
+        database.removeCrudService(name);
+    }
+
+    @Override
+    public void removeEntityManager(String name) {
+        database.removeEntityManager(name);
+    }
+
+    @Override
+    public void shutdown() {
+        database.shutdown();
     }
     
 }

@@ -45,7 +45,7 @@ public enum DatabaseFacade
  * 
  * @param database The name for the database which should be created.
  */
-DatabaseFacade.INSTANCE.getDatabase().register(String database);
+DatabaseFacade.INSTANCE.register(String database);
 ```
 
 ```java
@@ -55,7 +55,7 @@ DatabaseFacade.INSTANCE.getDatabase().register(String database);
  * 
  * @return The crud service.
  */
-DatabaseFacade.INSTANCE.getDatabase().getCrudService();
+DatabaseFacade.INSTANCE.getCrudService();
 ```
 
 ```java
@@ -66,7 +66,7 @@ DatabaseFacade.INSTANCE.getDatabase().getCrudService();
  * @param name The name from the <code>ICrudService</code>.
  * @return The <code>ICrudService</code>.
  */
-DatabaseFacade.INSTANCE.getDatabase().getCrudService(String name);
+DatabaseFacade.INSTANCE.getCrudService(String name);
 ```
 
 ```java
@@ -75,7 +75,7 @@ DatabaseFacade.INSTANCE.getDatabase().getCrudService(String name);
  * 
  * @see de.pro.lib.database.api.ILibDatabase#register(java.lang.String)
  */
-DatabaseFacade.INSTANCE.getDatabase().shutdown();
+DatabaseFacade.INSTANCE.shutdown();
 ```
 
 
@@ -97,8 +97,10 @@ Installation<a name="Installation" />
 ------------
 
 * If not installed download the [JRE 8] or the [JDK 8].
-  * Optional: To work better with [FXML] files in a [JavaFX] application download the [JavaFX Scene Builder] under 'Additional Resources'.
-* Choose your preferred IDE (e.g. [NetBeans], [Eclipse] or [IntelliJ IDEA]) for development.
+  * Optional: To work better with [FXML] files in a [JavaFX] application 
+    download the [JavaFX Scene Builder] under 'Additional Resources'.
+* Choose your preferred IDE (e.g. [NetBeans], [Eclipse] or [IntelliJ IDEA]) for 
+  development.
 * Download or clone [Lib-Database-ObjectDB].
 * Download or clone [Lib-Logger].
 * Open the projects in your IDE and run them.

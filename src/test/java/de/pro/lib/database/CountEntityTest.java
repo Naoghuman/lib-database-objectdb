@@ -38,7 +38,7 @@ public class CountEntityTest {
         LoggerFacade.INSTANCE.getLogger().own(CountEntityTest.class, " CountEntityTest#setUpClass()");
         LoggerFacade.INSTANCE.getLogger().deactivate(Boolean.TRUE);
         
-        DatabaseFacade.INSTANCE.getDatabase().register(COUNT_ENTITY_TEST_DB__WITH_SUFFIX);
+        DatabaseFacade.INSTANCE.register(COUNT_ENTITY_TEST_DB__WITH_SUFFIX);
     }
 
     @AfterClass
@@ -46,28 +46,28 @@ public class CountEntityTest {
         LoggerFacade.INSTANCE.getLogger().deactivate(Boolean.FALSE);
         LoggerFacade.INSTANCE.getLogger().own(CountEntityTest.class, " CountEntityTest#tearDownClass()");
         
-        DatabaseFacade.INSTANCE.getDatabase().shutdown();
-        DatabaseFacade.INSTANCE.getDatabase().drop(COUNT_ENTITY_TEST_DB__WITH_SUFFIX);
+        DatabaseFacade.INSTANCE.shutdown();
+        DatabaseFacade.INSTANCE.drop(COUNT_ENTITY_TEST_DB__WITH_SUFFIX);
     }
     
     @Test
     public void count() {
         LoggerFacade.INSTANCE.getLogger().own(this.getClass(), " #count()");
 
-        Long count = DatabaseFacade.INSTANCE.getDatabase().getCrudService("count").count(TABLE);
+        Long count = DatabaseFacade.INSTANCE.getCrudService("count").count(TABLE);
         assertTrue("count must -1", count.longValue()==-1);
         
-        final CountEntity ce = DatabaseFacade.INSTANCE.getDatabase().getCrudService("count").create(new CountEntity());
-        DatabaseFacade.INSTANCE.getDatabase().getCrudService().delete(CountEntity.class, new Long(ce.getId()));
-        count = DatabaseFacade.INSTANCE.getDatabase().getCrudService("count").count(TABLE);
+        final CountEntity ce = DatabaseFacade.INSTANCE.getCrudService("count").create(new CountEntity());
+        DatabaseFacade.INSTANCE.getCrudService().delete(CountEntity.class, new Long(ce.getId()));
+        count = DatabaseFacade.INSTANCE.getCrudService("count").count(TABLE);
         assertTrue("count must 0", count.longValue()==0);
         
-        DatabaseFacade.INSTANCE.getDatabase().getCrudService("count").create(new CountEntity());
-        count = DatabaseFacade.INSTANCE.getDatabase().getCrudService("count").count(TABLE);
+        DatabaseFacade.INSTANCE.getCrudService("count").create(new CountEntity());
+        count = DatabaseFacade.INSTANCE.getCrudService("count").count(TABLE);
         assertTrue("count must 1", count.longValue()==1);
         
-        DatabaseFacade.INSTANCE.getDatabase().getCrudService("count").create(new CountEntity());
-        count = DatabaseFacade.INSTANCE.getDatabase().getCrudService("count").count(TABLE);
+        DatabaseFacade.INSTANCE.getCrudService("count").create(new CountEntity());
+        count = DatabaseFacade.INSTANCE.getCrudService("count").count(TABLE);
         assertTrue("count must 2", count.longValue()==2);
     }
     

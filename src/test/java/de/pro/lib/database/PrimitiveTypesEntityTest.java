@@ -41,7 +41,7 @@ public class PrimitiveTypesEntityTest {
         LoggerFacade.INSTANCE.getLogger().own(PrimitiveTypesEntityTest.class, " PrimitiveTypesEntityTest#setUpClass()");
         LoggerFacade.INSTANCE.getLogger().deactivate(Boolean.TRUE);
         
-        DatabaseFacade.INSTANCE.getDatabase().register(TEST_DB_WITH_SUFFIX);
+        DatabaseFacade.INSTANCE.register(TEST_DB_WITH_SUFFIX);
     }
 
     @AfterClass
@@ -49,8 +49,8 @@ public class PrimitiveTypesEntityTest {
         LoggerFacade.INSTANCE.getLogger().deactivate(Boolean.FALSE);
         LoggerFacade.INSTANCE.getLogger().own(PrimitiveTypesEntityTest.class, " PrimitiveTypesEntityTest#tearDownClass()");
         
-        DatabaseFacade.INSTANCE.getDatabase().shutdown();
-        DatabaseFacade.INSTANCE.getDatabase().drop(TEST_DB_WITH_SUFFIX);
+        DatabaseFacade.INSTANCE.shutdown();
+        DatabaseFacade.INSTANCE.drop(TEST_DB_WITH_SUFFIX);
     }
     
     @Test
@@ -63,21 +63,21 @@ public class PrimitiveTypesEntityTest {
         entity1.setDoubleValue(321.123d);
         entity1.setLongValue(123L);
         
-        final PrimitiveTypesEntity entity2 = DatabaseFacade.INSTANCE.getDatabase()
-                .getCrudService("create").create(entity1);
+        final PrimitiveTypesEntity entity2 = DatabaseFacade.INSTANCE.getCrudService("create")
+                .create(entity1);
         assertTrue("id must 2", entity2.getId()==2);
         assertTrue("boolean must true", entity2.getBooleanValue()==true);
         assertTrue("double must 321.123d", entity2.getDoubleValue()==321.123d);
         assertTrue("long must 123L", entity2.getLongValue()==123L);
         
-        DatabaseFacade.INSTANCE.getDatabase().getCrudService("create").delete(PrimitiveTypesEntity.class, 2L);
+        DatabaseFacade.INSTANCE.getCrudService("create").delete(PrimitiveTypesEntity.class, 2L);
     }
     
     @Test
     public void createWithManuellBeginAndCommitTransaction() {
         LoggerFacade.INSTANCE.getLogger().own(this.getClass(), " #createWithManuellBeginAndCommitTransaction()");
         
-        DatabaseFacade.INSTANCE.getDatabase().getCrudService("createWithManuellBeginAndCommitTransaction")
+        DatabaseFacade.INSTANCE.getCrudService("createWithManuellBeginAndCommitTransaction")
                 .beginTransaction();
         
         final PrimitiveTypesEntity entity1 = new PrimitiveTypesEntity();
@@ -85,7 +85,7 @@ public class PrimitiveTypesEntityTest {
         entity1.setBooleanValue(true);
         entity1.setDoubleValue(321.123d);
         entity1.setLongValue(123L);
-        DatabaseFacade.INSTANCE.getDatabase().getCrudService("createWithManuellBeginAndCommitTransaction")
+        DatabaseFacade.INSTANCE.getCrudService("createWithManuellBeginAndCommitTransaction")
                 .create(entity1, false);
         
         final PrimitiveTypesEntity entity2 = new PrimitiveTypesEntity();
@@ -93,13 +93,14 @@ public class PrimitiveTypesEntityTest {
         entity2.setBooleanValue(true);
         entity2.setDoubleValue(32.23d);
         entity2.setLongValue(23L);
-        DatabaseFacade.INSTANCE.getDatabase().getCrudService("createWithManuellBeginAndCommitTransaction")
+        DatabaseFacade.INSTANCE.getCrudService("createWithManuellBeginAndCommitTransaction")
                 .create(entity2, false);
         
-        DatabaseFacade.INSTANCE.getDatabase().getCrudService("createWithManuellBeginAndCommitTransaction")
+        DatabaseFacade.INSTANCE.getCrudService("createWithManuellBeginAndCommitTransaction")
                 .commitTransaction();
         
-        List<PrimitiveTypesEntity> entities = DatabaseFacade.INSTANCE.getDatabase().getCrudService("createWithManuellBeginAndCommitTransaction")
+        List<PrimitiveTypesEntity> entities = DatabaseFacade.INSTANCE
+                .getCrudService("createWithManuellBeginAndCommitTransaction")
                 .findByNamedQuery(PrimitiveTypesEntity.class, "PrimitiveTypesEntity.findAll");
         assertTrue("entities.size() == 2 not " + entities.size(), entities.size() == 2);
     }
@@ -114,10 +115,10 @@ public class PrimitiveTypesEntityTest {
         entity1.setDoubleValue(321.123d);
         entity1.setLongValue(123L);
         
-        DatabaseFacade.INSTANCE.getDatabase().getCrudService("delete").create(entity1);
-        DatabaseFacade.INSTANCE.getDatabase().getCrudService("delete").delete(PrimitiveTypesEntity.class, 10L);
+        DatabaseFacade.INSTANCE.getCrudService("delete").create(entity1);
+        DatabaseFacade.INSTANCE.getCrudService("delete").delete(PrimitiveTypesEntity.class, 10L);
         
-        final PrimitiveTypesEntity entity2 = DatabaseFacade.INSTANCE.getDatabase()
+        final PrimitiveTypesEntity entity2 = DatabaseFacade.INSTANCE
                 .getCrudService("delete").findById(PrimitiveTypesEntity.class, 10L);
         assertTrue("entity2 must null", entity2 == null);
     }
@@ -131,19 +132,19 @@ public class PrimitiveTypesEntityTest {
         entity1.setBooleanValue(true);
         entity1.setDoubleValue(321.123d);
         entity1.setLongValue(123L);
-        final PrimitiveTypesEntity entity2 = DatabaseFacade.INSTANCE.getDatabase()
+        final PrimitiveTypesEntity entity2 = DatabaseFacade.INSTANCE
                 .getCrudService("update").create(entity1);
         
         entity2.setBooleanValue(false);
         entity2.setDoubleValue(0.01d);
         
-        final PrimitiveTypesEntity entity3 = DatabaseFacade.INSTANCE.getDatabase()
+        final PrimitiveTypesEntity entity3 = DatabaseFacade.INSTANCE
                 .getCrudService("update").update(entity2);
         assertTrue("id must 20", entity3.getId()==20);
         assertTrue("boolean must false", entity3.getBooleanValue()==false);
         assertTrue("double must 0.01d", entity3.getDoubleValue()==0.01d);
         
-        DatabaseFacade.INSTANCE.getDatabase().getCrudService("update").delete(PrimitiveTypesEntity.class, 20L);
+        DatabaseFacade.INSTANCE.getCrudService("update").delete(PrimitiveTypesEntity.class, 20L);
     }
     
 }
