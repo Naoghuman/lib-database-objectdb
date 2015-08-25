@@ -17,9 +17,9 @@ Content
 -------
 
 * [Examples](#Examples)
+* [Download](#Download)
 * [Requirements](#Requirements)
 * [Installation](#Installation)
-* [Documentation](#Documentation)
 * [Documentation](#Documentation)
 * [Contribution](#Contribution)
 * [License](#License)
@@ -84,6 +84,22 @@ DatabaseFacade.INSTANCE.getCrudService(String name);
  */
 DatabaseFacade.INSTANCE.shutdown();
 ```
+
+
+
+Download<a name="Download" />
+--------
+
+Current `version` is `0.0.6`. Main points in this release are:
+* DatabaseFacade is now an enum singleton facade.
+* So instead DatabaseFacade.getDatabase() now DatabaseFacade.INSTANCE.getDefault() 
+  is to use.
+
+Download:
+* [Release v0.0.6 (07.2015)]
+
+An overview about all existings releases can be found here:
+* [Overview from all releases in Lib-Database-ObjectDB]
 
 
 
@@ -173,6 +189,8 @@ You can reach me under <peter.rogge@yahoo.de>.
 [NetBeans]:https://netbeans.org/
 [ObjectDB]:http://www.objectdb.com/
 [objectdb-2.6.3_01.jar]:http://www.objectdb.com/object/db/database/download
+[Overview from all releases in Lib-Database-ObjectDB]:https://github.com/Naoghuman/lib-database-objectdb/releases
 [Pull Request]:https://help.github.com/articles/using-pull-requests
+[Release v0.0.6 (07.2015)]:https://github.com/Naoghuman/lib-database-objectdb/releases/tag/v0.0.6
 
 
