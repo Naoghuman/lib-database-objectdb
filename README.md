@@ -1,6 +1,11 @@
 Lib-Database-ObjectDB
 =====================
 
+
+
+Intention
+---------
+
 Lib-Database-ObjectDB is a library for easy accessing an [ObjectDB] database in 
 a [JavaFX] &amp; [Maven] desktop application.
 
