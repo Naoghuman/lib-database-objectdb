@@ -1,7 +1,8 @@
 Lib-Database-ObjectDB
 =====================
 
-A library for easy accessing an [ObjectDB] database in a [JavaFX] &amp; [Maven] desktop application.
+Lib-Database-ObjectDB is a library for easy accessing an [ObjectDB] database in 
+a [JavaFX] &amp; [Maven] desktop application.
 
 Current `version` is `0.0.6` (07.2015).
 
