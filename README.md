@@ -19,7 +19,7 @@ Content
 * [Examples](#Examples)
 * [Api](#Api)
     - [de.pro.lib.database.api.ICrudService](#ICrudService)
-    - [de.pro.lib.database.api.ILibDatabase](#ILibDatabase)
+    - [de.pro.lib.database.api.DatabaseFacade](#DatabaseFacade)
 * [Download](#Download)
 * [Requirements](#Requirements)
 * [Installation](#Installation)
@@ -34,59 +34,7 @@ Content
 Examples<a name="Examples" />
 -------
 
-```java
-/**
- * The facade {@link de.pro.lib.database.api.DatabaseFacade} provides access to
- * the action methods during the Interface {@link de.pro.lib.database.api.ILibDatabase}.
- *
- * @author PRo
- * @see de.pro.lib.database.api.ILibDatabase
- */
-public enum DatabaseFacade
-```
-
-```java
-/**
- * Create a database with the specific parameter in the folder
- * <code>System.getProperty("user.dir") + File.separator +  "database"</code> if
- * it not exists.<br />
- * If the parameter have no suffix <code>.odb</code> then it will be automatically
- * added, otherwise not.
- * 
- * @param database The name for the database which should be created.
- */
-DatabaseFacade.INSTANCE.register(String database);
-```
-
-```java
-/**
- * Returns a {@link de.pro.lib.database.api.ICrudService} with the name 
- * DEFAULT which allowed all sql operations.
- * 
- * @return The crud service.
- */
-DatabaseFacade.INSTANCE.getCrudService();
-```
-
-```java
-/**
- * Returns a named {@link de.pro.lib.database.api.ICrudService} which allowed 
- * all sql operations.
- * 
- * @param name The name from the <code>ICrudService</code>.
- * @return The <code>ICrudService</code>.
- */
-DatabaseFacade.INSTANCE.getCrudService(String name);
-```
-
-```java
-/**
- * Close the previous registered database.
- * 
- * @see de.pro.lib.database.api.ILibDatabase#register(java.lang.String)
- */
-DatabaseFacade.INSTANCE.shutdown();
-```
+TODO write examples new
 
 
 
@@ -377,19 +325,17 @@ public void shutdown(String name);
 ```
 
 
-### de.pro.lib.database.api.ILibDatabase<a name="ILibDatabase" />
+### de.pro.lib.database.api.DatabaseFacade<a name="DatabaseFacade" />
 
 ```java
 /**
- * The <code>Interface</code> for the class {@link de.pro.lib.database.LibDatabase}.<br />
- * Over the facade {@link de.pro.lib.database.api.DatabaseFacade} you can access
- * the methods in this <code>Interface</code>.
+ * The facade {@link de.pro.lib.database.api.DatabaseFacade} provides access to
+ * the action methods during the Interface {@link de.pro.lib.database.api.ILibDatabase}.
  *
  * @author PRo
- * @see de.pro.lib.database.LibDatabase
- * @see de.pro.lib.database.api.DatabaseFacade
+ * @see de.pro.lib.database.api.ILibDatabase
  */
-public interface ILibDatabase
+public enum DatabaseFacade implements ILibDatabase
 ```
 
 
