@@ -505,7 +505,7 @@ Requirements<a name="Requirements" />
 
 * On your system you need [JRE 8] or [JDK 8] installed.
 * The library [Lib-Database-ObjectDB-0.0.6.jar](#Installation).
-  * Included is the [objectdb-2.6.3_01.jar].
+  * Included is the [objectdb-2.6.3_04.jar].
   * Included is the [javax.persistence-2.1.0.jar].
   * Included is the [javax.transaction-1.1.jar].
 * The library [Lib-Logger-0.2.0.jar](#Installation).
@@ -585,7 +585,7 @@ You can reach me under <peter.rogge@yahoo.de>.
 [Maven]:http://maven.apache.org/
 [NetBeans]:https://netbeans.org/
 [ObjectDB]:http://www.objectdb.com/
-[objectdb-2.6.3_01.jar]:http://www.objectdb.com/object/db/database/download
+[objectdb-2.6.3_04.jar]:http://www.objectdb.com/object/db/database/download
 [Overview from all releases in Lib-Database-ObjectDB]:https://github.com/Naoghuman/lib-database-objectdb/releases
 [Pull Request]:https://help.github.com/articles/using-pull-requests
 [Release v0.0.6 (07.2015)]:https://github.com/Naoghuman/lib-database-objectdb/releases/tag/v0.0.6
