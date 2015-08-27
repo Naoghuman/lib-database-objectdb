@@ -30,19 +30,19 @@ import static org.junit.Assert.*;
  *
  * @author PRo
  */
-public class PRoDatabaseTest {
+public class LibDatabaseTest {
     private static final String DATABASE_PATH
             = System.getProperty("user.dir") + File.separator // NOI18N
             + "database" + File.separator; // NOI18N
     private final static String TEST_DB_WITH_SUFFIX = "test4.odb"; // NOI18N
     private final static String TEST_DB_WITHOUT_SUFFIX = "bla"; // NOI18N
 
-    public PRoDatabaseTest() {
+    public LibDatabaseTest() {
     }
 
     @BeforeClass
     public static void setUpClass() {
-        LoggerFacade.INSTANCE.getLogger().own(PRoDatabaseTest.class, " PRoDatabaseTest#setUpClass()");
+        LoggerFacade.INSTANCE.getLogger().own(LibDatabaseTest.class, " PRoDatabaseTest#setUpClass()");
         LoggerFacade.INSTANCE.getLogger().deactivate(Boolean.TRUE);
         
     }
@@ -50,7 +50,7 @@ public class PRoDatabaseTest {
     @AfterClass
     public static void tearDownClass() {
         LoggerFacade.INSTANCE.getLogger().deactivate(Boolean.FALSE);
-        LoggerFacade.INSTANCE.getLogger().own(PRoDatabaseTest.class, " PRoDatabaseTest#tearDownClass()");
+        LoggerFacade.INSTANCE.getLogger().own(LibDatabaseTest.class, " PRoDatabaseTest#tearDownClass()");
         
     }
 
