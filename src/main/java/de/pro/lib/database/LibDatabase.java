@@ -60,7 +60,7 @@ public final class LibDatabase implements ILibDatabase {
         
         final File db = new File(DATABASE_PATH + database);
         if (db.exists()) {
-            LoggerFacade.INSTANCE.getLogger().warn(this.getClass(),
+            LoggerFacade.INSTANCE.warn(this.getClass(),
                 "Delete database: " + DATABASE_PATH + database); // NOI18N
             
             db.delete();
@@ -75,7 +75,7 @@ public final class LibDatabase implements ILibDatabase {
     @Override
     public ICrudService getCrudService(String name) {
         if (!CRUDSERVICES.containsKey(name)) {
-            LoggerFacade.INSTANCE.getLogger().own(this.getClass(), "Add CrudService: " + name); // NOI18N
+            LoggerFacade.INSTANCE.own(this.getClass(), "Add CrudService: " + name); // NOI18N
 
             CRUDSERVICES.put(name, new CrudService(entityManagerFactory.createEntityManager()));
         }
@@ -90,7 +90,7 @@ public final class LibDatabase implements ILibDatabase {
     
     @Override
     public void register(String database) {
-        LoggerFacade.INSTANCE.getLogger().own(this.getClass(),
+        LoggerFacade.INSTANCE.own(this.getClass(),
                 "Initialize ObjectDB with database: " + database); // NOI18N
         
         if (!database.endsWith(SUFFIX_ODB)) {
@@ -106,14 +106,14 @@ public final class LibDatabase implements ILibDatabase {
     @Override
     public void removeCrudService(String name) {
         if (!CRUDSERVICES.containsKey(name)) {
-            LoggerFacade.INSTANCE.getLogger().own(this.getClass(), 
+            LoggerFacade.INSTANCE.own(this.getClass(), 
                     "Can't remove not existing CrudService: " + name
                     + " with associated EntityManager..."); // NOI18N
 
             return;
         }
         
-        LoggerFacade.INSTANCE.getLogger().own(this.getClass(), "Remove CrudService: " + name); // NOI18N
+        LoggerFacade.INSTANCE.own(this.getClass(), "Remove CrudService: " + name); // NOI18N
 
         CRUDSERVICES.get(name).shutdown(name);
         CRUDSERVICES.remove(name);
@@ -126,14 +126,14 @@ public final class LibDatabase implements ILibDatabase {
 
     @Override
     public void shutdown() {
-        LoggerFacade.INSTANCE.getLogger().own(this.getClass(), "Shutdown ObjectDB"); // NOI18N
+        LoggerFacade.INSTANCE.own(this.getClass(), "Shutdown ObjectDB"); // NOI18N
 
         CRUDSERVICES.keySet().stream().forEach((key) -> {
             CRUDSERVICES.get(key).shutdown(key);
         });
         CRUDSERVICES.clear();
         
-        LoggerFacade.INSTANCE.getLogger().own(this.getClass(), "Shutdown EntityManagerFactory"); // NOI18N
+        LoggerFacade.INSTANCE.own(this.getClass(), "Shutdown EntityManagerFactory"); // NOI18N
         
         if (entityManagerFactory != null && entityManagerFactory.isOpen()) {
             entityManagerFactory.close();
