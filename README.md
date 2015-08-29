@@ -9,7 +9,7 @@ Intention
 Lib-Database-ObjectDB is a library for easy accessing an [ObjectDB] database in 
 a [JavaFX] &amp; [Maven] desktop application.
 
-Current `version` is `0.0.6` (07.2015).
+Current `version` is `0.0.7` (08.2015).
 
 
 
@@ -487,13 +487,16 @@ public void shutdown();
 Download<a name="Download" />
 --------
 
-Current `version` is `0.0.6`. Main points in this release are:
-* DatabaseFacade is now an enum singleton facade.
-* So instead DatabaseFacade.getDatabase() now DatabaseFacade.INSTANCE.getDefault() 
-  is to use.
+Current `version` is `0.0.7`. Main points in this release are:
+* Implement in `DatabaseFacade` the interface `ILibDatabase` directly for easier 
+  handling.
+* Add new section `Api` in the ReadMe.
+* Add new section `Download` in the ReadMe.
+* Add new section `Intention` in the ReadMe.
+* Update the section `Examples` in the ReadMe.
 
 Download:
-* [Release v0.0.6 (07.2015)]
+* [Release v0.0.7 (08.2015)]
 
 An overview about all existings releases can be found here:
 * [Overview from all releases in Lib-Database-ObjectDB]
@@ -588,6 +591,6 @@ You can reach me under <peter.rogge@yahoo.de>.
 [objectdb-2.6.3_04.jar]:http://www.objectdb.com/object/db/database/download
 [Overview from all releases in Lib-Database-ObjectDB]:https://github.com/Naoghuman/lib-database-objectdb/releases
 [Pull Request]:https://help.github.com/articles/using-pull-requests
-[Release v0.0.6 (07.2015)]:https://github.com/Naoghuman/lib-database-objectdb/releases/tag/v0.0.6
+[Release v0.0.7 (08.2015)]:https://github.com/Naoghuman/lib-database-objectdb/releases/tag/v0.0.6
 
 
