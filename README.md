@@ -508,7 +508,7 @@ Requirements<a name="Requirements" />
   * Included is the [objectdb-2.6.3_04.jar].
   * Included is the [javax.persistence-2.1.0.jar].
   * Included is the [javax.transaction-1.1.jar].
-* The library [Lib-Logger-0.2.0.jar](#Installation).
+* The library [Lib-Logger-0.2.1.jar](#Installation).
   * Included is the [log4j-api-2.3.jar].
   * Included is the [log4j-core-2.3.jar].
 
