@@ -591,6 +591,6 @@ You can reach me under <peter.rogge@yahoo.de>.
 [objectdb-2.6.3_04.jar]:http://www.objectdb.com/object/db/database/download
 [Overview from all releases in Lib-Database-ObjectDB]:https://github.com/Naoghuman/lib-database-objectdb/releases
 [Pull Request]:https://help.github.com/articles/using-pull-requests
-[Release v0.0.7 (08.2015)]:https://github.com/Naoghuman/lib-database-objectdb/releases/tag/v0.0.6
+[Release v0.0.7 (08.2015)]:https://github.com/Naoghuman/lib-database-objectdb/releases/tag/v0.0.7
 
 
