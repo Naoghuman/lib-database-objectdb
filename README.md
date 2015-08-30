@@ -1,10 +1,10 @@
 Lib-Database-ObjectDB
-=====================
+===
 
 
 
 Intention
----------
+---
 
 Lib-Database-ObjectDB is a library for easy accessing an [ObjectDB] database in 
 a [JavaFX] &amp; [Maven] desktop application.
@@ -14,7 +14,7 @@ Current `version` is `0.0.7` (08.2015).
 
 
 Content
--------
+---
 
 * [Examples](#Examples)
     - [de.pro.lib.database.LibDatabaseTest#registerWithSuffix()](#RegisterWithSuffix)
@@ -34,7 +34,7 @@ Content
 
 
 Examples<a name="Examples" />
--------
+---
 
 ### de.pro.lib.database.LibDatabaseTest#registerWithSuffix()<a name="RegisterWithSuffix" />
 
@@ -89,7 +89,7 @@ public void count() {
 
 
 Api<a name="Api" />
--------
+----
 
 ### de.pro.lib.database.api.ICrudService<a name="ICrudService" />
 
@@ -485,7 +485,7 @@ public void shutdown();
 
 
 Download<a name="Download" />
---------
+---
 
 Current `version` is `0.0.7`. Main points in this release are:
 * Implement in `DatabaseFacade` the interface `ILibDatabase` directly for easier 
@@ -504,7 +504,7 @@ An overview about all existings releases can be found here:
 
 
 Requirements<a name="Requirements" />
-------------
+---
 
 * On your system you need [JRE 8] or [JDK 8] installed.
 * The library [Lib-Database-ObjectDB-0.0.6.jar](#Installation).
@@ -517,7 +517,7 @@ Requirements<a name="Requirements" />
 
 
 Installation<a name="Installation" />
-------------
+---
 
 * If not installed download the [JRE 8] or the [JDK 8].
   * Optional: To work better with [FXML] files in a [JavaFX] application 
@@ -531,7 +531,7 @@ Installation<a name="Installation" />
 
 
 Documentation<a name="Documentation" />
--------------
+---
 
 * In section [Api](#Api) you can see the main point to access the functionality 
   in the library.
@@ -540,7 +540,7 @@ Documentation<a name="Documentation" />
 
 
 Contribution<a name="Contribution" />
-------------
+---
 
 * If you find a `Bug` I will be glad if you will report an [Issue].
 * If you want to contribute to the project plz fork the project and do a [Pull Request].
@@ -548,21 +548,21 @@ Contribution<a name="Contribution" />
 
 
 License<a name="License" />
--------
+---
 
 The project `Lib-Database-ObjectDB` is licensed under [General Public License 3.0].
 
 
 
 Autor<a name="Autor" />
------
+---
 
 The project `Lib-Database-ObjectDB` is maintained by me, Peter Rogge. See [Contact](#Contact).
 
 
 
 Contact<a name="Contact" />
--------
+---
 
 You can reach me under <peter.rogge@yahoo.de>.
 
