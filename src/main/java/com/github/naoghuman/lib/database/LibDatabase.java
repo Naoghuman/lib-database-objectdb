@@ -14,11 +14,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package de.pro.lib.database;
+package com.github.naoghuman.lib.database;
 
 import com.github.naoghuman.lib.logger.api.LoggerFacade;
-import de.pro.lib.database.api.ICrudService;
-import de.pro.lib.database.api.ILibDatabase;
+import com.github.naoghuman.lib.database.api.ICrudService;
+import com.github.naoghuman.lib.database.api.ILibDatabase;
 import java.io.File;
 import java.util.Map;
 import javafx.collections.FXCollections;
@@ -27,12 +27,12 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 /**
- * The implementation from the Interface {@link de.pro.lib.database.api.ILibDatabase}.<br />
- * Access to this class is over the facade {@link de.pro.lib.database.api.DatabaseFacade}.
+ * The implementation from the Interface {@link com.github.naoghuman.lib.database.api.ILibDatabase}.<br />
+ * Access to this class is over the facade {@link com.github.naoghuman.lib.database.api.DatabaseFacade}.
  * 
  * @author PRo
- * @see de.pro.lib.database.api.ILibDatabase
- * @see de.pro.lib.database.api.DatabaseFacade
+ * @see com.github.naoghuman.lib.database.api.ILibDatabase
+ * @see com.github.naoghuman.lib.database.api.DatabaseFacade
  */
 public final class LibDatabase implements ILibDatabase {
     
@@ -48,7 +48,7 @@ public final class LibDatabase implements ILibDatabase {
     private EntityManagerFactory entityManagerFactory = null;
 
     /**
-     * Default contructor from the class {@link de.pro.lib.database.LibDatabase}.
+     * Default contructor from the class {@link com.github.naoghuman.lib.database.LibDatabase}.
      */
     public LibDatabase() { }
     

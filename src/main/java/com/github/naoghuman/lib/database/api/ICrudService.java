@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package de.pro.lib.database.api;
+package com.github.naoghuman.lib.database.api;
 
 import java.util.List;
 import java.util.Map;
@@ -27,7 +27,7 @@ import javax.persistence.EntityManager;
  *
  * @author PRo
  * @see de.pro.lib.database.CrudService
- * @see de.pro.lib.database.api.DatabaseFacade
+ * @see com.github.naoghuman.lib.database.api.DatabaseFacade
  */
 public interface ICrudService {
     
@@ -78,11 +78,11 @@ public interface ICrudService {
      * <p>
      * Internal following methods will be executed in following order:<br>
      * <ul>
-     * <li>if <code>isSingleTransaction == true</code> then {@link de.pro.lib.database.CrudService#beginTransaction()}</li>
+     * <li>if <code>isSingleTransaction == true</code> then {@link com.github.naoghuman.lib.database.CrudService#beginTransaction()}</li>
      * <li>{@link javax.persistence.EntityManager#persist(java.lang.Object)}</li>
      * <li>{@link javax.persistence.EntityManager#flush() }</li>
      * <li>{@link javax.persistence.EntityManager#refresh(java.lang.Object) }</li>
-     * <li>if <code>isSingleTransaction == true</code> then {@link de.pro.lib.database.CrudService#commitTransaction()}</li>
+     * <li>if <code>isSingleTransaction == true</code> then {@link com.github.naoghuman.lib.database.CrudService#commitTransaction()}</li>
      * </ul>
      * 
      * @param <T>

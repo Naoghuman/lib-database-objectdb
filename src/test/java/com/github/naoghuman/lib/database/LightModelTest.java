@@ -14,13 +14,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package de.pro.lib.database;
+package com.github.naoghuman.lib.database;
 
 import com.github.naoghuman.lib.logger.api.LoggerFacade;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertNull;
 
-import de.pro.lib.database.api.DatabaseFacade;
+import com.github.naoghuman.lib.database.api.DatabaseFacade;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;

@@ -14,18 +14,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package de.pro.lib.database.api;
+package com.github.naoghuman.lib.database.api;
 
 import javax.persistence.EntityManager;
 
 /**
- * The <code>Interface</code> for the class {@link de.pro.lib.database.LibDatabase}.<br />
- * Over the facade {@link de.pro.lib.database.api.DatabaseFacade} you can access
+ * The <code>Interface</code> for the class {@link com.github.naoghuman.lib.database.LibDatabase}.<br />
+ * Over the facade {@link com.github.naoghuman.lib.database.api.DatabaseFacade} you can access
  * the methods in this <code>Interface</code>.
  *
  * @author PRo
- * @see de.pro.lib.database.LibDatabase
- * @see de.pro.lib.database.api.DatabaseFacade
+ * @see com.github.naoghuman.lib.database.LibDatabase
+ * @see com.github.naoghuman.lib.database.api.DatabaseFacade
  */
 public interface ILibDatabase {
     
@@ -38,16 +38,16 @@ public interface ILibDatabase {
     public void drop(String database);
     
     /**
-     * Returns a {@link de.pro.lib.database.api.ICrudService} with the name 
-     * DEFAULT which allowed all sql operations.
+     * Returns a {@link com.github.naoghuman.lib.database.api.ICrudService} with 
+     * the name DEFAULT which allowed all sql operations.
      * 
      * @return The crud service.
      */
     public ICrudService getCrudService();
     
     /**
-     * Returns a named {@link de.pro.lib.database.api.ICrudService} which allowed 
-     * all sql operations.
+     * Returns a named {@link com.github.naoghuman.lib.database.api.ICrudService} 
+     * which allowed all sql operations.
      * 
      * @param name The name from the <code>ICrudService</code>.
      * @return The <code>ICrudService</code>.
@@ -75,27 +75,29 @@ public interface ILibDatabase {
     public void register(String database);
     
     /**
-     * Remove a {@link de.pro.lib.database.api.ICrudService} with the given name. Also
-     * the associated {@link javax.persistence.EntityManager} will be removed.
+     * Remove a {@link com.github.naoghuman.lib.database.api.ICrudService} with 
+     * the given name. Also the associated {@link javax.persistence.EntityManager} 
+     * will be removed.
      * 
      * @param name The name for the <code>ICrudService</code> which should be removed.
-     * @see de.pro.lib.database.api.ILibDatabase#removeEntityManager(java.lang.String)
+     * @see com.github.naoghuman.lib.database.api.ILibDatabase#removeEntityManager(java.lang.String)
      */
     public void removeCrudService(String name);
     
     /**
      * Remove a {@link javax.persistence.EntityManager} with the given name. Also
-     * the associated {@link de.pro.lib.database.api.ICrudService} will be removed.
+     * the associated {@link com.github.naoghuman.lib.database.api.ICrudService} 
+     * will be removed.
      * 
      * @param name The name for the <code>EntityManager</code> which should be removed.
-     * @see de.pro.lib.database.api.ILibDatabase#removeCrudService(java.lang.String)
+     * @see com.github.naoghuman.lib.database.api.ILibDatabase#removeCrudService(java.lang.String)
      */
     public void removeEntityManager(String name);
     
     /**
      * Close the previous registered database.
      * 
-     * @see de.pro.lib.database.api.ILibDatabase#register(java.lang.String)
+     * @see com.github.naoghuman.lib.database.api.ILibDatabase#register(java.lang.String)
      */
     public void shutdown();
     

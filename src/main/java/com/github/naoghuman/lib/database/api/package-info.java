@@ -16,6 +16,6 @@
  */
 
 /**
- * Contains the implementation for the library <code>Lib-Database-ObjectDB</code>.
+ * Contains the <code>API</code> for the library <code>Lib-Database-ObjectDB</code>.
  */
-package de.pro.lib.database;
+package com.github.naoghuman.lib.database.api;

@@ -15,6 +15,7 @@ Welcome to `Lib-Database-ObjectDB` with the new release `v0.3.0`.
 #### Enhancement
 #9 [Release] Add folder release with new release file to project.
 #7 [pom] Update project version to 0.3.0-SNAPSHOT.
+#6 [Projekt] Change group-id to com.github.naoghuman.
 
 
 
@@ -36,4 +37,3 @@ Welcome to `Lib-Database-ObjectDB` with the new release `v0.3.0`.
 
 [//]: # (Issues which will be integrated in this release)
 #8 [ReadMe] Update packages to com.github.naoghuman.
-#6 [Projekt] Change group-id to com.github.naoghuman.

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 PRo
+ * Copyright (C) 2015 PRo
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,8 +14,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+package com.github.naoghuman.lib.database;
 
 /**
- * Contains the <code>API</code> for the library <code>Lib-Database-ObjectDB</code>.
+ *
+ * @author PRo
  */
-package de.pro.lib.database.api;
+public class EmbbededTest {
+    
+}
