@@ -16,10 +16,10 @@
  */
 package de.pro.lib.database;
 
+import com.github.naoghuman.lib.logger.api.LoggerFacade;
 import static org.junit.Assert.assertTrue;
 
 import de.pro.lib.database.api.DatabaseFacade;
-import de.pro.lib.logger.api.LoggerFacade;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;

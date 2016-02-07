@@ -16,8 +16,8 @@
  */
 package de.pro.lib.database;
 
+import com.github.naoghuman.lib.logger.api.LoggerFacade;
 import de.pro.lib.database.api.ICrudService;
-import de.pro.lib.logger.api.LoggerFacade;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
