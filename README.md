@@ -17,11 +17,11 @@ Content
 ---
 
 * [Examples](#Examples)
-    - [de.pro.lib.database.LibDatabaseTest#registerWithSuffix()](#RegisterWithSuffix)
-    - [de.pro.lib.database.CountEntityTest#count()](#Count)
+    - [com.github.naoghuman.lib.database.LibDatabaseTest#registerWithSuffix()](#RegisterWithSuffix)
+    - [com.github.naoghuman.lib.database.CountEntityTest#count()](#Count)
 * [Api](#Api)
-    - [de.pro.lib.database.api.ICrudService](#ICrudService)
-    - [de.pro.lib.database.api.DatabaseFacade](#DatabaseFacade)
+    - [com.github.naoghuman.lib.database.api.ICrudService](#ICrudService)
+    - [com.github.naoghuman.lib.database.api.DatabaseFacade](#DatabaseFacade)
 * [Download](#Download)
 * [Requirements](#Requirements)
 * [Installation](#Installation)
@@ -36,7 +36,7 @@ Content
 Examples<a name="Examples" />
 ---
 
-### de.pro.lib.database.LibDatabaseTest#registerWithSuffix()<a name="RegisterWithSuffix" />
+### com.github.naoghuman.lib.database.LibDatabaseTest#registerWithSuffix()<a name="RegisterWithSuffix" />
 
 ```java
 private final static String TEST_DB_WITH_SUFFIX = "test4.odb"; // NOI18N
@@ -59,7 +59,7 @@ public void registerWithSuffix() {
 ```
 
 
-### de.pro.lib.database.CountEntityTest#count()<a name="Count" />
+### com.github.naoghuman.lib.database.CountEntityTest#count()<a name="Count" />
 
 ```java
 private final static String TABLE = "CountEntity"; // NOI18N
@@ -91,17 +91,17 @@ public void count() {
 Api<a name="Api" />
 ----
 
-### de.pro.lib.database.api.ICrudService<a name="ICrudService" />
+### com.github.naoghuman.lib.database.api.ICrudService<a name="ICrudService" />
 
 ```java
 /**
- * The <code>Interface</code> for the class {@link de.pro.lib.database.CrudService}.<br />
+ * The <code>Interface</code> for the class {@link com.github.naoghuman.lib.database.CrudService}.<br />
  * A common <code>Interface</code> for all CRUD-Component implementations. The
  * type of the entity is specified in the implementation.
  *
  * @author PRo
- * @see de.pro.lib.database.CrudService
- * @see de.pro.lib.database.api.DatabaseFacade
+ * @see com.github.naoghuman.lib.database.CrudService
+ * @see com.github.naoghuman.lib.database.api.DatabaseFacade
  */
 public interface ICrudService
 ```
@@ -167,11 +167,11 @@ public <T> T create(T entity);
  * <p>
  * Internal following methods will be executed in following order:<br>
  * <ul>
- * <li>if <code>isSingleTransaction == true</code> then {@link de.pro.lib.database.CrudService#beginTransaction()}</li>
+ * <li>if <code>isSingleTransaction == true</code> then {@link com.github.naoghuman.lib.database.CrudService#beginTransaction()}</li>
  * <li>{@link javax.persistence.EntityManager#persist(java.lang.Object)}</li>
  * <li>{@link javax.persistence.EntityManager#flush() }</li>
  * <li>{@link javax.persistence.EntityManager#refresh(java.lang.Object) }</li>
- * <li>if <code>isSingleTransaction == true</code> then {@link de.pro.lib.database.CrudService#commitTransaction()}</li>
+ * <li>if <code>isSingleTransaction == true</code> then {@link com.github.naoghuman.lib.database.CrudService#commitTransaction()}</li>
  * </ul>
  * 
  * @param <T>
@@ -375,15 +375,15 @@ public void shutdown(String name);
 ```
 
 
-### de.pro.lib.database.api.DatabaseFacade<a name="DatabaseFacade" />
+### com.github.naoghuman.lib.database.api.DatabaseFacade<a name="DatabaseFacade" />
 
 ```java
 /**
- * The facade {@link de.pro.lib.database.api.DatabaseFacade} provides access to
- * the action methods during the Interface {@link de.pro.lib.database.api.ILibDatabase}.
+ * The facade {@link com.github.naoghuman.lib.database.api.DatabaseFacade} provides 
+ * access to the action methods during the Interface {@link com.github.naoghuman.lib.database.api.ILibDatabase}.
  *
  * @author PRo
- * @see de.pro.lib.database.api.ILibDatabase
+ * @see com.github.naoghuman.lib.database.api.ILibDatabase
  */
 public enum DatabaseFacade implements ILibDatabase
 ```
@@ -402,8 +402,8 @@ public void drop(String database);
 
 ```java
 /**
- * Returns a {@link de.pro.lib.database.api.ICrudService} with the name 
- * DEFAULT which allowed all sql operations.
+ * Returns a {@link com.github.naoghuman.lib.database.api.ICrudService} with the 
+ * name DEFAULT which allowed all sql operations.
  * 
  * @return The crud service.
  */
@@ -413,8 +413,8 @@ public ICrudService getCrudService();
 
 ```java
 /**
- * Returns a named {@link de.pro.lib.database.api.ICrudService} which allowed 
- * all sql operations.
+ * Returns a named {@link com.github.naoghuman.lib.database.api.ICrudService} 
+ * which allowed all sql operations.
  * 
  * @param name The name from the <code>ICrudService</code>.
  * @return The <code>ICrudService</code>.
@@ -451,11 +451,12 @@ public void register(String database);
 
 ```java
 /**
- * Remove a {@link de.pro.lib.database.api.ICrudService} with the given name. Also
- * the associated {@link javax.persistence.EntityManager} will be removed.
+ * Remove a {@link com.github.naoghuman.lib.database.api.ICrudService} with the 
+ * given name. Also the associated {@link javax.persistence.EntityManager} will 
+ * be removed.
  * 
  * @param name The name for the <code>ICrudService</code> which should be removed.
- * @see de.pro.lib.database.api.ILibDatabase#removeEntityManager(java.lang.String)
+ * @see com.github.naoghuman.lib.database.api.ILibDatabase#removeEntityManager(java.lang.String)
  */
 public void removeCrudService(String name);
 ```
@@ -464,10 +465,11 @@ public void removeCrudService(String name);
 ```java
 /**
  * Remove a {@link javax.persistence.EntityManager} with the given name. Also
- * the associated {@link de.pro.lib.database.api.ICrudService} will be removed.
+ * the associated {@link com.github.naoghuman.lib.database.api.ICrudService} 
+ * will be removed.
  * 
  * @param name The name for the <code>EntityManager</code> which should be removed.
- * @see de.pro.lib.database.api.ILibDatabase#removeCrudService(java.lang.String)
+ * @see com.github.naoghuman.lib.database.api.ILibDatabase#removeCrudService(java.lang.String)
  */
 public void removeEntityManager(String name);
 ```
@@ -477,7 +479,7 @@ public void removeEntityManager(String name);
 /**
  * Close the previous registered database.
  * 
- * @see de.pro.lib.database.api.ILibDatabase#register(java.lang.String)
+ * @see com.github.naoghuman.lib.database.api.ILibDatabase#register(java.lang.String)
  */
 public void shutdown();
 ```

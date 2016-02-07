@@ -28,6 +28,7 @@ Welcome to `Lib-Database-ObjectDB` with the new release `v0.3.0`.
 
 
 #### Refactoring
+#8 [ReadMe] Update packages to com.github.naoghuman.
 
 
 
@@ -36,4 +37,3 @@ Welcome to `Lib-Database-ObjectDB` with the new release `v0.3.0`.
 
 
 [//]: # (Issues which will be integrated in this release)
-#8 [ReadMe] Update packages to com.github.naoghuman.
