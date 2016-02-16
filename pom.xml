@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     
     <groupId>com.github.naoghuman</groupId>
-    <artifactId>Lib-Database-ObjectDB</artifactId>
+    <artifactId>lib-database-objectDB</artifactId>
     <version>0.3.0-SNAPSHOT</version> <!-- -SNAPSHOT -->
     <packaging>jar</packaging>
     <description>Lib-Database-ObjectDB is a library for easy accessing an ObjectDB database in a JavaFX &amp; Maven desktop application. See https://github.com/Naoghuman/lib-database-objectdb for more details.</description>
@@ -77,6 +77,14 @@
                     </execution>
                 </executions>
                 -->
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <tagNameFormat>lib-database-objectDB-@{project.version}</tagNameFormat>
+                </configuration>
             </plugin>
         </plugins>
     </build>

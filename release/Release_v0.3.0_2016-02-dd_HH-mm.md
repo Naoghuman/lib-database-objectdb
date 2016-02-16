@@ -28,6 +28,7 @@ Welcome to `Lib-Database-ObjectDB` with the new release `v0.3.0`.
 
 
 #### Refactoring
+#11 [Project] Rename jar file to lowercase with project version.
 #8 [ReadMe] Update packages to com.github.naoghuman.
 
 
