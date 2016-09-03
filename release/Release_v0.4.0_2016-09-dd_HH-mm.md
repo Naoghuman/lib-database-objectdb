@@ -29,6 +29,7 @@ a JavaFX & Maven desktop application.
 #### Refactoring
 #17 [Version] Change version to 0.4.0-SNAPSHOT.
 #16 [Documentation] Add a template for the release-notes.
+#12 [pom] Change artefact.id to lib-database-objectdb.
 
 
 
