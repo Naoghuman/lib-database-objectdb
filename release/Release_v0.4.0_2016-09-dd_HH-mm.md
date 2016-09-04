@@ -35,6 +35,7 @@ a JavaFX & Maven desktop application.
 
 
 #### Additional
+#15 [Internal] Add /todo/ to .gitignore.
 
 
 
