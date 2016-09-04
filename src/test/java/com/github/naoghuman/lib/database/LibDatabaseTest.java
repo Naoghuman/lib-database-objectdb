@@ -42,15 +42,15 @@ public class LibDatabaseTest {
 
     @BeforeClass
     public static void setUpClass() {
-        LoggerFacade.INSTANCE.own(LibDatabaseTest.class, " PRoDatabaseTest#setUpClass()");
-        LoggerFacade.INSTANCE.deactivate(Boolean.TRUE);
+        LoggerFacade.getDefault().own(LibDatabaseTest.class, " PRoDatabaseTest#setUpClass()");
+        LoggerFacade.getDefault().deactivate(Boolean.TRUE);
         
     }
 
     @AfterClass
     public static void tearDownClass() {
-        LoggerFacade.INSTANCE.deactivate(Boolean.FALSE);
-        LoggerFacade.INSTANCE.own(LibDatabaseTest.class, " PRoDatabaseTest#tearDownClass()");
+        LoggerFacade.getDefault().deactivate(Boolean.FALSE);
+        LoggerFacade.getDefault().own(LibDatabaseTest.class, " PRoDatabaseTest#tearDownClass()");
         
     }
 

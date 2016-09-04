@@ -35,16 +35,16 @@ public class CountEntityTest {
     
     @BeforeClass
     public static void setUpClass() {
-        LoggerFacade.INSTANCE.own(CountEntityTest.class, " CountEntityTest#setUpClass()");
-        LoggerFacade.INSTANCE.deactivate(Boolean.TRUE);
+        LoggerFacade.getDefault().own(CountEntityTest.class, " CountEntityTest#setUpClass()");
+        LoggerFacade.getDefault().deactivate(Boolean.TRUE);
         
         DatabaseFacade.INSTANCE.register(COUNT_ENTITY_TEST_DB__WITH_SUFFIX);
     }
 
     @AfterClass
     public static void tearDownClass() {
-        LoggerFacade.INSTANCE.deactivate(Boolean.FALSE);
-        LoggerFacade.INSTANCE.own(CountEntityTest.class, " CountEntityTest#tearDownClass()");
+        LoggerFacade.getDefault().deactivate(Boolean.FALSE);
+        LoggerFacade.getDefault().own(CountEntityTest.class, " CountEntityTest#tearDownClass()");
         
         DatabaseFacade.INSTANCE.shutdown();
         DatabaseFacade.INSTANCE.drop(COUNT_ENTITY_TEST_DB__WITH_SUFFIX);
@@ -52,7 +52,7 @@ public class CountEntityTest {
     
     @Test
     public void count() {
-        LoggerFacade.INSTANCE.own(this.getClass(), " #count()");
+        LoggerFacade.getDefault().own(this.getClass(), " #count()");
 
         Long count = DatabaseFacade.INSTANCE.getCrudService("count").count(TABLE);
         assertTrue("count must -1", count.longValue()==-1);

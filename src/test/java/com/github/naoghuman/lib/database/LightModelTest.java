@@ -35,16 +35,16 @@ public class LightModelTest {
 
     @BeforeClass
     public static void setUpClass() {
-        LoggerFacade.INSTANCE.own(LightModelTest.class, " LightModelTest#setUpClass()");
-        LoggerFacade.INSTANCE.deactivate(Boolean.TRUE);
+        LoggerFacade.getDefault().own(LightModelTest.class, " LightModelTest#setUpClass()");
+        LoggerFacade.getDefault().deactivate(Boolean.TRUE);
         
         DatabaseFacade.INSTANCE.register(TEST_DB_WITH_SUFFIX);
     }
 
     @AfterClass
     public static void tearDownClass() {
-        LoggerFacade.INSTANCE.deactivate(Boolean.FALSE);
-        LoggerFacade.INSTANCE.own(LightModelTest.class, " LightModelTest#tearDownClass()");
+        LoggerFacade.getDefault().deactivate(Boolean.FALSE);
+        LoggerFacade.getDefault().own(LightModelTest.class, " LightModelTest#tearDownClass()");
         
         DatabaseFacade.INSTANCE.shutdown();
         DatabaseFacade.INSTANCE.drop(TEST_DB_WITH_SUFFIX);
@@ -52,7 +52,7 @@ public class LightModelTest {
     
     @Test
     public void testFullModel() {
-        LoggerFacade.INSTANCE.own(this.getClass(), " #testFullModel()");
+        LoggerFacade.getDefault().own(this.getClass(), " #testFullModel()");
         
         LightModel lm1 = new LightModel();
         lm1.setId(1);
@@ -67,7 +67,7 @@ public class LightModelTest {
     
     @Test
     public void testLightModel() {
-        LoggerFacade.INSTANCE.own(this.getClass(), " #testLightModel()");
+        LoggerFacade.getDefault().own(this.getClass(), " #testLightModel()");
         
         LightModel lm1 = new LightModel();
         lm1.setId(2);

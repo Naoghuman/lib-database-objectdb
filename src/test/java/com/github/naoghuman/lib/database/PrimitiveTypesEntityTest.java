@@ -38,16 +38,16 @@ public class PrimitiveTypesEntityTest {
 
     @BeforeClass
     public static void setUpClass() {
-        LoggerFacade.INSTANCE.own(PrimitiveTypesEntityTest.class, " PrimitiveTypesEntityTest#setUpClass()");
-        LoggerFacade.INSTANCE.deactivate(Boolean.TRUE);
+        LoggerFacade.getDefault().own(PrimitiveTypesEntityTest.class, " PrimitiveTypesEntityTest#setUpClass()");
+        LoggerFacade.getDefault().deactivate(Boolean.TRUE);
         
         DatabaseFacade.INSTANCE.register(TEST_DB_WITH_SUFFIX);
     }
 
     @AfterClass
     public static void tearDownClass() {
-        LoggerFacade.INSTANCE.deactivate(Boolean.FALSE);
-        LoggerFacade.INSTANCE.own(PrimitiveTypesEntityTest.class, " PrimitiveTypesEntityTest#tearDownClass()");
+        LoggerFacade.getDefault().deactivate(Boolean.FALSE);
+        LoggerFacade.getDefault().own(PrimitiveTypesEntityTest.class, " PrimitiveTypesEntityTest#tearDownClass()");
         
         DatabaseFacade.INSTANCE.shutdown();
         DatabaseFacade.INSTANCE.drop(TEST_DB_WITH_SUFFIX);
@@ -55,7 +55,7 @@ public class PrimitiveTypesEntityTest {
     
     @Test
     public void create() {
-        LoggerFacade.INSTANCE.own(this.getClass(), " #create()");
+        LoggerFacade.getDefault().own(this.getClass(), " #create()");
         
         final PrimitiveTypesEntity entity1 = new PrimitiveTypesEntity();
         entity1.setId(2);
@@ -75,7 +75,7 @@ public class PrimitiveTypesEntityTest {
     
     @Test
     public void createWithManuellBeginAndCommitTransaction() {
-        LoggerFacade.INSTANCE.own(this.getClass(), " #createWithManuellBeginAndCommitTransaction()");
+        LoggerFacade.getDefault().own(this.getClass(), " #createWithManuellBeginAndCommitTransaction()");
         
         DatabaseFacade.INSTANCE.getCrudService("createWithManuellBeginAndCommitTransaction")
                 .beginTransaction();
@@ -107,7 +107,7 @@ public class PrimitiveTypesEntityTest {
     
     @Test
     public void delete() {
-        LoggerFacade.INSTANCE.own(this.getClass(), " #delete()");
+        LoggerFacade.getDefault().own(this.getClass(), " #delete()");
         
         final PrimitiveTypesEntity entity1 = new PrimitiveTypesEntity();
         entity1.setId(10);
@@ -125,7 +125,7 @@ public class PrimitiveTypesEntityTest {
     
     @Test
     public void update() {
-        LoggerFacade.INSTANCE.own(this.getClass(), " #update()");
+        LoggerFacade.getDefault().own(this.getClass(), " #update()");
         
         final PrimitiveTypesEntity entity1 = new PrimitiveTypesEntity();
         entity1.setId(20);
