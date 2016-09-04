@@ -5,8 +5,8 @@ a JavaFX & Maven desktop application.
 
 
 #### Summary
-* ...
-* ...
+* Deploy the jar files to Maven Central :smiley: .
+* Change DatabaseFacadeFacade.INSTANCE to DatabaseFacadeFacade.getDefault() with Optional.
 
 
 

@@ -9,7 +9,7 @@ Intention
 Lib-Database-ObjectDB is a library for easy accessing an [ObjectDB] database in 
 a [JavaFX] &amp; [Maven] desktop application.
 
-Current `version` is `0.0.7` (08.2015).
+Current `version` is `0.4.0` (09.04.2016).
 
 
 
@@ -489,13 +489,9 @@ public void shutdown();
 Download<a name="Download" />
 ---
 
-Current `version` is `0.0.7`. Main points in this release are:
-* Implement in `DatabaseFacade` the interface `ILibDatabase` directly for easier 
-  handling.
-* Add new section `Api` in the ReadMe.
-* Add new section `Download` in the ReadMe.
-* Add new section `Intention` in the ReadMe.
-* Update the section `Examples` in the ReadMe.
+Current `version` is `0.4.0`. Main points in this release are:
+* Deploy the jar files to Maven Central :smiley: .
+* Change DatabaseFacadeFacade.INSTANCE to DatabaseFacadeFacade.getDefault() with Optional.
 
 **Maven coordinates**  
 ```xml
@@ -505,11 +501,16 @@ Current `version` is `0.0.7`. Main points in this release are:
         <artifactId>lib-database-objectdb</artifactId>
         <version>0.4.0</version>
     </dependency>
+    <dependency>
+        <groupId>com.github.naoghuman</groupId>
+        <artifactId>lib-logger</artifactId>
+        <version>0.4.0</version>
+    </dependency>
 </dependencies>
 ```
 
 Download:
-* [Release v0.0.7 (08.2015)]
+* [Release v0.4.0 (09.04.2016)]
 
 An overview about all existings releases can be found here:
 * [Overview from all releases in Lib-Database-ObjectDB]
@@ -520,13 +521,15 @@ Requirements<a name="Requirements" />
 ---
 
 * On your system you need [JRE 8] or [JDK 8] installed.
-* The library [Lib-Database-ObjectDB-0.0.6.jar](#Installation).
-  * Included is the [objectdb-2.6.3_04.jar].
-  * Included is the [javax.persistence-2.1.0.jar].
+* The library [Lib-Database-ObjectDB-0.4.0.jar](#Installation).
+  * Included is the [objectdb-2.6.9_05.jar].
+  * Included is the [javax.persistence-2.1.1.jar].
   * Included is the [javax.transaction-1.1.jar].
-* The library [Lib-Logger-0.2.1.jar](#Installation).
-  * Included is the [log4j-api-2.3.jar].
-  * Included is the [log4j-core-2.3.jar].
+
+In the library are following libraries registered as dependencies:
+* The library [Lib-Logger-0.4.0.jar](#Installation).
+  * Included in `Lib-Logger` is the [log4j-api-2.6.2.jar].
+  * Included in `Lib-Logger` is the [log4j-core-2.6.2.jar].
 
 
 Installation<a name="Installation" />
@@ -547,6 +550,11 @@ Installation<a name="Installation" />
     <dependency>
         <groupId>com.github.naoghuman</groupId>
         <artifactId>lib-database-objectdb</artifactId>
+        <version>0.4.0</version>
+    </dependency>
+    <dependency>
+        <groupId>com.github.naoghuman</groupId>
+        <artifactId>lib-logger</artifactId>
         <version>0.4.0</version>
     </dependency>
 </dependencies>
@@ -599,21 +607,21 @@ You can reach me under <peter.rogge@yahoo.de>.
 [Issue]:https://github.com/Naoghuman/lib-database-objectdb/issues
 [JavaDoc]:http://www.oracle.com/technetwork/java/javase/documentation/index-jsp-135444.html
 [JavaFX]:http://docs.oracle.com/javase/8/javase-clienttechnologies.htm
-[JavaFX Scene Builder]:http://www.oracle.com/technetwork/java/javase/downloads/index.html
-[javax.persistence-2.1.0.jar]:http://search.maven.org/#artifactdetails|org.eclipse.persistence|javax.persistence|2.1.0|jar
+[JavaFX Scene Builder]:http://gluonhq.com/labs/scene-builder/
+[javax.persistence-2.1.1.jar]:http://search.maven.org/#artifactdetails|org.eclipse.persistence|javax.persistence|2.1.1|jar
 [javax.transaction-1.1.jar]:http://mvnrepository.com/artifact/javax.transaction/jta
 [JDK 8]:http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 [JRE 8]:http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html
 [Lib-Database-ObjectDB]:https://github.com/Naoghuman/lib-database-objectdb
 [Lib-Logger]:https://github.com/Naoghuman/lib-logger
-[log4j-api-2.3.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
-[log4j-core-2.3.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
+[log4j-api-2.6.2.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
+[log4j-core-2.6.2.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
 [Maven]:http://maven.apache.org/
 [NetBeans]:https://netbeans.org/
 [ObjectDB]:http://www.objectdb.com/
-[objectdb-2.6.3_04.jar]:http://www.objectdb.com/object/db/database/download
+[objectdb-2.6.9_05.jar]:http://www.objectdb.com/object/db/database/download
 [Overview from all releases in Lib-Database-ObjectDB]:https://github.com/Naoghuman/lib-database-objectdb/releases
 [Pull Request]:https://help.github.com/articles/using-pull-requests
-[Release v0.0.7 (08.2015)]:https://github.com/Naoghuman/lib-database-objectdb/releases/tag/v0.0.7
+[Release v0.4.0 (09.04.2016)]:https://github.com/Naoghuman/lib-database-objectdb/releases/tag/v0.4.0
 
 
