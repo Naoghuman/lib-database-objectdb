@@ -19,6 +19,7 @@ a JavaFX & Maven desktop application.
 
 
 #### Enhancement
+#19 [Api] Change DatabaseFacadeFacade.INSTANCE to DatabaseFacadeFacade.getDefault() with Optional.
 #14 [pom] Sign jar(s) for Maven Central.
 #13 [pom] New format from jar(s) for Maven Central.
 

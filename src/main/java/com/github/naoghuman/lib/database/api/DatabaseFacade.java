@@ -17,6 +17,7 @@
 package com.github.naoghuman.lib.database.api;
 
 import com.github.naoghuman.lib.database.LibDatabase;
+import java.util.Optional;
 import javax.persistence.EntityManager;
 
 /**
@@ -26,13 +27,18 @@ import javax.persistence.EntityManager;
  * @author PRo
  * @see com.github.naoghuman.lib.database.api.ILibDatabase
  */
-public enum DatabaseFacade implements ILibDatabase {
+public final class DatabaseFacade implements ILibDatabase {
     
+    private static final Optional<DatabaseFacade> instance = Optional.of(new DatabaseFacade());
+
     /**
-     * Over the value <code>INSTANCE</code> the developer have access to the
-     * functionality in <code>DatabaseFacade</code>.
+     * Returns a singleton instance from the class <code>DatabaseFacade</code>.
+     * 
+     * @return a singleton instance from the class <code>DatabaseFacade</code>.
      */
-    INSTANCE;
+    public static final DatabaseFacade getDefault() {
+        return instance.get();
+    }
     
     private ILibDatabase database = null;
 

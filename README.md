@@ -43,17 +43,17 @@ private final static String TEST_DB_WITH_SUFFIX = "test4.odb"; // NOI18N
 
 @Test
 public void registerWithSuffix() {
-    DatabaseFacade.INSTANCE.register(TEST_DB_WITH_SUFFIX);
+    DatabaseFacade.getDefault().register(TEST_DB_WITH_SUFFIX);
     
     // The database (if not exitst) will only created if an transaction is done
-    DatabaseFacade.INSTANCE.getCrudService("registerWithSuffix").create(new CountEntity());
+    DatabaseFacade.getDefault().getCrudService("registerWithSuffix").create(new CountEntity());
    
-    DatabaseFacade.INSTANCE.shutdown();
+    DatabaseFacade.getDefault().shutdown();
     
     File file = new File(DATABASE_PATH + TEST_DB_WITH_SUFFIX);
     assertTrue("The database test.odb must exists...", file.exists());
     
-    DatabaseFacade.INSTANCE.drop(TEST_DB_WITH_SUFFIX);
+    DatabaseFacade.getDefault().drop(TEST_DB_WITH_SUFFIX);
     assertFalse("The database test.odb must deleted...", file.exists());
 }
 ```
@@ -68,20 +68,20 @@ private final static String TABLE = "CountEntity"; // NOI18N
 public void count() {
     LoggerFacade.INSTANCE.getLogger().own(this.getClass(), " #count()");
 
-    Long count = DatabaseFacade.INSTANCE.getCrudService("count").count(TABLE);
+    Long count = DatabaseFacade.getDefault().getCrudService("count").count(TABLE);
     assertTrue("count must -1", count.longValue()==-1);
         
-    final CountEntity ce = DatabaseFacade.INSTANCE.getCrudService("count").create(new CountEntity());
-    DatabaseFacade.INSTANCE.getCrudService().delete(CountEntity.class, new Long(ce.getId()));
-    count = DatabaseFacade.INSTANCE.getCrudService("count").count(TABLE);
+    final CountEntity ce = DatabaseFacade.getDefault().getCrudService("count").create(new CountEntity());
+    DatabaseFacade.getDefault().getCrudService().delete(CountEntity.class, new Long(ce.getId()));
+    count = DatabaseFacade.getDefault().getCrudService("count").count(TABLE);
     assertTrue("count must 0", count.longValue()==0);
         
-    DatabaseFacade.INSTANCE.getCrudService("count").create(new CountEntity());
-    count = DatabaseFacade.INSTANCE.getCrudService("count").count(TABLE);
+    DatabaseFacade.getDefault().getCrudService("count").create(new CountEntity());
+    count = DatabaseFacade.getDefault().getCrudService("count").count(TABLE);
     assertTrue("count must 1", count.longValue()==1);
         
-    DatabaseFacade.INSTANCE.getCrudService("count").create(new CountEntity());
-    count = DatabaseFacade.INSTANCE.getCrudService("count").count(TABLE);
+    DatabaseFacade.getDefault().getCrudService("count").create(new CountEntity());
+    count = DatabaseFacade.getDefault().getCrudService("count").count(TABLE);
     assertTrue("count must 2", count.longValue()==2);
 }
 ```
@@ -385,7 +385,7 @@ public void shutdown(String name);
  * @author PRo
  * @see com.github.naoghuman.lib.database.api.ILibDatabase
  */
-public enum DatabaseFacade implements ILibDatabase
+public final class DatabaseFacade implements ILibDatabase {
 ```
 
 
