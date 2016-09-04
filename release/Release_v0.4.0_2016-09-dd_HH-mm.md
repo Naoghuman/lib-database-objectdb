@@ -19,6 +19,7 @@ a JavaFX & Maven desktop application.
 
 
 #### Enhancement
+#13 [pom] New format from jar(s) for Maven Central.
 
 
 
