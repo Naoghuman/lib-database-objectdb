@@ -21,12 +21,12 @@ import java.util.Map;
 import javax.persistence.EntityManager;
 
 /**
- * The <code>Interface</code> for the class {@link de.pro.lib.database.CrudService}.<br />
+ * The <code>Interface</code> for the class {@link com.github.naoghuman.lib.database.CrudService}.<br />
  * A common <code>Interface</code> for all CRUD-Component implementations. The
  * type of the entity is specified in the implementation.
  *
  * @author PRo
- * @see de.pro.lib.database.CrudService
+ * @see com.github.naoghuman.lib.database.CrudService
  * @see com.github.naoghuman.lib.database.api.DatabaseFacade
  */
 public interface ICrudService {
