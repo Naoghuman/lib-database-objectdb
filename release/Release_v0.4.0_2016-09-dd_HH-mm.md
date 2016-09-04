@@ -29,6 +29,7 @@ a JavaFX & Maven desktop application.
 
 
 #### Refactoring
+#20 [Documentation] Insert maven-central coordinates into README.
 #18 [pom] Update the dependencies to the libraries in pom.xml.
 #17 [Version] Change version to 0.4.0-SNAPSHOT.
 #16 [Documentation] Add a template for the release-notes.

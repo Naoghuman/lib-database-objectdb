@@ -497,6 +497,17 @@ Current `version` is `0.0.7`. Main points in this release are:
 * Add new section `Intention` in the ReadMe.
 * Update the section `Examples` in the ReadMe.
 
+**Maven coordinates**  
+```xml
+<dependencies>
+    <dependency>
+        <groupId>com.github.naoghuman</groupId>
+        <artifactId>lib-database-objectdb</artifactId>
+        <version>0.4.0</version>
+    </dependency>
+</dependencies>
+```
+
 Download:
 * [Release v0.0.7 (08.2015)]
 
@@ -530,6 +541,16 @@ Installation<a name="Installation" />
 * Download or clone [Lib-Logger].
 * Open the projects in your IDE and run them.
 
+**Maven coordinates**  
+```xml
+<dependencies>
+    <dependency>
+        <groupId>com.github.naoghuman</groupId>
+        <artifactId>lib-database-objectdb</artifactId>
+        <version>0.4.0</version>
+    </dependency>
+</dependencies>
+```
 
 
 Documentation<a name="Documentation" />
