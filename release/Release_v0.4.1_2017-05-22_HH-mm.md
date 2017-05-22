@@ -28,6 +28,7 @@ for more details.
 
 
 #### Refactoring
+#21 [Dependencies] Update the dependencies to the libraries in pom.xml.
 
 
 
