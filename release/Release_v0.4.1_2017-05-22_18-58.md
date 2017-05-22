@@ -1,4 +1,4 @@
-Welcome to `Lib-Database-ObjectDB` with the new release `x.y.z`.
+Welcome to `Lib-Database-ObjectDB` with the new release `0.4.1`.
 
 Lib-Database-ObjectDB is a library for `easy` accessing an [ObjectDB] database in 
 a [JavaFX] &amp; [Maven] desktop application. See https://github.com/Naoghuman/lib-database-objectdb 
@@ -6,8 +6,8 @@ for more details.
 
 
 #### Summary
-* ...
-* ...
+* This is a minor update.
+* Primarily the section `Examples` in the README is extended.
 
 
 
