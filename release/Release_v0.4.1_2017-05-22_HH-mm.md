@@ -20,6 +20,7 @@ for more details.
 
 
 #### Enhancement
+#10 [ReadMe] Extend example section.
 
 
 

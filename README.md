@@ -17,8 +17,9 @@ Content
 ---
 
 * [Examples](#Examples)
-    - [com.github.naoghuman.lib.database.LibDatabaseTest#registerWithSuffix()](#RegisterWithSuffix)
-    - [com.github.naoghuman.lib.database.CountEntityTest#count()](#Count)
+    - [How to register an database](#registerAnDB)
+    - [Create and update an `Exercise`](#createAndUpdateAnEx)
+    - [Sample of the entity `Exercise`](#sampleOfAnEntity)
 * [Api](#Api)
     - [com.github.naoghuman.lib.database.api.ICrudService](#ICrudService)
     - [com.github.naoghuman.lib.database.api.DatabaseFacade](#DatabaseFacade)
@@ -36,53 +37,143 @@ Content
 Examples<a name="Examples" />
 ---
 
-### com.github.naoghuman.lib.database.LibDatabaseTest#registerWithSuffix()<a name="RegisterWithSuffix" />
+
+### How to register an database<a name="registerAnDB" />
 
 ```java
-private final static String TEST_DB_WITH_SUFFIX = "test4.odb"; // NOI18N
+public class StartApplication ... {
+    ...
+    @Override
+    public void init() throws Exception {
+        // Register the resource-bundle
+        PropertiesFacade.getDefault().register(KEY__APPLICATION__RESOURCE_BUNDLE);
+        ...
+        // Register the database
+        DatabaseFacade.getDefault().register(Properties.getPropertyForApplication(KEY__APPLICATION__DATABASE));
+    }
+}
 
-@Test
-public void registerWithSuffix() {
-    DatabaseFacade.getDefault().register(TEST_DB_WITH_SUFFIX);
-    
-    // The database (if not exitst) will only created if an transaction is done
-    DatabaseFacade.getDefault().getCrudService("registerWithSuffix").create(new CountEntity());
-   
-    DatabaseFacade.getDefault().shutdown();
-    
-    File file = new File(DATABASE_PATH + TEST_DB_WITH_SUFFIX);
-    assertTrue("The database test.odb must exists...", file.exists());
-    
-    DatabaseFacade.getDefault().drop(TEST_DB_WITH_SUFFIX);
-    assertFalse("The database test.odb must deleted...", file.exists());
+public interface IPropertiesConfiguration {
+    public static final String KEY__APPLICATION__RESOURCE_BUNDLE = "/com/github/naoghuman/abclist/i18n/application.properties"; // NOI18N
+    public static final String KEY__TESTDATA_APPLICATION__DATABASE = "application.database"; // NOI18N
+    ...
 }
 ```
 
 
-### com.github.naoghuman.lib.database.CountEntityTest#count()<a name="Count" />
+### Create and update an `Exercise`<a name="createAndUpdateAnEx" />
 
 ```java
-private final static String TABLE = "CountEntity"; // NOI18N
+public class SqlProvider ... {
+    public void createExercise(final Exercise exercise) {
+        final StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+                
+        ExerciseSqlService.getDefault().create(exercise);
+        
+        stopWatch.split();
+        this.printToLog(stopWatch.toSplitString(), 1, "createExercise(Exercise exercise)"); // NOI18N
+        stopWatch.stop();
+    }
+    ...
+    public void updateExercise(final Exercise exercise) {
+        final StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+        
+        ExerciseSqlService.getDefault().update(exercise);
+        
+        stopWatch.split();
+        this.printToLog(stopWatch.toSplitString(), 1, "updateExercise(Exercise exercise)"); // NOI18N
+        stopWatch.stop();
+    }
+}
 
-@Test
-public void count() {
-    LoggerFacade.INSTANCE.getLogger().own(this.getClass(), " #count()");
+final class ExerciseSqlService ... {
+    void create(Exercise exercise) {
+        if (Objects.equals(exercise.getId(), DEFAULT_ID)) {
+            exercise.setId(System.currentTimeMillis());
+            DatabaseFacade.getDefault().getCrudService().create(exercise);
+        }
+        else {
+            this.update(exercise);
+        }
+    }
+    ...
+    void update(Exercise exercise) {
+        DatabaseFacade.getDefault().getCrudService().update(exercise);
+    }
+}
+```
 
-    Long count = DatabaseFacade.getDefault().getCrudService("count").count(TABLE);
-    assertTrue("count must -1", count.longValue()==-1);
-        
-    final CountEntity ce = DatabaseFacade.getDefault().getCrudService("count").create(new CountEntity());
-    DatabaseFacade.getDefault().getCrudService().delete(CountEntity.class, new Long(ce.getId()));
-    count = DatabaseFacade.getDefault().getCrudService("count").count(TABLE);
-    assertTrue("count must 0", count.longValue()==0);
-        
-    DatabaseFacade.getDefault().getCrudService("count").create(new CountEntity());
-    count = DatabaseFacade.getDefault().getCrudService("count").count(TABLE);
-    assertTrue("count must 1", count.longValue()==1);
-        
-    DatabaseFacade.getDefault().getCrudService("count").create(new CountEntity());
-    count = DatabaseFacade.getDefault().getCrudService("count").count(TABLE);
-    assertTrue("count must 2", count.longValue()==2);
+
+### Sample of the entity `Exercise`<a name="sampleOfTheEntityEx" />
+
+```java
+@Entity
+@Access(AccessType.PROPERTY)
+@Table(name = IExerciseConfiguration.ENTITY__TABLE_NAME__EXERCISE)
+@NamedQueries({
+    @NamedQuery(
+            name = IExerciseConfiguration.NAMED_QUERY__NAME__FIND_ALL_WITH_TOPIC_ID,
+            query = IExerciseConfiguration.NAMED_QUERY__QUERY__FIND_ALL_WITH_TOPIC_ID)
+})
+public class Exercise implements Comparable<Exercise>, Externalizable, IDefaultConfiguration, IExerciseConfiguration {
+    ...
+
+    public Exercise(long id, long topicId, long generationTime, boolean consolidated, boolean ready) {
+        this.init(id, topicId, generationTime, consolidated, ready);
+    }
+    
+    private void init(long id, long topicId, long generationTime, boolean consolidated, boolean ready) {
+        this.setId(id);
+        this.setTopicId(topicId);
+        this.setGenerationTime(generationTime);
+        this.setConsolidated(consolidated);
+        this.setReady(ready);
+    }
+
+    ...
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append(EXERCISE__COLUMN_NAME__ID, this.getId())
+                .append(EXERCISE__COLUMN_NAME__TOPIC_ID, this.getTopicId())
+                .append(EXERCISE__COLUMN_NAME__GENERATION_TIME, this.getGenerationTime())
+                .append(EXERCISE__COLUMN_NAME__FINISHED_TIME, this.getFinishedTime())
+                .append(EXERCISE__COLUMN_NAME__CONSOLIDATED, this.isConsolidated())
+                .append(EXERCISE__COLUMN_NAME__READY, this.isReady())
+                .append(EXERCISE__COLUMN_NAME__CHOOSEN_TIME, this.getChoosenTime())
+                .toString();
+    }
+    
+    @Override
+    public void writeExternal(ObjectOutput out) throws IOException {
+        out.writeLong(this.getId());
+        out.writeLong(this.getTopicId());
+        out.writeLong(this.getGenerationTime());
+        out.writeLong(this.getFinishedTime());
+        out.writeBoolean(this.isConsolidated());
+        out.writeBoolean(this.isReady());
+        out.writeObject(this.getChoosenTime());
+    }
+
+    @Override
+    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+        this.setId(in.readLong());
+        this.setTopicId(in.readLong());
+        this.setGenerationTime(in.readLong());
+        this.setFinishedTime(in.readLong());
+        this.setConsolidated(in.readBoolean());
+        this.setReady(in.readBoolean());
+        this.setChoosenTime(String.valueOf(in.readObject()));
+    }
+}
+
+public interface IExerciseConfiguration {
+    public static final String NAMED_QUERY__NAME__FIND_ALL_WITH_TOPIC_ID = "Exercise.findAllWithTopicId"; // NOI18N
+    public static final String NAMED_QUERY__QUERY__FIND_ALL_WITH_TOPIC_ID = "SELECT e FROM Exercise e WHERE e.topicId == :topicId"; // NOI18N
+    ...
 }
 ```
 
