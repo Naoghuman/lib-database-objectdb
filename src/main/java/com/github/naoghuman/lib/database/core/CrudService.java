@@ -35,10 +35,12 @@ public interface CrudService {
     /**
      * Start a resource transaction.
      * <p>
-     * Internal following methods will be executed in following order:<br>
+     * Internal following methods in following order will be executed:<br>
      * <ul>
      * <li>{@link javax.persistence.EntityTransaction#begin()}</li>
      * </ul>
+     * 
+     * @see javax.persistence.EntityTransaction#begin()
      */
     public void beginTransaction();
     
@@ -46,76 +48,99 @@ public interface CrudService {
      * Commits the current resource transaction, writing any unflushed changes 
      * to the database.
      * <p>
-     * Internal following methods will be executed in following order:<br>
+     * Internal following methods in following order will be executed:<br>
      * <ul>
      * <li>{@link javax.persistence.EntityTransaction#commit()}</li>
      * <li>{@link javax.persistence.EntityManager#clear()}</li>
      * </ul>
+     * 
+     * @see javax.persistence.EntityTransaction#clear()
+     * @see javax.persistence.EntityTransaction#commit()
      */
     public void commitTransaction();
     
     /**
-     * Count all entitys in the given {@code table}.
+     * Counts all entitys in the given {@code table}.<br>
+     * Creates the {@code sql} instruction <i>SELECT COUNT(c) FROM table c</i> which
+     * will then executed with {@link javax.persistence.EntityManager#createQuery(java.lang.String, java.lang.Class)}.
      * 
      * @param table The table which entitys should be counted.
      * @return The number of entitys in the table or {@code -1} if the table doesn't exists.
+     * @see javax.persistence.EntityManager#createQuery(java.lang.String, java.lang.Class)
      */
     public Long count(final String table);
     
     /**
-     * Makes an entity managed and persistent.<br>
-     * Deletes to {@link com.github.naoghuman.lib.database.core.CrudService#create(java.lang.Object, java.lang.Boolean)}
+     * Makes an entity managed and persistent. Synchronize the persistence context 
+     * to the underlying database and refresh the state of the instance from the 
+     * database, overwriting changes made to the entity, if any.<br>
+     * Delegates to {@link com.github.naoghuman.lib.database.core.CrudService#create(java.lang.Object, java.lang.Boolean)}
      * with the parameter {@code isSingleTransaction == true}.
      * 
-     * @param <T>
-     * @param entity
-     * @return 
+     * @param <T> the type of the entity
+     * @param entity entity instance
+     * @return a created persisted instance which the given type
      * @see com.github.naoghuman.lib.database.core.CrudService#create(java.lang.Object, java.lang.Boolean)
      */
     public <T> T create(final T entity);
     
     /**
-     * Makes an entity managed and persistent.
+     * Makes an entity managed and persistent. Synchronize the persistence context 
+     * to the underlying database and refresh the state of the instance from the 
+     * database, overwriting changes made to the entity, if any. 
      * <p>
-     * Internal following methods will be executed in following order:<br>
+     * Internal following methods in following order will be executed:<br>
      * <ul>
      * <li>if {@code isSingleTransaction == true} then {@link com.github.naoghuman.lib.database.core.CrudService#beginTransaction()}</li>
      * <li>{@link javax.persistence.EntityManager#persist(java.lang.Object)}</li>
      * <li>{@link javax.persistence.EntityManager#flush() }</li>
-     * <li>{@link javax.persistence.EntityManager#refresh(java.lang.Object) }</li>
+     * <li>{@link javax.persistence.EntityManager#refresh(java.lang.Object)}</li>
      * <li>if {@code isSingleTransaction == true} then {@link com.github.naoghuman.lib.database.core.CrudService#commitTransaction()}</li>
      * </ul>
      * 
-     * @param <T>
-     * @param entity
-     * @param isSingleTransaction
-     * @return 
+     * @param <T> the type of the entity
+     * @param entity entity instance
+     * @param isSingleTransaction flag if is transaction a single transaction or not.
+     * @return a created persisted instance which the given type
      * @see com.github.naoghuman.lib.database.core.CrudService#beginTransaction()
      * @see com.github.naoghuman.lib.database.core.CrudService#commitTransaction()
      * @see com.github.naoghuman.lib.database.core.CrudService#create(java.lang.Object)
+     * @see javax.persistence.EntityManager#flush()
+     * @see javax.persistence.EntityManager#persist(java.lang.Object)
+     * @see javax.persistence.EntityManager#refresh(java.lang.Object)
      */
     public <T> T create(final T entity, final Boolean isSingleTransaction);
     
     /**
-     * TODO Add JavaDoc<br>
+     * Remove the entity instance from the database.<br>
      * Deletes to {@link com.github.naoghuman.lib.database.core.CrudService#delete(java.lang.Class, java.lang.Object, java.lang.Boolean)}
      * with the parameter {@code isSingleTransaction == true}.
      * 
-     * @param <T>
-     * @param type
-     * @param id 
+     * @param <T> the type of the entity
+     * @param type the entity class
+     * @param id the primary key
      * @see com.github.naoghuman.lib.database.core.CrudService#delete(java.lang.Class, java.lang.Object, java.lang.Boolean) 
      */
     public <T> void delete(final Class<T> type, final Object id);
     
     /**
-     * TODO Add JavaDoc
+     * Remove the entity instance from the database.<br>
+     * <p>
+     * Internal following methods in following order will be executed:<br>
+     * <ul>
+     * <li>if {@code isSingleTransaction == true} then {@link com.github.naoghuman.lib.database.core.CrudService#beginTransaction()}</li>
+     * <li>{@link javax.persistence.EntityManager#getReference(java.lang.Class, java.lang.Object)}</li>
+     * <li>{@link javax.persistence.EntityManager#remove(java.lang.Object)}</li>
+     * <li>if {@code isSingleTransaction == true} then {@link com.github.naoghuman.lib.database.core.CrudService#commitTransaction()}</li>
+     * </ul>
      * 
-     * @param <T>
-     * @param type
-     * @param id
-     * @param isSingleTransaction 
-     * @see com.github.naoghuman.lib.database.core.CrudService#delete(java.lang.Class, java.lang.Object) 
+     * @param <T> the type of the entity
+     * @param type the entity class
+     * @param id the primary key
+     * @param isSingleTransaction flag if is transaction a single transaction or not.
+     * @see com.github.naoghuman.lib.database.core.CrudService#delete(java.lang.Class, java.lang.Object)
+     * @see javax.persistence.EntityManager#getReference(java.lang.Class, java.lang.Object)
+     * @see javax.persistence.EntityManager#remove(java.lang.Object)
      */
     public <T> void delete(final Class<T> type, final Object id, final Boolean isSingleTransaction);
     
@@ -131,8 +156,8 @@ public interface CrudService {
      * Delegates to {@link com.github.naoghuman.lib.database.core.CrudService#update(java.lang.Object, java.lang.Boolean) }
      * with the parameter {@code isSingleTransaction == true}.
      * 
-     * @param <T>
-     * @param entity
+     * @param <T> the type of the entity
+     * @param entity entity instance
      * @return 
      * @see com.github.naoghuman.lib.database.core.CrudService#update(java.lang.Object, java.lang.Boolean) 
      */
@@ -141,9 +166,9 @@ public interface CrudService {
     /**
      * Merge the state of the given entity into the current persistence context.
      * 
-     * @param <T>
-     * @param entity
-     * @param isSingleTransaction
+     * @param <T> the type of the entity
+     * @param entity entity instance
+     * @param isSingleTransaction flag if is transaction a single transaction or not.
      * @return 
      * @see com.github.naoghuman.lib.database.core.CrudService#update(java.lang.Object) 
      */
@@ -154,9 +179,9 @@ public interface CrudService {
      * primary key. If the entity instance is contained in the persistence 
      * context, it is returned from there.
      * 
-     * @param <T>
-     * @param type
-     * @param id
+     * @param <T> the type of the entity
+     * @param type the entity class
+     * @param id the primary key
      * @return 
      */
     public <T> T findById(final Class<T> type, final Object id);
@@ -164,8 +189,8 @@ public interface CrudService {
     /**
      * TODO Add JavaDoc
      * 
-     * @param <T>
-     * @param type
+     * @param <T> the type of the entity
+     * @param type the entity class
      * @param queryName
      * @return 
      */
@@ -174,8 +199,8 @@ public interface CrudService {
     /**
      * TODO Add JavaDoc
      * 
-     * @param <T>
-     * @param type
+     * @param <T> the type of the entity
+     * @param type the entity class
      * @param queryName
      * @param resultLimit
      * @return 
@@ -185,8 +210,8 @@ public interface CrudService {
     /**
      * TODO Add JavaDoc
      * 
-     * @param <T>
-     * @param type
+     * @param <T> the type of the entity
+     * @param type the entity class
      * @param queryName
      * @param parameters
      * @return 
@@ -196,8 +221,8 @@ public interface CrudService {
     /**
      * TODO Add JavaDoc
      * 
-     * @param <T>
-     * @param type
+     * @param <T> the type of the entity
+     * @param type the entity class
      * @param queryName
      * @param parameters
      * @param resultLimit
@@ -208,8 +233,8 @@ public interface CrudService {
     /**
      * TODO Add JavaDoc
      * 
-     * @param <T>
-     * @param type
+     * @param <T> the type of the entity
+     * @param type the entity class
      * @param sql
      * @return 
      */
@@ -218,8 +243,8 @@ public interface CrudService {
     /**
      * TODO Add JavaDoc
      * 
-     * @param <T>
-     * @param type
+     * @param <T> the type of the entity
+     * @param type the entity class
      * @param sql
      * @param resultLimit
      * @return 
@@ -229,8 +254,8 @@ public interface CrudService {
     /**
      * TODO Add JavaDoc
      * 
-     * @param <T>
-     * @param type
+     * @param <T> the type of the entity
+     * @param type the entity class
      * @param sql
      * @param parameters
      * @return 
@@ -240,8 +265,8 @@ public interface CrudService {
     /**
      * TODO Add JavaDoc
      * 
-     * @param <T>
-     * @param type
+     * @param <T> the type of the entity
+     * @param type the entity class
      * @param sql
      * @param parameters
      * @param resultLimit

@@ -34,6 +34,7 @@ for more details.
 
 
 #### Additional
+#2 [documentation] Add missing JavaDoc to the Interface CrudService.
 
 
 
