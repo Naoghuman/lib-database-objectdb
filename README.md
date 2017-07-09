@@ -9,7 +9,7 @@ Intention
 Lib-Database-ObjectDB is a library for easy accessing an [ObjectDB] database in 
 a [JavaFX] &amp; [Maven] desktop application.
 
-_Image:_ [UML] Lib-Database-ObjectDB 
+_Image:_ [UML] Lib-Database-ObjectDB  
 ![UML-diagram_Lib-Database-ObjectDB_v0.5.0_2017-07-09_19-21.png][UML-diagram_Lib-Database-ObjectDB_v0.5.0_2017-07-09_19-21]
 
 > __Hint__  
