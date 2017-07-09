@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 PRo
+ * Copyright (C) 2015 Naoghuman
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,10 +16,10 @@
  */
 package com.github.naoghuman.lib.database;
 
-import com.github.naoghuman.lib.logger.api.LoggerFacade;
+import com.github.naoghuman.lib.logger.core.LoggerFacade;
 import static org.junit.Assert.assertTrue;
 
-import com.github.naoghuman.lib.database.api.DatabaseFacade;
+import com.github.naoghuman.lib.database.core.DatabaseFacade;
 import java.util.List;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -27,7 +27,7 @@ import org.junit.Test;
 
 /**
  *
- * @author PRo
+ * @author Naoghuman
  */
 public class PrimitiveTypesEntityTest {
     

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 PRo
+ * Copyright (C) 2015 Naoghuman
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@ package com.github.naoghuman.lib.database;
 
 /**
  *
- * @author PRo
+ * @author Naoghuman
  */
 public class EmbbededTest {
     

@@ -1,5 +1,5 @@
-/*
- * Copyright (C) 2015 Naoghuman
+/**
+ * Copyright (C) 2017 Naoghuman
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,12 +14,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.github.naoghuman.lib.database;
 
 /**
- *
- * @author Naoghuman
+ * Contains the implementation for the library <code>Lib-Database-ObjectDB</code>.
  */
-public class EmbbedableEntity {
-    
-}
+package com.github.naoghuman.lib.database.core;

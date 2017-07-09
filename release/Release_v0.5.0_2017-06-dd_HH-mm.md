@@ -43,6 +43,7 @@ Naoghuman
 
 
 [//]: # (Issues which will be integrated in this release)
+#25 [Api] Update the packages, classes and interfaces to reflect my library conventions.
 
 
 
