@@ -28,6 +28,7 @@ for more details.
 
 
 #### Refactoring
+#23 [pom] Update dependencies to the libraries.
 #22 [pom] Remove dependency to `maven-release-plugin`.
 
 

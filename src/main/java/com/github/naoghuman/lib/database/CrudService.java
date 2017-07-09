@@ -16,7 +16,7 @@
  */
 package com.github.naoghuman.lib.database;
 
-import com.github.naoghuman.lib.logger.api.LoggerFacade;
+import com.github.naoghuman.lib.logger.core.LoggerFacade;
 import com.github.naoghuman.lib.database.api.ICrudService;
 import java.util.List;
 import java.util.Map;
