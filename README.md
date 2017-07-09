@@ -711,5 +711,6 @@ You can reach me under <peter.rogge@yahoo.de>.
 [Overview from all releases in Lib-Database-ObjectDB]:https://github.com/Naoghuman/lib-database-objectdb/releases
 [Pull Request]:https://help.github.com/articles/using-pull-requests
 [Release v0.4.1 (05.22.2017)]:https://github.com/Naoghuman/lib-database-objectdb/releases/tag/v0.4.1
+[UML]:https://en.wikipedia.org/wiki/Unified_Modeling_Language
 
 
