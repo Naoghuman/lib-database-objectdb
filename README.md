@@ -9,6 +9,13 @@ Intention
 Lib-Database-ObjectDB is a library for easy accessing an [ObjectDB] database in 
 a [JavaFX] &amp; [Maven] desktop application.
 
+_Image:_ [UML] Lib-Database-ObjectDB 
+![UML-diagram_Lib-Database-ObjectDB_v0.5.0_2017-07-09_19-21.png][UML-diagram_Lib-Database-ObjectDB_v0.5.0_2017-07-09_19-21]
+
+> __Hint__  
+> The `UML` diagram is created with the `Online Modeling Platform` [GenMyModel].
+
+
 Current `version` is `0.4.1` (05.22.2017).
 
 
@@ -674,10 +681,16 @@ You can reach me under <peter.rogge@yahoo.de>.
 
 
 
+[//]: # (Images)
+[UML-diagram_Lib-Database-ObjectDB_v0.5.0_2017-07-09_19-21]:https://user-images.githubusercontent.com/8161815/27996146-0b8b4310-64dc-11e7-9f68-41967874fd32.png
+
+
+
 [//]: # (Links)
 [Eclipse]:https://www.eclipse.org/
 [FXML]:http://docs.oracle.com/javafx/2/fxml_get_started/jfxpub-fxml_get_started.htm
 [General Public License 3.0]:http://www.gnu.org/licenses/gpl-3.0.en.html
+[GenMyModel]:https://www.genmymodel.com/
 [IntelliJ IDEA]:http://www.jetbrains.com/idea/
 [Issue]:https://github.com/Naoghuman/lib-database-objectdb/issues
 [JavaDoc]:http://www.oracle.com/technetwork/java/javase/documentation/index-jsp-135444.html
