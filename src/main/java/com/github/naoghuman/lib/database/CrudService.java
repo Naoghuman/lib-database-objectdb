@@ -27,13 +27,18 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**
- * The implementation from the Interface {@link com.github.naoghuman.lib.database.api.ICrudService}.<br />
+ * The implementation from the Interface {@link com.github.naoghuman.lib.database.api.ICrudService}.<br>
  * Access to this class is over the facade {@link com.github.naoghuman.lib.database.api.DatabaseFacade}.
+ * <p>
+ * Deprecated since 0.5.0. Use {@link com.github.naoghuman.lib.database.internal.DefaultCrudService}
+ * instead.
  * 
  * @author PRo
  * @see com.github.naoghuman.lib.database.api.ICrudService
  * @see com.github.naoghuman.lib.database.api.DatabaseFacade
+ * @see com.github.naoghuman.lib.database.internal.DefaultCrudService
  */
+@Deprecated
 public final class CrudService implements ICrudService {
     
     private EntityManager entityManager = null;

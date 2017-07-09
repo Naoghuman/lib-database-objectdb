@@ -21,14 +21,19 @@ import java.util.Map;
 import javax.persistence.EntityManager;
 
 /**
- * The <code>Interface</code> for the class {@link com.github.naoghuman.lib.database.CrudService}.<br />
+ * The <code>Interface</code> for the class {@link com.github.naoghuman.lib.database.CrudService}.<br>
  * A common <code>Interface</code> for all CRUD-Component implementations. The
  * type of the entity is specified in the implementation.
+ * <p>
+ * Deprecated since 0.5.0. Use {@link com.github.naoghuman.lib.database.core.CrudService}
+ * instead.
  *
  * @author PRo
  * @see com.github.naoghuman.lib.database.CrudService
  * @see com.github.naoghuman.lib.database.api.DatabaseFacade
+ * @see com.github.naoghuman.lib.database.core.CrudService
  */
+@Deprecated
 public interface ICrudService {
     
     /**
@@ -39,6 +44,7 @@ public interface ICrudService {
      * <li>{@link javax.persistence.EntityTransaction#begin()}</li>
      * </ul>
      */
+    @Deprecated
     public void beginTransaction();
     
     /**
@@ -51,6 +57,7 @@ public interface ICrudService {
      * <li>{@link javax.persistence.EntityManager#clear()}</li>
      * </ul>
      */
+    @Deprecated
     public void commitTransaction();
     
     /**
@@ -59,6 +66,7 @@ public interface ICrudService {
      * @param table The table which entitys should be counted.
      * @return The number of entitys in the table or -1 if the table doesn't exists.
      */
+    @Deprecated
     public Long count(String table);
     
     /**
@@ -71,6 +79,7 @@ public interface ICrudService {
      * @return 
      * @see ICrudService#create(java.lang.Object, java.lang.Boolean)
      */
+    @Deprecated
     public <T> T create(T entity);
     
     /**
@@ -91,6 +100,7 @@ public interface ICrudService {
      * @return 
      * @see ICrudService#create(java.lang.Object) 
      */
+    @Deprecated
     public <T> T create(T entity, Boolean isSingleTransaction);
     
     /**
@@ -103,6 +113,7 @@ public interface ICrudService {
      * @param id 
      * @see ICrudService#delete(java.lang.Class, java.lang.Object, java.lang.Boolean) 
      */
+    @Deprecated
     public <T> void delete(Class<T> type, Object id);
     
     /**
@@ -114,6 +125,7 @@ public interface ICrudService {
      * @param isSingleTransaction 
      * @see ICrudService#delete(java.lang.Class, java.lang.Object) 
      */
+    @Deprecated
     public <T> void delete(Class<T> type, Object id, Boolean isSingleTransaction);
     
     /**
@@ -121,6 +133,7 @@ public interface ICrudService {
      * 
      * @return The EntityManager.
      */
+    @Deprecated
     public EntityManager getEntityManager();
     
     /**
@@ -133,6 +146,7 @@ public interface ICrudService {
      * @return 
      * @see ICrudService#update(java.lang.Object, java.lang.Boolean) 
      */
+    @Deprecated
     public <T> T update(T entity);
     
     /**
@@ -144,6 +158,7 @@ public interface ICrudService {
      * @return 
      * @see ICrudService#update(java.lang.Object) 
      */
+    @Deprecated
     public <T> T update(T entity, Boolean isSingleTransaction);
     
     /**
@@ -156,6 +171,7 @@ public interface ICrudService {
      * @param id
      * @return 
      */
+    @Deprecated
     public <T> T findById(Class<T> type, Object id);
     
     /**
@@ -166,6 +182,7 @@ public interface ICrudService {
      * @param queryName
      * @return 
      */
+    @Deprecated
     public <T> List<T> findByNamedQuery(Class<T> type, String queryName);
     
     /**
@@ -177,6 +194,7 @@ public interface ICrudService {
      * @param resultLimit
      * @return 
      */
+    @Deprecated
     public <T> List<T> findByNamedQuery(Class<T> type, String queryName, int resultLimit);
     
     /**
@@ -188,6 +206,7 @@ public interface ICrudService {
      * @param parameters
      * @return 
      */
+    @Deprecated
     public <T> List<T> findByNamedQuery(Class<T> type, String queryName, Map<String, Object> parameters);
     
     /**
@@ -200,6 +219,7 @@ public interface ICrudService {
      * @param resultLimit
      * @return 
      */
+    @Deprecated
     public <T> List<T> findByNamedQuery(Class<T> type, String queryName, Map<String, Object> parameters, int resultLimit);
     
     /**
@@ -210,6 +230,7 @@ public interface ICrudService {
      * @param sql
      * @return 
      */
+    @Deprecated
     public <T> List<T> findByNativeQuery(Class<T> type, String sql);
     
     /**
@@ -221,6 +242,7 @@ public interface ICrudService {
      * @param resultLimit
      * @return 
      */
+    @Deprecated
     public <T> List<T> findByNativeQuery(Class<T> type, String sql, int resultLimit);
     
     /**
@@ -232,6 +254,7 @@ public interface ICrudService {
      * @param parameters
      * @return 
      */
+    @Deprecated
     public <T> List<T> findByNativeQuery(Class<T> type, String sql, Map<String, Object> parameters);
     
     /**
@@ -244,6 +267,7 @@ public interface ICrudService {
      * @param resultLimit
      * @return 
      */
+    @Deprecated
     public <T> List<T> findByNativeQuery(Class<T> type, String sql, Map<String, Object> parameters, int resultLimit);
     
     /**
@@ -251,6 +275,7 @@ public interface ICrudService {
      * 
      * @param name 
      */
+    @Deprecated
     public void shutdown(String name);
     
 }

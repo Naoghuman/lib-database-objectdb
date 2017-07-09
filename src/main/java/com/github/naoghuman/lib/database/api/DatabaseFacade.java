@@ -23,10 +23,15 @@ import javax.persistence.EntityManager;
 /**
  * The facade {@link com.github.naoghuman.lib.database.api.DatabaseFacade} provides access to
  * the action methods during the Interface {@link com.github.naoghuman.lib.database.api.ILibDatabase}.
+ * <p>
+ * Deprecated since 0.5.0. Use {@link com.github.naoghuman.lib.database.core.DatabaseFacade}
+ * instead.
  *
  * @author PRo
  * @see com.github.naoghuman.lib.database.api.ILibDatabase
+ * @see com.github.naoghuman.lib.database.core.DatabaseFacade
  */
+@Deprecated
 public final class DatabaseFacade implements ILibDatabase {
     
     private static final Optional<DatabaseFacade> instance = Optional.of(new DatabaseFacade());
@@ -36,6 +41,7 @@ public final class DatabaseFacade implements ILibDatabase {
      * 
      * @return a singleton instance from the class <code>DatabaseFacade</code>.
      */
+    @Deprecated
     public static final DatabaseFacade getDefault() {
         return instance.get();
     }
@@ -50,41 +56,49 @@ public final class DatabaseFacade implements ILibDatabase {
         database = new LibDatabase();
     }
 
+    @Deprecated
     @Override
     public void drop(String database) {
         this.database.drop(database);
     }
 
+    @Deprecated
     @Override
     public ICrudService getCrudService() {
         return database.getCrudService();
     }
 
+    @Deprecated
     @Override
     public ICrudService getCrudService(String name) {
         return database.getCrudService(name);
     }
 
+    @Deprecated
     @Override
     public EntityManager getEntityManager(String name) {
         return database.getEntityManager(name);
     }
 
+    @Deprecated
     @Override
     public void register(String database) {
         this.database.register(database);
     }
 
+    @Deprecated
     @Override
     public void removeCrudService(String name) {
         database.removeCrudService(name);
     }
 
+    @Deprecated
     @Override
     public void removeEntityManager(String name) {
         database.removeEntityManager(name);
     }
 
+    @Deprecated
     @Override
     public void shutdown() {
         database.shutdown();

@@ -18,4 +18,5 @@
 /**
  * Contains the <code>API</code> for the library <code>Lib-Database-ObjectDB</code>.
  */
+@Deprecated
 package com.github.naoghuman.lib.database.api;

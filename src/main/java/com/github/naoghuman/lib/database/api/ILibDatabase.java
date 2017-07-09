@@ -19,14 +19,19 @@ package com.github.naoghuman.lib.database.api;
 import javax.persistence.EntityManager;
 
 /**
- * The <code>Interface</code> for the class {@link com.github.naoghuman.lib.database.LibDatabase}.<br />
+ * The <code>Interface</code> for the class {@link com.github.naoghuman.lib.database.LibDatabase}.<br>
  * Over the facade {@link com.github.naoghuman.lib.database.api.DatabaseFacade} you can access
  * the methods in this <code>Interface</code>.
+ * <p>
+ * Deprecated since 0.5.0. Use {@link com.github.naoghuman.lib.database.core.Database}
+ * instead.
  *
  * @author PRo
  * @see com.github.naoghuman.lib.database.LibDatabase
  * @see com.github.naoghuman.lib.database.api.DatabaseFacade
+ * @see com.github.naoghuman.lib.database.core.Database
  */
+@Deprecated
 public interface ILibDatabase {
     
     /**
@@ -35,6 +40,7 @@ public interface ILibDatabase {
      * 
      * @param database The database which should be dropped.
      */
+    @Deprecated
     public void drop(String database);
     
     /**
@@ -43,6 +49,7 @@ public interface ILibDatabase {
      * 
      * @return The crud service.
      */
+    @Deprecated
     public ICrudService getCrudService();
     
     /**
@@ -52,6 +59,7 @@ public interface ILibDatabase {
      * @param name The name from the <code>ICrudService</code>.
      * @return The <code>ICrudService</code>.
      */
+    @Deprecated
     public ICrudService getCrudService(String name);
     
     /**
@@ -61,6 +69,7 @@ public interface ILibDatabase {
      * @param name The name from the EntityManager.
      * @return The EntityManager.
      */
+    @Deprecated
     public EntityManager getEntityManager(String name);
     
     /**
@@ -72,6 +81,7 @@ public interface ILibDatabase {
      * 
      * @param database The name for the database which should be created.
      */
+    @Deprecated
     public void register(String database);
     
     /**
@@ -82,6 +92,7 @@ public interface ILibDatabase {
      * @param name The name for the <code>ICrudService</code> which should be removed.
      * @see com.github.naoghuman.lib.database.api.ILibDatabase#removeEntityManager(java.lang.String)
      */
+    @Deprecated
     public void removeCrudService(String name);
     
     /**
@@ -92,6 +103,7 @@ public interface ILibDatabase {
      * @param name The name for the <code>EntityManager</code> which should be removed.
      * @see com.github.naoghuman.lib.database.api.ILibDatabase#removeCrudService(java.lang.String)
      */
+    @Deprecated
     public void removeEntityManager(String name);
     
     /**
@@ -99,6 +111,7 @@ public interface ILibDatabase {
      * 
      * @see com.github.naoghuman.lib.database.api.ILibDatabase#register(java.lang.String)
      */
+    @Deprecated
     public void shutdown();
     
 }

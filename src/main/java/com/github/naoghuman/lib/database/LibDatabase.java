@@ -27,13 +27,18 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 /**
- * The implementation from the Interface {@link com.github.naoghuman.lib.database.api.ILibDatabase}.<br />
+ * The implementation from the Interface {@link com.github.naoghuman.lib.database.api.ILibDatabase}.<br>
  * Access to this class is over the facade {@link com.github.naoghuman.lib.database.api.DatabaseFacade}.
+ * <p>
+ * Deprecated since 0.5.0. Use {@link com.github.naoghuman.lib.database.internal.DefaultDatabase}
+ * instead.
  * 
  * @author PRo
  * @see com.github.naoghuman.lib.database.api.ILibDatabase
  * @see com.github.naoghuman.lib.database.api.DatabaseFacade
+ * @see com.github.naoghuman.lib.database.internal.DefaultDatabase
  */
+@Deprecated
 public final class LibDatabase implements ILibDatabase {
     
     private static final String DATABASE_PATH =
@@ -50,8 +55,10 @@ public final class LibDatabase implements ILibDatabase {
     /**
      * Default contructor from the class {@link com.github.naoghuman.lib.database.LibDatabase}.
      */
+    @Deprecated
     public LibDatabase() { }
     
+    @Deprecated
     @Override
     public void drop(String database) {
         if (!database.endsWith(SUFFIX_ODB)) {
@@ -67,11 +74,13 @@ public final class LibDatabase implements ILibDatabase {
         }
     }
 
+    @Deprecated
     @Override
     public ICrudService getCrudService() {
         return this.getCrudService(DEFAULT);
     }
 
+    @Deprecated
     @Override
     public ICrudService getCrudService(String name) {
         if (!CRUDSERVICES.containsKey(name)) {
@@ -83,11 +92,13 @@ public final class LibDatabase implements ILibDatabase {
         return CRUDSERVICES.get(name);
     }
 
+    @Deprecated
     @Override
     public EntityManager getEntityManager(String name) {
         return this.getCrudService(name).getEntityManager();
     }
     
+    @Deprecated
     @Override
     public void register(String database) {
         LoggerFacade.getDefault().own(this.getClass(),
@@ -103,6 +114,7 @@ public final class LibDatabase implements ILibDatabase {
         }
     }
     
+    @Deprecated
     @Override
     public void removeCrudService(String name) {
         if (!CRUDSERVICES.containsKey(name)) {
@@ -119,11 +131,13 @@ public final class LibDatabase implements ILibDatabase {
         CRUDSERVICES.remove(name);
     }
 
+    @Deprecated
     @Override
     public void removeEntityManager(String name) {
         this.removeCrudService(name);
     }
 
+    @Deprecated
     @Override
     public void shutdown() {
         LoggerFacade.getDefault().own(this.getClass(), "Shutdown ObjectDB"); // NOI18N
