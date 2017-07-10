@@ -52,7 +52,7 @@ Examples<a name="Examples" />
 public class StartApplication extends Application {
     ...
     @Override
-public void init() throws Exception {
+    public void init() throws Exception {
         // Register the resource-bundle
         PropertiesFacade.getDefault().register(KEY__APPLICATION__RESOURCE_BUNDLE);
         ...
@@ -62,8 +62,8 @@ public void init() throws Exception {
 }
 
 public interface IPropertiesConfiguration {
-public static final String KEY__APPLICATION__RESOURCE_BUNDLE = "/com/github/naoghuman/abclist/i18n/application.properties"; // NOI18N
-public static final String KEY__TESTDATA_APPLICATION__DATABASE = "application.database"; // NOI18N
+    public static final String KEY__APPLICATION__RESOURCE_BUNDLE = "/com/github/naoghuman/abclist/i18n/application.properties"; // NOI18N
+    public static final String KEY__TESTDATA_APPLICATION__DATABASE = "application.database"; // NOI18N
     ...
 }
 ```
@@ -73,7 +73,7 @@ public static final String KEY__TESTDATA_APPLICATION__DATABASE = "application.da
 
 ```java
 public class SqlProvider ... {
-public void createExercise(final Exercise exercise) {
+    public void createExercise(final Exercise exercise) {
         final StopWatch stopWatch = new StopWatch();
         stopWatch.start();
                 
@@ -84,7 +84,7 @@ public void createExercise(final Exercise exercise) {
         stopWatch.stop();
     }
     ...
-public void updateExercise(final Exercise exercise) {
+    public void updateExercise(final Exercise exercise) {
         final StopWatch stopWatch = new StopWatch();
         stopWatch.start();
         
@@ -128,7 +128,7 @@ final class ExerciseSqlService ... {
 public class Exercise implements Comparable<Exercise>, Externalizable, IDefaultConfiguration, IExerciseConfiguration {
     ...
 
-public Exercise(long id, long topicId, long generationTime, boolean consolidated, boolean ready) {
+    public Exercise(long id, long topicId, long generationTime, boolean consolidated, boolean ready) {
         this.init(id, topicId, generationTime, consolidated, ready);
     }
     
@@ -146,7 +146,7 @@ public Exercise(long id, long topicId, long generationTime, boolean consolidated
 
     @Id
     @Column(name = EXERCISE__COLUMN_NAME__ID)
-public long getId() {
+    public long getId() {
         if (idProperty == null) {
             return _id;
         } else {
@@ -154,7 +154,7 @@ public long getId() {
         }
     }
 
-public final void setId(long id) {
+    public final void setId(long id) {
         if (idProperty == null) {
             _id = id;
         } else {
@@ -162,7 +162,7 @@ public final void setId(long id) {
         }
     }
 
-public LongProperty idProperty() {
+    public LongProperty idProperty() {
         if (idProperty == null) {
             idProperty = new SimpleLongProperty(this, EXERCISE__COLUMN_NAME__ID, _id);
         }
@@ -174,7 +174,7 @@ public LongProperty idProperty() {
     ...
 
     @Override
-public String toString() {
+    public String toString() {
         return new ToStringBuilder(this)
                 .append(EXERCISE__COLUMN_NAME__ID,              this.getId())
                 .append(EXERCISE__COLUMN_NAME__TOPIC_ID,        this.getTopicId())
@@ -187,7 +187,7 @@ public String toString() {
     }
     
     @Override
-public void writeExternal(ObjectOutput out) throws IOException {
+    public void writeExternal(ObjectOutput out) throws IOException {
         out.writeLong(this.getId());
         out.writeLong(this.getTopicId());
         out.writeLong(this.getGenerationTime());
@@ -198,7 +198,7 @@ public void writeExternal(ObjectOutput out) throws IOException {
     }
 
     @Override
-public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
         this.setId(in.readLong());
         this.setTopicId(in.readLong());
         this.setGenerationTime(in.readLong());
@@ -210,8 +210,8 @@ public void readExternal(ObjectInput in) throws IOException, ClassNotFoundExcept
 }
 
 public interface IExerciseConfiguration {
-public static final String NAMED_QUERY__NAME__FIND_ALL_WITH_TOPIC_ID = "Exercise.findAllWithTopicId"; // NOI18N
-public static final String NAMED_QUERY__QUERY__FIND_ALL_WITH_TOPIC_ID = "SELECT e FROM Exercise e WHERE e.topicId == :topicId"; // NOI18N
+    public static final String NAMED_QUERY__NAME__FIND_ALL_WITH_TOPIC_ID = "Exercise.findAllWithTopicId"; // NOI18N
+    public static final String NAMED_QUERY__QUERY__FIND_ALL_WITH_TOPIC_ID = "SELECT e FROM Exercise e WHERE e.topicId == :topicId"; // NOI18N
     ...
 }
 ```
