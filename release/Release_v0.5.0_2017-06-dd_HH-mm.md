@@ -6,8 +6,10 @@ for more details.
 
 
 #### Summary
-* ...
-* ...
+* This is a major update.
+* Create new package structure to reflect my new library conventions.
+* Deprecated all old classes and interfaces.
+* Update the ReadMe to reflect the changes.
 
 
 

@@ -16,7 +16,7 @@ _Image:_ [UML] Lib-Database-ObjectDB
 > The `UML` diagram is created with the `Online Modeling Platform` [GenMyModel].
 
 
-Current `version` is `0.4.1` (05.22.2017).
+Current `version` is `0.5.0` (07.11.2017 / MM.dd.yyyy).
 
 
 
@@ -663,9 +663,11 @@ public void shutdown(final String name);
 Download<a name="Download" />
 ---
 
-Current `version` is `0.4.1`. Main points in this release are:
-* This is a minor update.
-* Primarily the section `Examples` in the README is extended.
+Current `version` is `0.5.0`. Main points in this release are:
+* This is a major update.
+* Create new package structure to reflect my new library conventions.
+* Deprecated all old classes and interfaces.
+* Update the ReadMe to reflect the changes.
 
 **Maven coordinates**  
 ```xml
@@ -673,18 +675,18 @@ Current `version` is `0.4.1`. Main points in this release are:
     <dependency>
         <groupId>com.github.naoghuman</groupId>
         <artifactId>lib-database-objectdb</artifactId>
-        <version>0.4.1</version>
+        <version>0.5.0</version>
     </dependency>
     <dependency>
         <groupId>com.github.naoghuman</groupId>
         <artifactId>lib-logger</artifactId>
-        <version>0.4.1</version>
+        <version>0.5.0</version>
     </dependency>
 </dependencies>
 ```
 
 Download:
-* [Release v0.4.1 (05.22.2017)]
+* [Release v0.5.0 (07.11.2017 / MM.dd.yyyy)]
 
 An overview about all existings releases can be found here:
 * [Overview from all releases in Lib-Database-ObjectDB]
@@ -695,13 +697,13 @@ Requirements<a name="Requirements" />
 ---
 
 * On your system you need [JRE 8] or [JDK 8] installed.
-* The library [Lib-Database-ObjectDB-0.4.01.jar](#Installation).
+* The library [lib-database-objectdb-0.5.0.jar](#Installation).
   * Included is the [objectdb-2.7.1_01.jar].
   * Included is the [javax.persistence-2.1.1.jar].
   * Included is the [javax.transaction-1.1.jar].
 
 In the library are following libraries registered as dependencies:
-* The library [Lib-Logger-0.4.1.jar](#Installation).
+* The library [lib-logger-0.5.0.jar](#Installation).
   * Included in `Lib-Logger` is the library [log4j-api-2.8.2.jar].
   * Included is `Lib-Logger` is the library [log4j-core-2.8.2.jar].
 
@@ -786,7 +788,7 @@ You can reach me under <peter.rogge@yahoo.de>.
 [objectdb-2.7.1_01.jar]:http://www.objectdb.com/object/db/database/download
 [Overview from all releases in Lib-Database-ObjectDB]:https://github.com/Naoghuman/lib-database-objectdb/releases
 [Pull Request]:https://help.github.com/articles/using-pull-requests
-[Release v0.4.1 (05.22.2017)]:https://github.com/Naoghuman/lib-database-objectdb/releases/tag/v0.4.1
+[Release v0.5.0 (07.11.2017 / MM.dd.yyyy)]:https://github.com/Naoghuman/lib-database-objectdb/releases/tag/v0.5.0
 [UML]:https://en.wikipedia.org/wiki/Unified_Modeling_Language
 
 
