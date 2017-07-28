@@ -19,14 +19,15 @@ package com.github.naoghuman.lib.database.core;
 import javax.persistence.EntityManager;
 
 /**
- * The {@code Interface} for the implementation class 
+ * The {@code Interface} for the {@code Implementation} {@code Class} 
  * {@link com.github.naoghuman.lib.database.internal.DefaultDatabase}.<br>
  * Over the facade {@link com.github.naoghuman.lib.database.core.DatabaseFacade} 
- * the developer can access to the implementation methods from this {@code Interface}.
+ * the developer can access to the default {@code Implementation} methods from 
+ * this {@code Interface}.
  *
  * @author Naoghuman
- * @see com.github.naoghuman.lib.database.core.DatabaseFacade
- * @see com.github.naoghuman.lib.database.internal.DefaultDatabase
+ * @see    com.github.naoghuman.lib.database.core.DatabaseFacade
+ * @see    com.github.naoghuman.lib.database.internal.DefaultDatabase
  */
 public interface Database {
     
@@ -42,7 +43,8 @@ public interface Database {
      * Returns a {@link com.github.naoghuman.lib.database.core.CrudService} with 
      * the name {@code DEFAULT} which allowed all sql operations.
      * 
-     * @return The crud service.
+     * @return The {@code CrudService}.
+     * @see    com.github.naoghuman.lib.database.core.CrudService
      */
     public CrudService getCrudService();
     
@@ -50,8 +52,9 @@ public interface Database {
      * Returns a named {@link com.github.naoghuman.lib.database.core.CrudService} 
      * which allowed all sql operations.
      * 
-     * @param name The name from the {@code CrudService}.
+     * @param  name The name from the {@code CrudService}.
      * @return The {@code CrudService}.
+     * @see    com.github.naoghuman.lib.database.core.CrudService
      */
     public CrudService getCrudService(final String name);
     
@@ -59,8 +62,9 @@ public interface Database {
      * Returns a named {@link javax.persistence.EntityManager} which allowed 
      * all sql operations.
      * 
-     * @param name The name from the {@code EntityManager}.
+     * @param  name The name from the {@code EntityManager}.
      * @return The {@code EntityManager}.
+     * @see    javax.persistence.EntityManager
      */
     public EntityManager getEntityManager(final String name);
     
@@ -81,7 +85,9 @@ public interface Database {
      * will be removed.
      * 
      * @param name The name for the {@code CrudService} which should be removed.
-     * @see com.github.naoghuman.lib.database.core.Database#removeEntityManager(java.lang.String)
+     * @see   com.github.naoghuman.lib.database.core.CrudService
+     * @see   com.github.naoghuman.lib.database.core.Database#removeEntityManager(java.lang.String)
+     * @see   javax.persistence.EntityManager
      */
     public void removeCrudService(final String name);
     

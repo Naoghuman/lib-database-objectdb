@@ -16,6 +16,6 @@
  */
 
 /**
- * Contains the <code>API</code> for the library <code>Lib-Database-ObjectDB</code>.
+ * Contains the {@code API} for the library {@code Lib-Database-ObjectDB}.
  */
 package com.github.naoghuman.lib.database.internal;

@@ -16,6 +16,6 @@
  */
 
 /**
- * Contains the implementation for the library <code>Lib-Database-ObjectDB</code>.
+ * Contains the {@code Implementation} for the library {@code Lib-Database-ObjectDB}.
  */
 package com.github.naoghuman.lib.database.core;

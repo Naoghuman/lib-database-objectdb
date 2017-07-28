@@ -240,9 +240,9 @@ public final class DatabaseFacade implements Database
 
 ```java
 /**
- * Returns a singleton instance from the class <code>DatabaseFacade</code>.
+ * Returns a singleton instance from the class {@code DatabaseFacade}.
  * 
- * @return a singleton instance from the class <code>DatabaseFacade</code>.
+ * @return a singleton instance from the class {@code DatabaseFacade}.
  */
 public static final DatabaseFacade getDefault();
 ```
@@ -252,16 +252,17 @@ public static final DatabaseFacade getDefault();
 
 ```java
 /**
- * The {@code Interface} for the implementation class 
+ * The {@code Interface} for the {@code Implementation} {@code Class} 
  * {@link com.github.naoghuman.lib.database.internal.DefaultDatabase}.<br>
  * Over the facade {@link com.github.naoghuman.lib.database.core.DatabaseFacade} 
- * the developer can access to the implementation methods from this {@code Interface}.
+ * the developer can access to the default {@code Implementation} methods from 
+ * this {@code Interface}.
  *
  * @author Naoghuman
- * @see com.github.naoghuman.lib.database.core.DatabaseFacade
- * @see com.github.naoghuman.lib.database.internal.DefaultDatabase
+ * @see    com.github.naoghuman.lib.database.core.DatabaseFacade
+ * @see    com.github.naoghuman.lib.database.internal.DefaultDatabase
  */
-public interface Database 
+public interface Database
 ```
 
 ```java
@@ -279,7 +280,8 @@ public void drop(final String database);
  * Returns a {@link com.github.naoghuman.lib.database.core.CrudService} with 
  * the name {@code DEFAULT} which allowed all sql operations.
  * 
- * @return The crud service.
+ * @return The {@code CrudService}.
+ * @see    com.github.naoghuman.lib.database.core.CrudService
  */
 public CrudService getCrudService();
 ```
@@ -289,8 +291,9 @@ public CrudService getCrudService();
  * Returns a named {@link com.github.naoghuman.lib.database.core.CrudService} 
  * which allowed all sql operations.
  * 
- * @param name The name from the {@code CrudService}.
+ * @param  name The name from the {@code CrudService}.
  * @return The {@code CrudService}.
+ * @see    com.github.naoghuman.lib.database.core.CrudService
  */
 public CrudService getCrudService(final String name);
 ```
@@ -300,8 +303,9 @@ public CrudService getCrudService(final String name);
  * Returns a named {@link javax.persistence.EntityManager} which allowed 
  * all sql operations.
  * 
- * @param name The name from the {@code EntityManager}.
+ * @param  name The name from the {@code EntityManager}.
  * @return The {@code EntityManager}.
+ * @see    javax.persistence.EntityManager
  */
 public EntityManager getEntityManager(final String name);
 ```
@@ -326,7 +330,9 @@ public void register(final String database);
  * will be removed.
  * 
  * @param name The name for the {@code CrudService} which should be removed.
- * @see com.github.naoghuman.lib.database.core.Database#removeEntityManager(java.lang.String)
+ * @see   com.github.naoghuman.lib.database.core.CrudService
+ * @see   com.github.naoghuman.lib.database.core.Database#removeEntityManager(java.lang.String)
+ * @see   javax.persistence.EntityManager
  */
 public void removeCrudService(final String name);
 ```
@@ -357,14 +363,14 @@ public void shutdown();
 
 ```java
 /**
- * The {@code Interface} for the default implementation class 
+ * The {@code Interface} for the default {@code Implementation} class 
  * {@link com.github.naoghuman.lib.database.internal.DefaultCrudService}.<br>
- * A common {@code Interface} for all CRUD-Component implementations. The
- * type of the entity is specified in the implementation.
+ * A common {@code Interface} for all CRUD operations. The type of the entity is 
+ * specified in the {@code Implementation}.
  *
  * @author Naoghuman
- * @see com.github.naoghuman.lib.database.core.DatabaseFacade
- * @see com.github.naoghuman.lib.database.internal.DefaultCrudService
+ * @see    com.github.naoghuman.lib.database.core.DatabaseFacade
+ * @see    com.github.naoghuman.lib.database.internal.DefaultCrudService
  */
 public interface CrudService
 ```
@@ -406,9 +412,9 @@ public void commitTransaction();
  * Creates the {@code sql} instruction <i>SELECT COUNT(c) FROM table c</i> which
  * will then executed with {@link javax.persistence.EntityManager#createQuery(java.lang.String, java.lang.Class)}.
  * 
- * @param table The table which entitys should be counted.
+ * @param  table The table which entitys should be counted.
  * @return The number of entitys in the table or {@code -1} if the table doesn't exists.
- * @see javax.persistence.EntityManager#createQuery(java.lang.String, java.lang.Class)
+ * @see    javax.persistence.EntityManager#createQuery(java.lang.String, java.lang.Class)
  */
 public Long count(final String table);
 ```
@@ -421,10 +427,10 @@ public Long count(final String table);
  * Delegates to {@link com.github.naoghuman.lib.database.core.CrudService#create(java.lang.Object, java.lang.Boolean)}
  * with the parameter {@code isSingleTransaction == true}.
  * 
- * @param <T> the type of the entity
- * @param entity entity instance
+ * @param  <T> the type of the entity
+ * @param  entity entity instance
  * @return a created persisted instance which the given type
- * @see com.github.naoghuman.lib.database.core.CrudService#create(java.lang.Object, java.lang.Boolean)
+ * @see    com.github.naoghuman.lib.database.core.CrudService#create(java.lang.Object, java.lang.Boolean)
  */
 public <T> T create(final T entity);
 ```
@@ -444,16 +450,16 @@ public <T> T create(final T entity);
  * <li>if {@code isSingleTransaction == true} then {@link com.github.naoghuman.lib.database.core.CrudService#commitTransaction()}</li>
  * </ul>
  * 
- * @param <T> the type of the entity
- * @param entity entity instance
- * @param isSingleTransaction flag if is transaction a single transaction or not.
+ * @param  <T>    the type of the entity
+ * @param  entity entity instance
+ * @param  isSingleTransaction flag if is transaction a single transaction or not.
  * @return a created persisted instance which the given type
- * @see com.github.naoghuman.lib.database.core.CrudService#beginTransaction()
- * @see com.github.naoghuman.lib.database.core.CrudService#commitTransaction()
- * @see com.github.naoghuman.lib.database.core.CrudService#create(java.lang.Object)
- * @see javax.persistence.EntityManager#flush()
- * @see javax.persistence.EntityManager#persist(java.lang.Object)
- * @see javax.persistence.EntityManager#refresh(java.lang.Object)
+ * @see    com.github.naoghuman.lib.database.core.CrudService#beginTransaction()
+ * @see    com.github.naoghuman.lib.database.core.CrudService#commitTransaction()
+ * @see    com.github.naoghuman.lib.database.core.CrudService#create(java.lang.Object)
+ * @see    javax.persistence.EntityManager#flush()
+ * @see    javax.persistence.EntityManager#persist(java.lang.Object)
+ * @see    javax.persistence.EntityManager#refresh(java.lang.Object)
  */
 public <T> T create(final T entity, final Boolean isSingleTransaction);
 ```
@@ -467,7 +473,7 @@ public <T> T create(final T entity, final Boolean isSingleTransaction);
  * @param <T> the type of the entity
  * @param type the entity class
  * @param id the primary key
- * @see com.github.naoghuman.lib.database.core.CrudService#delete(java.lang.Class, java.lang.Object, java.lang.Boolean) 
+ * @see   com.github.naoghuman.lib.database.core.CrudService#delete(java.lang.Class, java.lang.Object, java.lang.Boolean) 
  */
 public <T> void delete(final Class<T> type, final Object id);
 ```
@@ -488,9 +494,9 @@ public <T> void delete(final Class<T> type, final Object id);
  * @param type the entity class
  * @param id the primary key
  * @param isSingleTransaction flag if is transaction a single transaction or not.
- * @see com.github.naoghuman.lib.database.core.CrudService#delete(java.lang.Class, java.lang.Object)
- * @see javax.persistence.EntityManager#getReference(java.lang.Class, java.lang.Object)
- * @see javax.persistence.EntityManager#remove(java.lang.Object)
+ * @see   com.github.naoghuman.lib.database.core.CrudService#delete(java.lang.Class, java.lang.Object)
+ * @see   javax.persistence.EntityManager#getReference(java.lang.Class, java.lang.Object)
+ * @see   javax.persistence.EntityManager#remove(java.lang.Object)
  */
 public <T> void delete(final Class<T> type, final Object id, final Boolean isSingleTransaction);
 ```
@@ -510,10 +516,10 @@ public EntityManager getEntityManager();
  * Delegates to {@link com.github.naoghuman.lib.database.core.CrudService#update(java.lang.Object, java.lang.Boolean) }
  * with the parameter {@code isSingleTransaction == true}.
  * 
- * @param <T> the type of the entity
- * @param entity entity instance
+ * @param  <T> the type of the entity
+ * @param  entity entity instance
  * @return 
- * @see com.github.naoghuman.lib.database.core.CrudService#update(java.lang.Object, java.lang.Boolean) 
+ * @see    com.github.naoghuman.lib.database.core.CrudService#update(java.lang.Object, java.lang.Boolean) 
  */
 public <T> T update(final T entity);
 ```
@@ -522,11 +528,11 @@ public <T> T update(final T entity);
 /**
  * Merge the state of the given entity into the current persistence context.
  * 
- * @param <T> the type of the entity
- * @param entity entity instance
- * @param isSingleTransaction flag if is transaction a single transaction or not.
+ * @param  <T> the type of the entity
+ * @param  entity entity instance
+ * @param  isSingleTransaction flag if is transaction a single transaction or not.
  * @return 
- * @see com.github.naoghuman.lib.database.core.CrudService#update(java.lang.Object) 
+ * @see    com.github.naoghuman.lib.database.core.CrudService#update(java.lang.Object) 
  */
 public <T> T update(final T entity, final Boolean isSingleTransaction);
 ```
@@ -537,9 +543,9 @@ public <T> T update(final T entity, final Boolean isSingleTransaction);
  * primary key. If the entity instance is contained in the persistence 
  * context, it is returned from there.
  * 
- * @param <T> the type of the entity
- * @param type the entity class
- * @param id the primary key
+ * @param  <T> the type of the entity
+ * @param  type the entity class
+ * @param  id the primary key
  * @return 
  */
 public <T> T findById(final Class<T> type, final Object id);
@@ -549,9 +555,9 @@ public <T> T findById(final Class<T> type, final Object id);
 /**
  * TODO Add JavaDoc
  * 
- * @param <T> the type of the entity
- * @param type the entity class
- * @param queryName
+ * @param  <T> the type of the entity
+ * @param  type the entity class
+ * @param  queryName
  * @return 
  */
 public <T> List<T> findByNamedQuery(final Class<T> type, final String queryName);
@@ -561,10 +567,10 @@ public <T> List<T> findByNamedQuery(final Class<T> type, final String queryName)
 /**
  * TODO Add JavaDoc
  * 
- * @param <T> the type of the entity
- * @param type the entity class
- * @param queryName
- * @param resultLimit
+ * @param  <T> the type of the entity
+ * @param  type the entity class
+ * @param  queryName
+ * @param  resultLimit
  * @return 
  */
 public <T> List<T> findByNamedQuery(final Class<T> type, final String queryName, final int resultLimit);
@@ -574,10 +580,10 @@ public <T> List<T> findByNamedQuery(final Class<T> type, final String queryName,
 /**
  * TODO Add JavaDoc
  * 
- * @param <T> the type of the entity
- * @param type the entity class
- * @param queryName
- * @param parameters
+ * @param  <T> the type of the entity
+ * @param  type the entity class
+ * @param  queryName
+ * @param  parameters
  * @return 
  */
 public <T> List<T> findByNamedQuery(final Class<T> type, final String queryName, final Map<String, Object> parameters);
@@ -587,11 +593,11 @@ public <T> List<T> findByNamedQuery(final Class<T> type, final String queryName,
 /**
  * TODO Add JavaDoc
  * 
- * @param <T> the type of the entity
- * @param type the entity class
- * @param queryName
- * @param parameters
- * @param resultLimit
+ * @param  <T> the type of the entity
+ * @param  type the entity class
+ * @param  queryName
+ * @param  parameters
+ * @param  resultLimit
  * @return 
  */
 public <T> List<T> findByNamedQuery(final Class<T> type, final String queryName, final Map<String, Object> parameters, final int resultLimit);
@@ -601,9 +607,9 @@ public <T> List<T> findByNamedQuery(final Class<T> type, final String queryName,
 /**
  * TODO Add JavaDoc
  * 
- * @param <T> the type of the entity
- * @param type the entity class
- * @param sql
+ * @param  <T> the type of the entity
+ * @param  type the entity class
+ * @param  sql
  * @return 
  */
 public <T> List<T> findByNativeQuery(final Class<T> type, final String sql);
@@ -613,10 +619,10 @@ public <T> List<T> findByNativeQuery(final Class<T> type, final String sql);
 /**
  * TODO Add JavaDoc
  * 
- * @param <T> the type of the entity
- * @param type the entity class
- * @param sql
- * @param resultLimit
+ * @param  <T> the type of the entity
+ * @param  type the entity class
+ * @param  sql
+ * @param  resultLimit
  * @return 
  */
 public <T> List<T> findByNativeQuery(final Class<T> type, final String sql, final int resultLimit);
@@ -626,10 +632,10 @@ public <T> List<T> findByNativeQuery(final Class<T> type, final String sql, fina
 /**
  * TODO Add JavaDoc
  * 
- * @param <T> the type of the entity
- * @param type the entity class
- * @param sql
- * @param parameters
+ * @param  <T> the type of the entity
+ * @param  type the entity class
+ * @param  sql
+ * @param  parameters
  * @return 
  */
 public <T> List<T> findByNativeQuery(final Class<T> type, final String sql, final Map<String, Object> parameters);
@@ -639,11 +645,11 @@ public <T> List<T> findByNativeQuery(final Class<T> type, final String sql, fina
 /**
  * TODO Add JavaDoc
  * 
- * @param <T> the type of the entity
- * @param type the entity class
- * @param sql
- * @param parameters
- * @param resultLimit
+ * @param  <T> the type of the entity
+ * @param  type the entity class
+ * @param  sql
+ * @param  parameters
+ * @param  resultLimit
  * @return 
  */
 public <T> List<T> findByNativeQuery(final Class<T> type, final String sql, final Map<String, Object> parameters, final int resultLimit);

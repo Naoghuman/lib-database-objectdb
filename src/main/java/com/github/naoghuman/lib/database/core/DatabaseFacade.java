@@ -35,9 +35,9 @@ public final class DatabaseFacade implements Database {
     private static final Optional<DatabaseFacade> instance = Optional.of(new DatabaseFacade());
 
     /**
-     * Returns a singleton instance from the class <code>DatabaseFacade</code>.
+     * Returns a singleton instance from the class {@code DatabaseFacade}.
      * 
-     * @return a singleton instance from the class <code>DatabaseFacade</code>.
+     * @return a singleton instance from the class {@code DatabaseFacade}.
      */
     public static final DatabaseFacade getDefault() {
         return instance.get();

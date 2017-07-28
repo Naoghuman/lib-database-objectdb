@@ -28,6 +28,7 @@ for more details.
 
 
 #### Refactoring
+#27 [JavaDoc] Use {@code xy} instead the tag <code> in JavaDoc.
 
 
 
