@@ -30,6 +30,7 @@ for more details.
 #### Refactoring
 #31 [UnitTests] Move the UnitTests in other package.
 #30 [pom] Update dependencies to the libraries.
+#28 [UML] Add missing dependency between Database and DatabaseFacade.
 #27 [JavaDoc] Use {@code xy} instead the tag <code> in JavaDoc.
 
 
