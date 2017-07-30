@@ -6,8 +6,9 @@ for more details.
 
 
 #### Summary
-* ...
-* ...
+* This is a minor update.
+* Mostly refactore the documentation (ReadMe, JavaDoc).
+* Move the Unittests to new package to reflect my library convention structure.
 
 
 
