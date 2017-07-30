@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.github.naoghuman.lib.database;
+package com.github.naoghuman.lib.database.core;
 
 import java.io.Externalizable;
 import java.io.IOException;
@@ -29,17 +29,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-/**
- *
- * @author Naoghuman
- */
 @Entity
 @Access(AccessType.PROPERTY)
-@Table(name = "CountEntity")
-public class CountEntity  implements Externalizable {
-    
+@Table(name = "ObjectTypesEntity")
+@NamedQueries({
+    @NamedQuery(// need crud
+            name = "ObjectTypesEntity.findAll", 
+            query = "SELECT p from ObjectTypesEntity p")
+})
+public class ObjectTypesEntity implements Externalizable {
+
     private static final long serialVersionUID = 1L;
     
     // START -------------------------------------------------------------------
@@ -73,13 +76,15 @@ public class CountEntity  implements Externalizable {
     }
     // END   -------------------------------------------------------------------
     
+    
     @Override
     public void writeExternal(ObjectOutput out) throws IOException {
-        out.write(this.getId());
+        
     }
 
     @Override
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-        this.setId(in.read());
+        
     }
+    
 }
