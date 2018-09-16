@@ -17,6 +17,7 @@ for more details.
 
 #### Feature
 #38 [stability] Add new class DefaultValidator to internal package.
+#35 [api] Create new class ConverterFacade.
 #34 [api] Create new class DefaultColorConverter.
 #33 [api] Create new class DefaultLocalDateTimeConverter.
 #32 [api] Create new abstract class Converter<T>.
