@@ -20,6 +20,7 @@ for more details.
 
 
 #### Enhancement
+#36 [api] Remove deprecated content.
 
 
 
