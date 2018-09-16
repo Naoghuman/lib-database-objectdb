@@ -16,6 +16,7 @@ for more details.
 
 
 #### Feature
+#38 [stability] Add new class DefaultValidator to internal package.
 
 
 
