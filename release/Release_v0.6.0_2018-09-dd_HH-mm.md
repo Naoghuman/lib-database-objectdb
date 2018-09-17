@@ -25,6 +25,7 @@ for more details.
 
 
 #### Enhancement
+#40 [UnitTest] Add UnitTests for DefaultColorConverter.
 #36 [api] Remove deprecated content.
 
 

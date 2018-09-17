@@ -33,7 +33,6 @@ public final class DefaultColorConverter extends Converter<Color> {
         DefaultValidator.requireNonNull(value);
         
         final StringBuilder sb = new StringBuilder();
-        sb.append(";"); // NOI18N
         sb.append(value.getHue());
         sb.append(";"); // NOI18N
         sb.append(value.getSaturation());
