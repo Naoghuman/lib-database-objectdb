@@ -36,9 +36,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                 <repository>
                     <id>objectdb</id>
                     <name>ObjectDB Repository</name>
-                    <!-- <releases>
+                    <releases>
                         <enabled>true</enabled>
-                    </releases> -->
+                    </releases>
                     <url>http://m2.objectdb.com</url>
                 </repository>
             </repositories>

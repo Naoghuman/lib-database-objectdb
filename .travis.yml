@@ -3,8 +3,7 @@ jdk:
     - oraclejdk8
 sudo: false
 install:
-    - curl -o $HOME/.m2/settings.xml
-      https://github.com/Naoghuman/lib-database-objectdb/blob/master/settings.xml
+    - curl -o $HOME/.m2/settings.xml https://github.com/Naoghuman/lib-database-objectdb/blob/master/settings.xml
     - mvn dependency:go-offline
 script: mvn clean install
 cache:
