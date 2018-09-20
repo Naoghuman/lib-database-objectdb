@@ -22,7 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-            <!-- <pluginRepositories>
+            <pluginRepositories>
                 <pluginRepository>
                     <id>objectdb</id>
                     <name>ObjectDB Repository</name>
@@ -31,7 +31,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                     </releases>
                     <url>http://m2.objectdb.com</url>
                 </pluginRepository>
-            </pluginRepositories> -->
+            </pluginRepositories>
             <repositories>
                 <repository>
                     <id>objectdb</id>
