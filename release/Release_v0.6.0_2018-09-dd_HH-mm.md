@@ -16,6 +16,7 @@ for more details.
 
 
 #### Feature
+#42 [stability] Activate travis ci for this library.
 #38 [stability] Add new class DefaultValidator to internal package.
 #35 [api] Create new class ConverterFacade.
 #34 [api] Create new class DefaultColorConverter.
@@ -49,6 +50,7 @@ Naoghuman
 
 
 [//]: # (Issues which will be integrated in this release)
+#41 [UnitTest] Add UnitTests for DefaultLocalDateTimeConverter.
 
 
 
