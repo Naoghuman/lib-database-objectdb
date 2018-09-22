@@ -22,23 +22,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-            <pluginRepositories>
-                <pluginRepository>
-                    <id>objectdb</id>
-                    <name>ObjectDB Repository</name>
-                    <releases>
-                        <enabled>true</enabled>
-                    </releases>
-                    <url>http://m2.objectdb.com</url>
-                </pluginRepository>
-            </pluginRepositories>
             <repositories>
                 <repository>
                     <id>objectdb</id>
                     <name>ObjectDB Repository</name>
-                    <releases>
-                        <enabled>true</enabled>
-                    </releases>
                     <url>http://m2.objectdb.com</url>
                 </repository>
             </repositories>
