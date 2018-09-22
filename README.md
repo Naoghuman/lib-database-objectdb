@@ -1,6 +1,11 @@
 Lib-Database-ObjectDB
 ===
 
+[![Build Status](https://travis-ci.org/Naoghuman/lib-database-objectdb.svg?branch=master)](https://travis-ci.org/Naoghuman/lib-database-objectdb)
+[![license: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![GitHub release](https://img.shields.io/github/release/Naoghuman/lib-database-objectdb.svg)](https://GitHub.com/Naoghuman/lib-database-objectdb/releases/)
+
+
 
 
 Intention
@@ -14,9 +19,6 @@ _Image:_ [UML] Lib-Database-ObjectDB
 
 > __Hint__  
 > The `UML` diagram is created with the `Online Modeling Platform` [GenMyModel].
-
-
-Current `version` is `0.5.1` (07.30.2017 / MM.dd.yyyy).
 
 
 

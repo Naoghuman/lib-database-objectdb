@@ -16,6 +16,7 @@ for more details.
 
 
 #### Feature
+#43 [documentation] Add badges from img.shield.io to the ReadMe.md.
 #42 [stability] Activate travis ci for this library.
 #38 [stability] Add new class DefaultValidator to internal package.
 #35 [api] Create new class ConverterFacade.
