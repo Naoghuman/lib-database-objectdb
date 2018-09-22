@@ -3,7 +3,7 @@ jdk:
     - oraclejdk8
 sudo: false
 install:
-    - "cp https://github.com/Naoghuman/lib-database-objectdb/blob/master/settings.xml $HOME/.m2/settings.xml"
+    - "cp settings.xml $HOME/.m2/settings.xml"
 script: mvn clean install
 cache:
     directories:
