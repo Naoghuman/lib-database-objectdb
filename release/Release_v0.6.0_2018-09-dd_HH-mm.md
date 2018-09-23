@@ -6,8 +6,11 @@ for more details.
 
 
 #### Summary
-* ...
-* ...
+* This is a mayor update.
+* Bind the github project to travis.com for stability.
+* Add badges from img.shield.io to the ReadMe for additional informations.
+* Add new interface `Converter` to the api. Alloweds to convert objects to 
+  Strings and back again.
 
 
 

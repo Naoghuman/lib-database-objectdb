@@ -789,10 +789,12 @@ public static final ConverterFacade getDefault()
 Download<a name="Download" />
 ---
 
-Current `version` is `0.5.1`. Main points in this release are:
-* This is a minor update.
-* Mostly refactore the documentation (ReadMe, JavaDoc).
-* Move the Unittests to new package to reflect my library convention structure.
+Current `version` is `0.6.0`. Main points in this release are:
+* This is a mayor update.
+* Bind the github project to travis.com for stability.
+* Add badges from img.shield.io to the ReadMe for additional informations.
+* Add new interface `Converter` to the api. Alloweds to convert objects to 
+  Strings and back again.
 
 **Maven coordinates**  
 ```xml
@@ -800,18 +802,18 @@ Current `version` is `0.5.1`. Main points in this release are:
     <dependency>
         <groupId>com.github.naoghuman</groupId>
         <artifactId>lib-database-objectdb</artifactId>
-        <version>0.5.1</version>
+        <version>0.6.0</version>
     </dependency>
     <dependency>
         <groupId>com.github.naoghuman</groupId>
         <artifactId>lib-logger</artifactId>
-        <version>0.5.1</version>
+        <version>0.6.0</version>
     </dependency>
 </dependencies>
 ```
 
 Download:
-* [Release v0.5.1 (07.30.2017 / MM.dd.yyyy)]
+* [Release v0.6.0 (09.24.2017 / MM.dd.yyyy)]
 
 An overview about all existings releases can be found here:
 * [Overview from all releases in Lib-Database-ObjectDB]
@@ -822,15 +824,15 @@ Requirements<a name="Requirements" />
 ---
 
 * On your system you need [JRE 8] or [JDK 8] installed.
-* The library [lib-database-objectdb-0.5.1.jar](#Installation).
-  * Included is the [objectdb-2.7.1_01.jar].
-  * Included is the [javax.persistence-2.1.1.jar].
+* The library [lib-database-objectdb-0.6.0.jar](#Installation).
+  * Included is the [objectdb-2.7.6.jar].
+  * Included is the [javax.persistence-2.2.1.jar].
   * Included is the [javax.transaction-1.1.jar].
 
 In the library are following libraries registered as dependencies:
-* The library [lib-logger-0.5.1.jar](#Installation).
-  * Included in `Lib-Logger` is the library [log4j-api-2.8.2.jar].
-  * Included is `Lib-Logger` is the library [log4j-core-2.8.2.jar].
+* The library [lib-logger-0.6.0.jar](#Installation).
+  * Included in `Lib-Logger` is the library [log4j-api-2.10.0.jar].
+  * Included is `Lib-Logger` is the library [log4j-core-2.10.0.jar].
 
 
 Installation<a name="Installation" />
@@ -899,21 +901,21 @@ You can reach me under <peter.rogge@yahoo.de>.
 [JavaDoc]:http://www.oracle.com/technetwork/java/javase/documentation/index-jsp-135444.html
 [JavaFX]:http://docs.oracle.com/javase/8/javase-clienttechnologies.htm
 [JavaFX Scene Builder]:http://gluonhq.com/labs/scene-builder/
-[javax.persistence-2.1.1.jar]:http://search.maven.org/#artifactdetails|org.eclipse.persistence|javax.persistence|2.1.1|jar
+[javax.persistence-2.2.1.jar]:http://search.maven.org/#artifactdetails|org.eclipse.persistence|javax.persistence|2.2.1|jar
 [javax.transaction-1.1.jar]:http://mvnrepository.com/artifact/javax.transaction/jta
 [JDK 8]:http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 [JRE 8]:http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html
 [Lib-Database-ObjectDB]:https://github.com/Naoghuman/lib-database-objectdb
 [Lib-Logger]:https://github.com/Naoghuman/lib-logger
-[log4j-api-2.8.2.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
-[log4j-core-2.8.2.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
+[log4j-api-2.10.0.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
+[log4j-core-2.10.0.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
 [Maven]:http://maven.apache.org/
 [NetBeans]:https://netbeans.org/
 [ObjectDB]:http://www.objectdb.com/
-[objectdb-2.7.1_01.jar]:http://www.objectdb.com/object/db/database/download
+[objectdb-2.7.6.jar]:http://www.objectdb.com/object/db/database/download
 [Overview from all releases in Lib-Database-ObjectDB]:https://github.com/Naoghuman/lib-database-objectdb/releases
 [Pull Request]:https://help.github.com/articles/using-pull-requests
-[Release v0.5.1 (07.30.2017 / MM.dd.yyyy)]:https://github.com/Naoghuman/lib-database-objectdb/releases/tag/v0.5.1
+[Release v0.6.0 (09.24.2017 / MM.dd.yyyy)]:https://github.com/Naoghuman/lib-database-objectdb/releases/tag/v0.6.0
 [UML]:https://en.wikipedia.org/wiki/Unified_Modeling_Language
 
 
