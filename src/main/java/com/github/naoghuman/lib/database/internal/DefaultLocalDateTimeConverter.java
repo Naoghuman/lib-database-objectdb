@@ -20,11 +20,35 @@ import com.github.naoghuman.lib.database.core.Converter;
 import com.github.naoghuman.lib.logger.core.LoggerFacade;
 import java.time.LocalDateTime;
 import java.util.Optional;
+import java.util.regex.PatternSyntaxException;
 
 /**
+ * Default implementation for the abstract class {@link com.github.naoghuman.lib.database.core.Converter} 
+ * which allowed to convert a {@link java.time.LocalDateTime} to a {@link java.lang.String} and 
+ * back again.
+ * <p>
+ * Converts to {@code String} and back with following pattern:
+ * <ul>
+ * <li>value.getYear()</li>
+ * <li>DELIMITER</li>
+ * <li>value.getMonthValue()</li>
+ * <li>DELIMITER</li>
+ * <li>value.getDayOfMonth()</li>
+ * <li>DELIMITER</li>
+ * <li>value.getHour()</li>
+ * <li>DELIMITER</li>
+ * <li>value.getMinute()</li>
+ * <li>DELIMITER</li>
+ * <li>value.getSecond()</li>
+ * <li>DELIMITER</li>
+ * <li>value.getNano()</li>
+ * </ul>
  *
  * @author Naoghuman
  * @since  0.6.0
+ * @see    com.github.naoghuman.lib.database.core.Converter
+ * @see    java.lang.String
+ * @see    java.time.LocalDateTime
  */
 public final class DefaultLocalDateTimeConverter extends Converter<LocalDateTime> {
 
@@ -33,19 +57,18 @@ public final class DefaultLocalDateTimeConverter extends Converter<LocalDateTime
         DefaultValidator.requireNonNull(value);
         
         final StringBuilder sb = new StringBuilder();
-        sb.append(";"); // NOI18N
         sb.append(value.getYear());
-        sb.append(";"); // NOI18N
+        sb.append(DELIMITER);
         sb.append(value.getMonthValue());
-        sb.append(";"); // NOI18N
+        sb.append(DELIMITER);
         sb.append(value.getDayOfMonth());
-        sb.append(";"); // NOI18N
+        sb.append(DELIMITER);
         sb.append(value.getHour());
-        sb.append(";"); // NOI18N
+        sb.append(DELIMITER);
         sb.append(value.getMinute());
-        sb.append(";"); // NOI18N
+        sb.append(DELIMITER);
         sb.append(value.getSecond());
-        sb.append(";"); // NOI18N
+        sb.append(DELIMITER);
         sb.append(value.getNano());
         
         return sb.toString();
@@ -56,15 +79,21 @@ public final class DefaultLocalDateTimeConverter extends Converter<LocalDateTime
         DefaultValidator.requireNonNullAndNotEmpty(value);
         
         Optional<LocalDateTime> optional = Optional.empty();
+        String[]                splitted = new String[0];
+        try {
+            splitted = value.split(DELIMITER);
+        } catch (PatternSyntaxException pse) {
+            LoggerFacade.getDefault().warn(this.getClass(),
+                    String.format("Can't split '%s' with delimiter '%s'.", value, DELIMITER), // NOI18N
+                    pse);
+        }
+        
+        if (splitted.length != 7) {
+            throw new IllegalArgumentException(String.format(
+                    "Can't split '%s' into 7 parts with delimiter '%s'.", value, DELIMITER)); // NOI18N
+        }
         
         try {
-            final String[] splitted = value.split(";"); // NOI18N
-            if (splitted.length != 7) {
-                throw new IllegalArgumentException(String.format(
-                        "Can't splitt '%s' into 7 parts with delimeter ';'.", // NOI18N
-                        value)); // NOI18N
-            }
-            
             final int year         = Integer.parseInt(splitted[0]);
             final int month        = Integer.parseInt(splitted[1]);
             final int dayOfMonth   = Integer.parseInt(splitted[2]);
@@ -75,7 +104,7 @@ public final class DefaultLocalDateTimeConverter extends Converter<LocalDateTime
             
             optional = Optional.ofNullable(LocalDateTime.of(year, month, dayOfMonth, hour, minute, second, nanoOfSecond));
         } catch (Exception ex) {
-            LoggerFacade.getDefault().error(this.getClass(),
+            LoggerFacade.getDefault().warn(this.getClass(),
                     String.format("Error by parsing the values from '%s' to LocalDateTime.", value), // NOI18N
                     ex);
         }

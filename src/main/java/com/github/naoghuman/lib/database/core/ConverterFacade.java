@@ -23,18 +23,31 @@ import java.util.Optional;
 import javafx.scene.paint.Color;
 
 /**
+ * The facade {@code ConverterFacade} allowed access to existing default implementations 
+ * from the abstract class {@link com.github.naoghuman.lib.database.core.Converter}.
+ * <p>
+ * Momentary following implementations exists:
+ * <ul>
+ * <li>{@link com.github.naoghuman.lib.database.internal.DefaultColorConverter}</li>
+ * <li>{@link com.github.naoghuman.lib.database.internal.DefaultLocalDateTimeConverter}</li>
+ * </ul>
  *
- * @author Naoghuman
  * @since  0.6.0
+ * @author Naoghuman
+ * @see    com.github.naoghuman.lib.database.core.Converter
+ * @see    com.github.naoghuman.lib.database.internal.DefaultColorConverter
+ * @see    com.github.naoghuman.lib.database.internal.DefaultLocalDateTimeConverter
  */
 public final class ConverterFacade {
     
     private static final Optional<ConverterFacade> INSTANCE = Optional.of(new ConverterFacade());
 
     /**
-     * Returns a singleton instance from the class {@code ConverterFacade}.
+     * Returns a singleton instance from the class {@link com.github.naoghuman.lib.database.core.ConverterFacade}.
      * 
-     * @return a singleton instance from the class {@code ConverterFacade}.
+     * @return a singleton instance from this class.
+     * @since  0.6.0
+     * @author Naoghuman
      */
     public static final ConverterFacade getDefault() {
         return INSTANCE.get();
