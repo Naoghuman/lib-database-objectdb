@@ -38,7 +38,7 @@ for more details.
 
 
 #### Refactoring
-#39 [documentation] Prepate the documentation to the new v0.6.0.
+#39 [documentation] Prepare the documentation to the new v0.6.0.
 #37 [pom] Update dependencies in pom.xml.
 
 

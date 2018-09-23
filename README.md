@@ -14,8 +14,8 @@ Intention
 Lib-Database-ObjectDB is a library for easy accessing an [ObjectDB] database in 
 a [JavaFX] &amp; [Maven] desktop application.
 
-_Image:_ [UML] Lib-Database-ObjectDB  
-![UML-diagram_Lib-Database-ObjectDB_v0.5.1_2017-07-30_15-34.png][UML-diagram_Lib-Database-ObjectDB_v0.5.1_2017-07-30_15-34]
+_Image:_ [UML] Lib-Database-ObjectDB v0.6.0  
+![UML-diagram_Lib-Database-ObjectDB_v0.6.0_2018-09-23_15-06.png][UML-diagram_Lib-Database-ObjectDB_v0.6.0_2018-09-23_15-06]
 
 > __Hint__  
 > The `UML` diagram is created with the `Online Modeling Platform` [GenMyModel].
@@ -33,6 +33,8 @@ Content
     - [com.github.naoghuman.lib.database.core.DatabaseFacade](#DatabaseFacade)
     - [com.github.naoghuman.lib.database.core.CrudService](#CrudService)
     - [com.github.naoghuman.lib.database.core.Database](#Database)
+    - [com.github.naoghuman.lib.database.core.Converter](#Converter)
+    - [com.github.naoghuman.lib.database.core.ConverterFacade](#ConverterFacade)
 * [Download](#Download)
 * [Requirements](#Requirements)
 * [Installation](#Installation)
@@ -667,6 +669,122 @@ public void shutdown(final String name);
 ```
 
 
+### com.github.naoghuman.lib.database.core.Converter<a name="Converter" />
+
+```java
+/**
+ * This {@code Interface} allowed to convert objects to a {@link java.lang.String} 
+ * and returned to the given type.
+ * <p>
+ * For example with the facade {@link com.github.naoghuman.lib.database.core.ConverterFacade} 
+ * the developer have momentary the possiblility to convert a {@code JavaFX} color 
+ * or a {@link java.time.LocalDateTime}.
+ * 
+ * @param  <T> the type of class which should be convert.
+ * @author Naoghuman
+ * @since  0.6.0
+ * @see    com.github.naoghuman.lib.database.core.ConverterFacade
+ * @see    java.lang.String
+ * @see    java.time.LocalDateTime
+ * @see    javafx.scene.paint.Color
+ */
+public interface Converter<T>
+```
+
+```java
+/**
+ * Definition from a constant for the used delimiter ({@code ;}) in context 
+ * from this {@code Interface}.
+ * 
+ * @since  0.6.0
+ * @author Naoghuman
+ */
+public static final String DELIMITER = ";"; // NOI18N
+```
+
+```java
+/**
+ * Converts the internal values (separated with the delimiter {@code ';'}) 
+ * from the given object to a {@link java.lang.String}.
+ * <br>
+ * To separate the internal values the developer can use the constant 
+ * {@link com.github.naoghuman.lib.database.core.Converter#DELIMITER}.
+ * <p>
+ * For example converting the JavaFX color {@link javafx.scene.paint.Color#BLACK} with 
+ * {@link com.github.naoghuman.lib.database.core.ConverterFacade#getColorConverter()} 
+ * will returns the String {@code 0.0;0.0;0.0;1.0}.
+ * 
+ * @param  value the object which internal values should be convert to a {@code String}.
+ * @return a {@code String} which presented the internal values from the given object.
+ * @throws java.lang.NullPointerException if value is {@code NULL}.
+ * @since  0.6.0
+ * @author Naoghuman
+ * @see    com.github.naoghuman.lib.database.core.Converter#DELIMITER
+ * @see    com.github.naoghuman.lib.database.core.ConverterFacade#getColorConverter()
+ * @see    java.lang.String
+ * @see    javafx.scene.paint.Color#BLACK
+ */
+public String to(final T value);
+```
+
+```java
+/**
+ * Converts the {@code value} to the given class. If the {@link java.lang.String} 
+ * can't converted to the given type then {@link java.util.Optional#empty()} 
+ * will returned.
+ * <p>
+ * The string should be a {@code separated value list} separated with the 
+ * delimiter {@code ';'}. See also 
+ * {@link com.github.naoghuman.lib.database.core.Converter#DELIMITER}.
+ * 
+ * @param  value the object which should be converted returned to the given type.
+ * @return an instance from the given class or {@link java.util.Optional#empty()}.
+ * @throws java.lang.IllegalArgumentException if value is {@code EMPTY}.
+ * @throws java.lang.NullPointerException if value is {@code NULL}.
+ * @since  0.6.0
+ * @author Naoghuman
+ * @see    com.github.naoghuman.lib.database.core.Converter#DELIMITER
+ * @see    java.lang.String
+ * @see    java.util.Optional
+ */
+public Optional<T> from(final String value);
+```
+
+
+### com.github.naoghuman.lib.database.core.ConverterFacade<a name="ConverterFacade" />
+
+```java
+/**
+ * The facade {@code ConverterFacade} allowed access to existing default implementations 
+ * from the {@code Interface} {@link com.github.naoghuman.lib.database.core.Converter}.
+ * <p>
+ * Momentary following default implementations exists:
+ * <ul>
+ * <li>{@link com.github.naoghuman.lib.database.internal.DefaultColorConverter}</li>
+ * <li>{@link com.github.naoghuman.lib.database.internal.DefaultLocalDateTimeConverter}</li>
+ * </ul>
+ *
+ * @since  0.6.0
+ * @author Naoghuman
+ * @see    com.github.naoghuman.lib.database.core.Converter
+ * @see    com.github.naoghuman.lib.database.internal.DefaultColorConverter
+ * @see    com.github.naoghuman.lib.database.internal.DefaultLocalDateTimeConverter
+ */
+public final class ConverterFacade
+```
+
+```java
+/**
+ * Returns a singleton instance from the class {@link com.github.naoghuman.lib.database.core.ConverterFacade}.
+ * 
+ * @return a singleton instance from this class.
+ * @since  0.6.0
+ * @author Naoghuman
+ */
+public static final ConverterFacade getDefault()
+```
+
+
 
 Download<a name="Download" />
 ---
@@ -767,7 +885,7 @@ You can reach me under <peter.rogge@yahoo.de>.
 
 
 [//]: # (Images)
-[UML-diagram_Lib-Database-ObjectDB_v0.5.1_2017-07-30_15-34]:https://user-images.githubusercontent.com/8161815/28753983-b1feefba-753c-11e7-9233-3a4a16f9a1ad.png
+[UML-diagram_Lib-Database-ObjectDB_v0.6.0_2018-09-23_15-06]:https://user-images.githubusercontent.com/8161815/45928357-88e11800-bf42-11e8-8e17-1c391f677ca4.png
 
 
 
