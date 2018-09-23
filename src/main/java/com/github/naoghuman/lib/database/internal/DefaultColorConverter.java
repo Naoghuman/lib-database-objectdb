@@ -24,7 +24,7 @@ import java.util.regex.PatternSyntaxException;
 import javafx.scene.paint.Color;
 
 /**
- * Default implementation for the abstract class {@link com.github.naoghuman.lib.database.core.Converter} 
+ * Default implementation for the {@code Interface} {@link com.github.naoghuman.lib.database.core.Converter} 
  * which allowed to convert a JavaFX {@link javafx.scene.paint.Color} to a {@link java.lang.String} and 
  * back again.
  * <p>
@@ -45,7 +45,7 @@ import javafx.scene.paint.Color;
  * @see    java.lang.String
  * @see    javafx.scene.paint.Color
  */
-public final class DefaultColorConverter extends Converter<Color> {
+public final class DefaultColorConverter implements Converter<Color> {
 
     @Override
     public String to(final Color value) {

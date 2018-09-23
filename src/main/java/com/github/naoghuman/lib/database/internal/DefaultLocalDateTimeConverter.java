@@ -23,7 +23,7 @@ import java.util.Optional;
 import java.util.regex.PatternSyntaxException;
 
 /**
- * Default implementation for the abstract class {@link com.github.naoghuman.lib.database.core.Converter} 
+ * Default implementation for the {@code Interface} {@link com.github.naoghuman.lib.database.core.Converter} 
  * which allowed to convert a {@link java.time.LocalDateTime} to a {@link java.lang.String} and 
  * back again.
  * <p>
@@ -50,7 +50,7 @@ import java.util.regex.PatternSyntaxException;
  * @see    java.lang.String
  * @see    java.time.LocalDateTime
  */
-public final class DefaultLocalDateTimeConverter extends Converter<LocalDateTime> {
+public final class DefaultLocalDateTimeConverter implements Converter<LocalDateTime> {
 
     @Override
     public String to(final LocalDateTime value) {

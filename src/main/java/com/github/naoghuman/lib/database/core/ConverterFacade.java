@@ -24,9 +24,9 @@ import javafx.scene.paint.Color;
 
 /**
  * The facade {@code ConverterFacade} allowed access to existing default implementations 
- * from the abstract class {@link com.github.naoghuman.lib.database.core.Converter}.
+ * from the {@code Interface} {@link com.github.naoghuman.lib.database.core.Converter}.
  * <p>
- * Momentary following implementations exists:
+ * Momentary following default implementations exists:
  * <ul>
  * <li>{@link com.github.naoghuman.lib.database.internal.DefaultColorConverter}</li>
  * <li>{@link com.github.naoghuman.lib.database.internal.DefaultLocalDateTimeConverter}</li>

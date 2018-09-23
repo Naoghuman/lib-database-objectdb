@@ -19,7 +19,7 @@ package com.github.naoghuman.lib.database.core;
 import java.util.Optional;
 
 /**
- * This {@code abstract} class allowed to convert objects to a {@link java.lang.String} 
+ * This {@code Interface} allowed to convert objects to a {@link java.lang.String} 
  * and returned to the given type.
  * <p>
  * For example with the facade {@link com.github.naoghuman.lib.database.core.ConverterFacade} 
@@ -34,11 +34,11 @@ import java.util.Optional;
  * @see    java.time.LocalDateTime
  * @see    javafx.scene.paint.Color
  */
-public abstract class Converter<T> {
+public interface Converter<T> {
     
     /**
      * Definition from a constant for the used delimiter ({@code ;}) in context 
-     * from this abstract class.
+     * from this {@code Interface}.
      * 
      * @since  0.6.0
      * @author Naoghuman
@@ -52,7 +52,7 @@ public abstract class Converter<T> {
      * To separate the internal values the developer can use the constant 
      * {@link com.github.naoghuman.lib.database.core.Converter#DELIMITER}.
      * <p>
-     * For example converting a JavaFX color {@link javafx.scene.paint.Color#BLACK} with 
+     * For example converting the JavaFX color {@link javafx.scene.paint.Color#BLACK} with 
      * {@link com.github.naoghuman.lib.database.core.ConverterFacade#getColorConverter()} 
      * will returns the String {@code 0.0;0.0;0.0;1.0}.
      * 
@@ -66,7 +66,7 @@ public abstract class Converter<T> {
      * @see    java.lang.String
      * @see    javafx.scene.paint.Color#BLACK
      */
-    public abstract String to(final T value);
+    public String to(final T value);
     
     /**
      * Converts the {@code value} to the given class. If the {@link java.lang.String} 
@@ -87,6 +87,6 @@ public abstract class Converter<T> {
      * @see    java.lang.String
      * @see    java.util.Optional
      */
-    public abstract Optional<T> from(final String value);
+    public Optional<T> from(final String value);
     
 }

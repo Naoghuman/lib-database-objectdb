@@ -22,7 +22,7 @@ for more details.
 #35 [api] Create new class ConverterFacade.
 #34 [api] Create new class DefaultColorConverter.
 #33 [api] Create new class DefaultLocalDateTimeConverter.
-#32 [api] Create new abstract class Converter<T>.
+#32 [api] Create new interface Converter<T>.
 
 
 
@@ -38,6 +38,7 @@ for more details.
 
 
 #### Refactoring
+#39 [documentation] Prepate the documentation to the new v0.6.0.
 #37 [pom] Update dependencies in pom.xml.
 
 
