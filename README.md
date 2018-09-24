@@ -404,7 +404,7 @@ public void beginTransaction();
  * <li>{@link javax.persistence.EntityManager#clear()}</li>
  * </ul>
  * 
- * @see javax.persistence.EntityTransaction#clear()
+ * @see javax.persistence.EntityManager#clear()
  * @see javax.persistence.EntityTransaction#commit()
  */
 public void commitTransaction();
