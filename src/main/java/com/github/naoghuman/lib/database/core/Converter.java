@@ -27,8 +27,8 @@ import java.util.Optional;
  * or a {@link java.time.LocalDateTime}.
  * 
  * @param  <T> the type of class which should be convert.
- * @author Naoghuman
  * @since  0.6.0
+ * @author Naoghuman
  * @see    com.github.naoghuman.lib.database.core.ConverterFacade
  * @see    java.lang.String
  * @see    java.time.LocalDateTime
